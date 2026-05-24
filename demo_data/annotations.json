@@ -1,0 +1,1329 @@
+{
+  "BGC3109958": {
+    "accession_no": "BGC3109958",
+    "source": "data_reports.xlsx; D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\superres\\ctvit_outputs\\samples.BGC3109958\\Thorax_150_Br40_S3_512_512.txt",
+    "raw_text": "Liver right lobe transplantation, control Sections were taken without contrast medium and reconstructions were made at the workstation. Trachea and both main bronchi are open. No occlusive pathology was detected in the trachea and both main bronchi. There is atelectasis in the lower lobe of the lung adjacent to the right pleural effusion and pleural effusion. There are several millimetric nonspecific nodules in both lungs. No mass or infiltrative lesion was detected in both lungs. Mediastinal structures cannot be evaluated optimally because contrast material is not given. As far as can be observed: Heart contour and size are normal. Pericardial effusion was not detected. The widths of the mediastinal main vascular structures are normal. Atheroma plaques are observed in the aorta and coronary arteries. Central venous catheter is seen on the right. The catheter terminates at the superior distal portion of the vena cava. No pathologically enlarged lymph nodes were detected in the mediastinum and hilar regions. No pathological increase in wall thickness was detected in the esophagus within the sections. No upper abdominal free fluid-collection or pathologically enlarged lymph nodes were detected in the sections. No fractures or lytic-destructive lesions were detected in the bone structures within the sections. Vertebral corpus heights, alignments and densities within the sections are normal. There are osteophytes in the vertebral corpus corners. The neural foramina are open. Right pleural effusion and atelectasis in adjacent lung. Millimetric nonspecific nodules in both lungs. Atherosclerotic changes in aorta and coronary arteries. Thoracic spondylosis. ",
+    "age": 59,
+    "sex": "Male",
+    "diseases": {
+      "Pleural_Effusion": [
+        {
+          "keyword": "pleural effusion",
+          "position": 323,
+          "context": " lobe of the lung adjacent to the right pleural effusion and pleural effusion. there are several"
+        },
+        {
+          "keyword": "pleural effusion",
+          "position": 344,
+          "context": "acent to the right pleural effusion and pleural effusion. there are several millimetric nonspeci"
+        },
+        {
+          "keyword": "pleural effusion",
+          "position": 1502,
+          "context": "rs. the neural foramina are open. right pleural effusion and atelectasis in adjacent lung. milli"
+        },
+        {
+          "keyword": "right pleural effusion",
+          "position": 317,
+          "context": " lower lobe of the lung adjacent to the right pleural effusion and pleural effusion. there are several"
+        },
+        {
+          "keyword": "right pleural effusion",
+          "position": 1496,
+          "context": " corners. the neural foramina are open. right pleural effusion and atelectasis in adjacent lung. milli"
+        },
+        {
+          "keyword": "pleural effusion",
+          "position": 25,
+          "context": "59 years old male: right pleural effusion and atelectasis in adjacent lung. milli"
+        },
+        {
+          "keyword": "right pleural effusion",
+          "position": 19,
+          "context": "59 years old male: right pleural effusion and atelectasis in adjacent lung. milli"
+        },
+        {
+          "keyword": "pleural effusion",
+          "position": 25,
+          "context": "59 years old male: right pleural effusion and atelectasis in adjacent lung. milli"
+        },
+        {
+          "keyword": "right pleural effusion",
+          "position": 19,
+          "context": "59 years old male: right pleural effusion and atelectasis in adjacent lung. milli"
+        }
+      ],
+      "Atelectasis": [
+        {
+          "keyword": "atelectasis",
+          "position": 259,
+          "context": "trachea and both main bronchi. there is atelectasis in the lower lobe of the lung adjacent "
+        },
+        {
+          "keyword": "atelectasis",
+          "position": 1523,
+          "context": "na are open. right pleural effusion and atelectasis in adjacent lung. millimetric nonspecif"
+        },
+        {
+          "keyword": "atelectasis",
+          "position": 46,
+          "context": "rs old male: right pleural effusion and atelectasis in adjacent lung. millimetric nonspecif"
+        },
+        {
+          "keyword": "atelectasis",
+          "position": 46,
+          "context": "rs old male: right pleural effusion and atelectasis in adjacent lung. millimetric nonspecif"
+        }
+      ],
+      "Nodule": [
+        {
+          "keyword": "nodules",
+          "position": 404,
+          "context": "ere are several millimetric nonspecific nodules in both lungs. no mass or infiltrative "
+        },
+        {
+          "keyword": "nodules",
+          "position": 1577,
+          "context": " adjacent lung. millimetric nonspecific nodules in both lungs. atherosclerotic changes "
+        },
+        {
+          "keyword": "nodules",
+          "position": 100,
+          "context": " adjacent lung. millimetric nonspecific nodules in both lungs. atherosclerotic changes "
+        },
+        {
+          "keyword": "nodules",
+          "position": 100,
+          "context": " adjacent lung. millimetric nonspecific nodules in both lungs. atherosclerotic changes "
+        }
+      ],
+      "Atherosclerosis": [
+        {
+          "keyword": "atheroma",
+          "position": 747,
+          "context": "al main vascular structures are normal. atheroma plaques are observed in the aorta and c"
+        }
+      ],
+      "Spondylosis_Degenerative": [
+        {
+          "keyword": "spondylosis",
+          "position": 1665,
+          "context": "n aorta and coronary arteries. thoracic spondylosis."
+        },
+        {
+          "keyword": "osteophytes",
+          "position": 1421,
+          "context": "thin the sections are normal. there are osteophytes in the vertebral corpus corners. the ne"
+        },
+        {
+          "keyword": "spondylosis",
+          "position": 188,
+          "context": "n aorta and coronary arteries. thoracic spondylosis."
+        },
+        {
+          "keyword": "spondylosis",
+          "position": 188,
+          "context": "n aorta and coronary arteries. thoracic spondylosis."
+        }
+      ]
+    },
+    "negated_findings": [
+      {
+        "disease": "Mass",
+        "keyword": "mass",
+        "context": "c nonspecific nodules in both lungs. no mass or infiltrative lesion was detected in "
+      },
+      {
+        "disease": "Transplant_Surgery",
+        "keyword": "transplantation",
+        "context": "liver right lobe transplantation, control sections were taken without co"
+      },
+      {
+        "disease": "Cyst_Lesion",
+        "keyword": "lesion",
+        "context": " in both lungs. no mass or infiltrative lesion was detected in both lungs. mediastinal"
+      },
+      {
+        "disease": "Effusion_Pericardial",
+        "keyword": "pericardial effusion",
+        "context": "ved: heart contour and size are normal. pericardial effusion was not detected. the widths of the med"
+      },
+      {
+        "disease": "Fracture_Lytic",
+        "keyword": "lytic-destructive",
+        "context": "tected in the sections. no fractures or lytic-destructive lesions were detected in the bone struc"
+      }
+    ],
+    "anatomy_mentioned": [
+      "trachea",
+      "mediastinum",
+      "bronchi",
+      "liver",
+      "aorta",
+      "pleura",
+      "vertebral corpus",
+      "both lungs",
+      "coronary arteries",
+      "bone structure",
+      "esophagus",
+      "hilar region",
+      "lower lobe"
+    ],
+    "modifiers_mentioned": [
+      "central",
+      "nonspecific",
+      "several",
+      "millimetric",
+      "large"
+    ]
+  },
+  "BGC3162381": {
+    "accession_no": "BGC3162381",
+    "source": "data_reports.xlsx; D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\superres\\ctvit_outputs\\samples.BGC3162381\\Thorax_150_Br40_S3_512_512.txt",
+    "raw_text": "nan 1.5 mm thick non-contrast sections were taken in the axial plane. Trachea and lumen of both main bronchi are open. No occlusive pathology was detected in the trachea and lumen of both main bronchi. Calcified atherosclerotic changes are observed in the wall of the thoracic aorta and coronary artery. The ascending aorta measures 40 mm in diameter and shows mild fusiform dilatation. Heart contour size is natural. Pericardial thickening-effusion was not detected. Thoracic esophagus calibration was normal and no significant pathological wall thickening was detected in the non-contrast examination limits. Mediastinal structures were evaluated as suboptimal since the examination was unenhanced. As far as can be observed, no lymph node was detected in mediastinal and bilateral hilar pathological size and appearance. A well-circumscribed, benign-looking hypodense lesion of 30x18 mm was observed between the subcutaneous fatty planes adjacent to the left scapula (Sebaceous cyst?). US control is recommended. When examined in the lung parenchyma window; Subpleural focal ground-glass density increases were observed in both lung lower lobe posterobasal segment and left lung lower lobe superior segment. The outlook may be observed in the early phase of Covid-19 pneumonia but is not specific. Other viral pneumonias may be considered in the differential diagnosis. Clinical and laboratory correlation is recommended. A few millimetric nonspecific parenchymal nodules, some of which are calcified, are observed in both lungs. A free pleural effusion measuring 16 mm in thickness was observed between the pleural leaves on the right. In the upper abdominal sections included in the study area, it was understood that liver right lobe transplantation was performed in the patient. The gallbladder was not observed (operated). Spleen size increased. Bilateral adrenal gland calibration was normal and no space-occupying lesion was detected. The incision line was observed in the midline of the abdomen. No significant hernia defect was detected at the levels entering the cross-sectional area. No lytic-destructive lesion was detected in bone structures. Mild fusiform dilatation, atherosclerotic changes in the ascending aorta. Right pleural effusion. Peripheral subpleural focal ground-glass density increases in both lungs, appearance can be observed in the early stage of Covid-19 pneumonia, but is not specific. Other viral infections may be considered in the differential diagnosis. Clinical and laboratory correlation is recommended. A few millimeter-sized nonspecific parenchymal nodules, some of which are calcified, in both lungs. Liver right lobe transplantation. Cholecystectomy. Splenomegaly. ",
+    "age": 59,
+    "sex": "Male",
+    "diseases": {
+      "Pleural_Effusion": [
+        {
+          "keyword": "pleural effusion",
+          "position": 1540,
+          "context": "ied, are observed in both lungs. a free pleural effusion measuring 16 mm in thickness was observ"
+        },
+        {
+          "keyword": "pleural effusion",
+          "position": 2239,
+          "context": "c changes in the ascending aorta. right pleural effusion. peripheral subpleural focal ground-gla"
+        },
+        {
+          "keyword": "free pleural effusion",
+          "position": 1535,
+          "context": "alcified, are observed in both lungs. a free pleural effusion measuring 16 mm in thickness was observ"
+        },
+        {
+          "keyword": "right pleural effusion",
+          "position": 2233,
+          "context": "lerotic changes in the ascending aorta. right pleural effusion. peripheral subpleural focal ground-gla"
+        },
+        {
+          "keyword": "pleural effusion",
+          "position": 99,
+          "context": "c changes in the ascending aorta. right pleural effusion. peripheral subpleural focal ground-gla"
+        },
+        {
+          "keyword": "right pleural effusion",
+          "position": 93,
+          "context": "lerotic changes in the ascending aorta. right pleural effusion. peripheral subpleural focal ground-gla"
+        },
+        {
+          "keyword": "pleural effusion",
+          "position": 99,
+          "context": "c changes in the ascending aorta. right pleural effusion. peripheral subpleural focal ground-gla"
+        },
+        {
+          "keyword": "right pleural effusion",
+          "position": 93,
+          "context": "lerotic changes in the ascending aorta. right pleural effusion. peripheral subpleural focal ground-gla"
+        }
+      ],
+      "Nodule": [
+        {
+          "keyword": "nodules",
+          "position": 1467,
+          "context": "few millimetric nonspecific parenchymal nodules, some of which are calcified, are obser"
+        },
+        {
+          "keyword": "nodules",
+          "position": 2592,
+          "context": "illimeter-sized nonspecific parenchymal nodules, some of which are calcified, in both l"
+        },
+        {
+          "keyword": "nodules",
+          "position": 452,
+          "context": "illimeter-sized nonspecific parenchymal nodules, some of which are calcified, in both l"
+        },
+        {
+          "keyword": "nodules",
+          "position": 452,
+          "context": "illimeter-sized nonspecific parenchymal nodules, some of which are calcified, in both l"
+        }
+      ],
+      "Ground_Glass_Opacity": [
+        {
+          "keyword": "ground-glass",
+          "position": 1078,
+          "context": "ung parenchyma window; subpleural focal ground-glass density increases were observed in both"
+        },
+        {
+          "keyword": "ground-glass density",
+          "position": 1078,
+          "context": "ung parenchyma window; subpleural focal ground-glass density increases were observed in both lung lo"
+        }
+      ],
+      "Dilatation_Aneurysm": [
+        {
+          "keyword": "dilatation",
+          "position": 375,
+          "context": " mm in diameter and shows mild fusiform dilatation. heart contour size is natural. pericar"
+        },
+        {
+          "keyword": "dilatation",
+          "position": 2173,
+          "context": "ected in bone structures. mild fusiform dilatation, atherosclerotic changes in the ascendi"
+        },
+        {
+          "keyword": "fusiform dilatation",
+          "position": 366,
+          "context": "asures 40 mm in diameter and shows mild fusiform dilatation. heart contour size is natural. pericar"
+        },
+        {
+          "keyword": "fusiform dilatation",
+          "position": 2164,
+          "context": "n was detected in bone structures. mild fusiform dilatation, atherosclerotic changes in the ascendi"
+        },
+        {
+          "keyword": "dilatation",
+          "position": 33,
+          "context": "59 years old male: mild fusiform dilatation, atherosclerotic changes in the ascendi"
+        },
+        {
+          "keyword": "fusiform dilatation",
+          "position": 24,
+          "context": "59 years old male: mild fusiform dilatation, atherosclerotic changes in the ascendi"
+        },
+        {
+          "keyword": "dilatation",
+          "position": 33,
+          "context": "59 years old male: mild fusiform dilatation, atherosclerotic changes in the ascendi"
+        },
+        {
+          "keyword": "fusiform dilatation",
+          "position": 24,
+          "context": "59 years old male: mild fusiform dilatation, atherosclerotic changes in the ascendi"
+        }
+      ],
+      "Transplant_Surgery": [
+        {
+          "keyword": "transplantation",
+          "position": 1740,
+          "context": "it was understood that liver right lobe transplantation was performed in the patient. the gallb"
+        },
+        {
+          "keyword": "transplantation",
+          "position": 2662,
+          "context": "cified, in both lungs. liver right lobe transplantation. cholecystectomy. splenomegaly."
+        },
+        {
+          "keyword": "cholecystectomy",
+          "position": 2679,
+          "context": "ungs. liver right lobe transplantation. cholecystectomy. splenomegaly."
+        },
+        {
+          "keyword": "transplantation",
+          "position": 522,
+          "context": "cified, in both lungs. liver right lobe transplantation. cholecystectomy. splenomegaly."
+        },
+        {
+          "keyword": "cholecystectomy",
+          "position": 539,
+          "context": "ungs. liver right lobe transplantation. cholecystectomy. splenomegaly."
+        },
+        {
+          "keyword": "transplantation",
+          "position": 522,
+          "context": "cified, in both lungs. liver right lobe transplantation. cholecystectomy. splenomegaly."
+        },
+        {
+          "keyword": "cholecystectomy",
+          "position": 539,
+          "context": "ungs. liver right lobe transplantation. cholecystectomy. splenomegaly."
+        }
+      ],
+      "Cyst_Lesion": [
+        {
+          "keyword": "cyst",
+          "position": 981,
+          "context": "adjacent to the left scapula (sebaceous cyst?). us control is recommended. when exam"
+        },
+        {
+          "keyword": "sebaceous cyst",
+          "position": 971,
+          "context": "ty planes adjacent to the left scapula (sebaceous cyst?). us control is recommended. when exam"
+        },
+        {
+          "keyword": "lesion",
+          "position": 871,
+          "context": "circumscribed, benign-looking hypodense lesion of 30x18 mm was observed between the su"
+        },
+        {
+          "keyword": "hypodense lesion",
+          "position": 861,
+          "context": "e. a well-circumscribed, benign-looking hypodense lesion of 30x18 mm was observed between the su"
+        }
+      ],
+      "Splenomegaly": [
+        {
+          "keyword": "splenomegaly",
+          "position": 2696,
+          "context": " lobe transplantation. cholecystectomy. splenomegaly."
+        },
+        {
+          "keyword": "spleen size increased",
+          "position": 1831,
+          "context": "allbladder was not observed (operated). spleen size increased. bilateral adrenal gland calibration wa"
+        },
+        {
+          "keyword": "splenomegaly",
+          "position": 556,
+          "context": " lobe transplantation. cholecystectomy. splenomegaly."
+        },
+        {
+          "keyword": "splenomegaly",
+          "position": 556,
+          "context": " lobe transplantation. cholecystectomy. splenomegaly."
+        }
+      ]
+    },
+    "negated_findings": [
+      {
+        "disease": "Mass",
+        "keyword": "space-occupying lesion",
+        "context": "nal gland calibration was normal and no space-occupying lesion was detected. the incision line was obs"
+      },
+      {
+        "disease": "Ground_Glass_Opacity",
+        "keyword": "ground-glass",
+        "context": "l effusion. peripheral subpleural focal ground-glass density increases in both lungs, appear"
+      },
+      {
+        "disease": "Ground_Glass_Opacity",
+        "keyword": "ground-glass density",
+        "context": "l effusion. peripheral subpleural focal ground-glass density increases in both lungs, appearance can"
+      },
+      {
+        "disease": "Pneumonia",
+        "keyword": "pneumonia",
+        "context": "observed in the early phase of covid-19 pneumonia but is not specific. other viral pneumo"
+      },
+      {
+        "disease": "Pneumonia",
+        "keyword": "pneumonia",
+        "context": "observed in the early stage of covid-19 pneumonia, but is not specific. other viral infec"
+      },
+      {
+        "disease": "Pneumonia",
+        "keyword": "covid-19 pneumonia",
+        "context": "k may be observed in the early phase of covid-19 pneumonia but is not specific. other viral pneumo"
+      },
+      {
+        "disease": "Pneumonia",
+        "keyword": "covid-19 pneumonia",
+        "context": "e can be observed in the early stage of covid-19 pneumonia, but is not specific. other viral infec"
+      },
+      {
+        "disease": "Hernia",
+        "keyword": "hernia",
+        "context": " midline of the abdomen. no significant hernia defect was detected at the levels enter"
+      },
+      {
+        "disease": "Cyst_Lesion",
+        "keyword": "lesion",
+        "context": "ation was normal and no space-occupying lesion was detected. the incision line was obs"
+      },
+      {
+        "disease": "Cyst_Lesion",
+        "keyword": "lesion",
+        "context": "ss-sectional area. no lytic-destructive lesion was detected in bone structures. mild f"
+      },
+      {
+        "disease": "Effusion_Pericardial",
+        "keyword": "pericardial thickening",
+        "context": "atation. heart contour size is natural. pericardial thickening-effusion was not detected. thoracic eso"
+      },
+      {
+        "disease": "Fracture_Lytic",
+        "keyword": "destructive lesion",
+        "context": "ring the cross-sectional area. no lytic-destructive lesion was detected in bone structures. mild f"
+      },
+      {
+        "disease": "Fracture_Lytic",
+        "keyword": "lytic-destructive",
+        "context": "s entering the cross-sectional area. no lytic-destructive lesion was detected in bone structures."
+      },
+      {
+        "disease": "Ground_Glass_Opacity",
+        "keyword": "ground-glass",
+        "context": "l effusion. peripheral subpleural focal ground-glass density increases in both lungs, appear"
+      },
+      {
+        "disease": "Ground_Glass_Opacity",
+        "keyword": "ground-glass density",
+        "context": "l effusion. peripheral subpleural focal ground-glass density increases in both lungs, appearance can"
+      },
+      {
+        "disease": "Pneumonia",
+        "keyword": "pneumonia",
+        "context": "observed in the early stage of covid-19 pneumonia, but is not specific. other viral infec"
+      },
+      {
+        "disease": "Pneumonia",
+        "keyword": "covid-19 pneumonia",
+        "context": "e can be observed in the early stage of covid-19 pneumonia, but is not specific. other viral infec"
+      },
+      {
+        "disease": "Ground_Glass_Opacity",
+        "keyword": "ground-glass",
+        "context": "l effusion. peripheral subpleural focal ground-glass density increases in both lungs, appear"
+      },
+      {
+        "disease": "Ground_Glass_Opacity",
+        "keyword": "ground-glass density",
+        "context": "l effusion. peripheral subpleural focal ground-glass density increases in both lungs, appearance can"
+      },
+      {
+        "disease": "Pneumonia",
+        "keyword": "pneumonia",
+        "context": "observed in the early stage of covid-19 pneumonia, but is not specific. other viral infec"
+      },
+      {
+        "disease": "Pneumonia",
+        "keyword": "covid-19 pneumonia",
+        "context": "e can be observed in the early stage of covid-19 pneumonia, but is not specific. other viral infec"
+      }
+    ],
+    "anatomy_mentioned": [
+      "gallbladder",
+      "rib",
+      "trachea",
+      "bronchi",
+      "liver",
+      "pleura",
+      "left lung",
+      "thoracic aorta",
+      "scapula",
+      "both lungs",
+      "coronary artery",
+      "spleen",
+      "bone structure",
+      "ascending aorta",
+      "adrenal gland",
+      "esophagus",
+      "lower lobe"
+    ],
+    "modifiers_mentioned": [
+      "few",
+      "nonspecific",
+      "focal",
+      "millimetric",
+      "a few",
+      "peripheral",
+      "mild",
+      "subpleural",
+      "increased"
+    ]
+  },
+  "BGC3176800": {
+    "accession_no": "BGC3176800",
+    "source": "data_reports.xlsx; D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\superres\\ctvit_outputs\\samples.BGC3176800\\Thorax_150_Br40_S3_512_512.txt",
+    "raw_text": "COVID. Without IVKM, 1.5 mm thick sections were taken in the axial plan and reconstruction was performed at the workstation. The examination of the patient was evaluated by comparing it with the Thorax CT examination dated 10/01/2022. Heart contour and size are normal. Minimal pericardial effusion is observed. The central venous catheter placed through the left internal jugular vein terminates at the superior-right atrium junction of the vena cava. The diameter of the ascending aorta was 39 mm and increased. No pathologically enlarged lymph nodes were detected in the mediastinum and bilateral hilar regions. Trachea and both main bronchi are open. No occlusive pathology was detected in the trachea and both main bronchi. There is 2 cm thick pleural effusion in the right hemithorax and minimal pleural effusion in the left hemithorax, and the amount of effusion is minimally reduced when compared to the previous examination of the patient. In both lungs, there are peripherally predominantly nodular ground glass areas that become consolidated. Findings are consistent with viral pneumonia (COVID-19 pneumonia). It appears to be regressed when compared to the previous examination of the patient. A 3.5 mm diameter calcific nodule is observed in the lingular segment of the left lung upper lobe. There are linear atelectasis areas in the left lung upper lobe lingular segment inferior subsegment and lower lobe medial segment, and right lung middle lobe medial segment. Sliding type hiatal hernia is observed at the esophagogastric junction. No pathological increase in wall thickness was observed in the esophagus. No discernible mass was detected in the upper abdominal organs within the contrast CT limits. Surgical suture materials are observed on the section surface of the patient who is a liver transplant recipient. Spleen AP diameter was 141 mm and increased. There is a nonspecific sclerotic lesion on the right pedicle of the T4 vertebra within the sections. No lytic-destructive lesions were detected in the bone structures within the sections. Liver right lobe transplant recipient. Peripheral weighted, partially consolidated ground glass areas in both lungs; compatible with viral pneumonia. Bilateral minimal pleural effusion, minimal pericardial effusion. Dilatation of the ascending aorta, calcific plaques of atheroma in the coronary arteries and aorta. Splenomegaly ",
+    "age": 59,
+    "sex": "Male",
+    "diseases": {
+      "Pleural_Effusion": [
+        {
+          "keyword": "pleural effusion",
+          "position": 749,
+          "context": " both main bronchi. there is 2 cm thick pleural effusion in the right hemithorax and minimal ple"
+        },
+        {
+          "keyword": "pleural effusion",
+          "position": 802,
+          "context": "ion in the right hemithorax and minimal pleural effusion in the left hemithorax, and the amount "
+        },
+        {
+          "keyword": "pleural effusion",
+          "position": 2234,
+          "context": "with viral pneumonia. bilateral minimal pleural effusion, minimal pericardial effusion. dilatati"
+        },
+        {
+          "keyword": "minimal pleural effusion",
+          "position": 794,
+          "context": "al effusion in the right hemithorax and minimal pleural effusion in the left hemithorax, and the amount "
+        },
+        {
+          "keyword": "minimal pleural effusion",
+          "position": 2226,
+          "context": "patible with viral pneumonia. bilateral minimal pleural effusion, minimal pericardial effusion. dilatati"
+        },
+        {
+          "keyword": "pleural effusion",
+          "position": 187,
+          "context": "with viral pneumonia. bilateral minimal pleural effusion, minimal pericardial effusion. dilatati"
+        },
+        {
+          "keyword": "minimal pleural effusion",
+          "position": 179,
+          "context": "patible with viral pneumonia. bilateral minimal pleural effusion, minimal pericardial effusion. dilatati"
+        },
+        {
+          "keyword": "pleural effusion",
+          "position": 187,
+          "context": "with viral pneumonia. bilateral minimal pleural effusion, minimal pericardial effusion. dilatati"
+        },
+        {
+          "keyword": "minimal pleural effusion",
+          "position": 179,
+          "context": "patible with viral pneumonia. bilateral minimal pleural effusion, minimal pericardial effusion. dilatati"
+        }
+      ],
+      "Atelectasis": [
+        {
+          "keyword": "atelectasis",
+          "position": 1322,
+          "context": " left lung upper lobe. there are linear atelectasis areas in the left lung upper lobe lingu"
+        },
+        {
+          "keyword": "linear atelectasis",
+          "position": 1315,
+          "context": " of the left lung upper lobe. there are linear atelectasis areas in the left lung upper lobe lingu"
+        }
+      ],
+      "Nodule": [
+        {
+          "keyword": "nodule",
+          "position": 1233,
+          "context": "the patient. a 3.5 mm diameter calcific nodule is observed in the lingular segment of "
+        }
+      ],
+      "Consolidation": [
+        {
+          "keyword": "consolidated",
+          "position": 1040,
+          "context": " nodular ground glass areas that become consolidated. findings are consistent with viral pne"
+        },
+        {
+          "keyword": "consolidated",
+          "position": 2136,
+          "context": "cipient. peripheral weighted, partially consolidated ground glass areas in both lungs; compa"
+        },
+        {
+          "keyword": "consolidated",
+          "position": 89,
+          "context": "cipient. peripheral weighted, partially consolidated ground glass areas in both lungs; compa"
+        },
+        {
+          "keyword": "consolidated",
+          "position": 89,
+          "context": "cipient. peripheral weighted, partially consolidated ground glass areas in both lungs; compa"
+        }
+      ],
+      "Ground_Glass_Opacity": [
+        {
+          "keyword": "ground glass",
+          "position": 1009,
+          "context": " are peripherally predominantly nodular ground glass areas that become consolidated. finding"
+        },
+        {
+          "keyword": "ground glass",
+          "position": 2149,
+          "context": "pheral weighted, partially consolidated ground glass areas in both lungs; compatible with vi"
+        },
+        {
+          "keyword": "ground glass",
+          "position": 102,
+          "context": "pheral weighted, partially consolidated ground glass areas in both lungs; compatible with vi"
+        },
+        {
+          "keyword": "ground glass",
+          "position": 102,
+          "context": "pheral weighted, partially consolidated ground glass areas in both lungs; compatible with vi"
+        }
+      ],
+      "Pneumonia": [
+        {
+          "keyword": "pneumonia",
+          "position": 1089,
+          "context": "ted. findings are consistent with viral pneumonia (covid-19 pneumonia). it appears to be "
+        },
+        {
+          "keyword": "pneumonia",
+          "position": 1109,
+          "context": "nsistent with viral pneumonia (covid-19 pneumonia). it appears to be regressed when compa"
+        },
+        {
+          "keyword": "pneumonia",
+          "position": 2205,
+          "context": "as in both lungs; compatible with viral pneumonia. bilateral minimal pleural effusion, mi"
+        },
+        {
+          "keyword": "viral pneumonia",
+          "position": 1083,
+          "context": "solidated. findings are consistent with viral pneumonia (covid-19 pneumonia). it appears to be "
+        },
+        {
+          "keyword": "viral pneumonia",
+          "position": 2199,
+          "context": "ss areas in both lungs; compatible with viral pneumonia. bilateral minimal pleural effusion, mi"
+        },
+        {
+          "keyword": "covid-19 pneumonia",
+          "position": 1100,
+          "context": "gs are consistent with viral pneumonia (covid-19 pneumonia). it appears to be regressed when compa"
+        },
+        {
+          "keyword": "pneumonia",
+          "position": 158,
+          "context": "as in both lungs; compatible with viral pneumonia. bilateral minimal pleural effusion, mi"
+        },
+        {
+          "keyword": "viral pneumonia",
+          "position": 152,
+          "context": "ss areas in both lungs; compatible with viral pneumonia. bilateral minimal pleural effusion, mi"
+        },
+        {
+          "keyword": "pneumonia",
+          "position": 158,
+          "context": "as in both lungs; compatible with viral pneumonia. bilateral minimal pleural effusion, mi"
+        },
+        {
+          "keyword": "viral pneumonia",
+          "position": 152,
+          "context": "ss areas in both lungs; compatible with viral pneumonia. bilateral minimal pleural effusion, mi"
+        }
+      ],
+      "Atherosclerosis": [
+        {
+          "keyword": "atheroma",
+          "position": 2337,
+          "context": "he ascending aorta, calcific plaques of atheroma in the coronary arteries and aorta. spl"
+        },
+        {
+          "keyword": "atheroma",
+          "position": 290,
+          "context": "he ascending aorta, calcific plaques of atheroma in the coronary arteries and aorta. spl"
+        },
+        {
+          "keyword": "atheroma",
+          "position": 290,
+          "context": "he ascending aorta, calcific plaques of atheroma in the coronary arteries and aorta. spl"
+        }
+      ],
+      "Dilatation_Aneurysm": [
+        {
+          "keyword": "dilatation",
+          "position": 2282,
+          "context": "effusion, minimal pericardial effusion. dilatation of the ascending aorta, calcific plaque"
+        },
+        {
+          "keyword": "dilatation",
+          "position": 235,
+          "context": "effusion, minimal pericardial effusion. dilatation of the ascending aorta, calcific plaque"
+        },
+        {
+          "keyword": "dilatation",
+          "position": 235,
+          "context": "effusion, minimal pericardial effusion. dilatation of the ascending aorta, calcific plaque"
+        }
+      ],
+      "Hernia": [
+        {
+          "keyword": "hernia",
+          "position": 1499,
+          "context": "obe medial segment. sliding type hiatal hernia is observed at the esophagogastric junc"
+        },
+        {
+          "keyword": "hiatal hernia",
+          "position": 1492,
+          "context": "iddle lobe medial segment. sliding type hiatal hernia is observed at the esophagogastric junc"
+        }
+      ],
+      "Transplant_Surgery": [
+        {
+          "keyword": "transplant",
+          "position": 1811,
+          "context": "n surface of the patient who is a liver transplant recipient. spleen ap diameter was 141 m"
+        },
+        {
+          "keyword": "transplant",
+          "position": 2083,
+          "context": "s within the sections. liver right lobe transplant recipient. peripheral weighted, partial"
+        },
+        {
+          "keyword": "transplant recipient",
+          "position": 1811,
+          "context": "n surface of the patient who is a liver transplant recipient. spleen ap diameter was 141 mm and incr"
+        },
+        {
+          "keyword": "transplant recipient",
+          "position": 2083,
+          "context": "s within the sections. liver right lobe transplant recipient. peripheral weighted, partially consoli"
+        },
+        {
+          "keyword": "liver transplant",
+          "position": 1805,
+          "context": "section surface of the patient who is a liver transplant recipient. spleen ap diameter was 141 m"
+        },
+        {
+          "keyword": "surgical suture",
+          "position": 1719,
+          "context": "l organs within the contrast ct limits. surgical suture materials are observed on the section s"
+        },
+        {
+          "keyword": "transplant",
+          "position": 36,
+          "context": "59 years old male: liver right lobe transplant recipient. peripheral weighted, partial"
+        },
+        {
+          "keyword": "transplant recipient",
+          "position": 36,
+          "context": "59 years old male: liver right lobe transplant recipient. peripheral weighted, partially consoli"
+        },
+        {
+          "keyword": "transplant",
+          "position": 36,
+          "context": "59 years old male: liver right lobe transplant recipient. peripheral weighted, partial"
+        },
+        {
+          "keyword": "transplant recipient",
+          "position": 36,
+          "context": "59 years old male: liver right lobe transplant recipient. peripheral weighted, partially consoli"
+        }
+      ],
+      "Cyst_Lesion": [
+        {
+          "keyword": "lesion",
+          "position": 1911,
+          "context": "eased. there is a nonspecific sclerotic lesion on the right pedicle of the t4 vertebra"
+        }
+      ],
+      "Effusion_Pericardial": [
+        {
+          "keyword": "pericardial effusion",
+          "position": 278,
+          "context": "rt contour and size are normal. minimal pericardial effusion is observed. the central venous cathete"
+        },
+        {
+          "keyword": "pericardial effusion",
+          "position": 2260,
+          "context": "teral minimal pleural effusion, minimal pericardial effusion. dilatation of the ascending aorta, cal"
+        },
+        {
+          "keyword": "pericardial effusion",
+          "position": 213,
+          "context": "teral minimal pleural effusion, minimal pericardial effusion. dilatation of the ascending aorta, cal"
+        },
+        {
+          "keyword": "pericardial effusion",
+          "position": 213,
+          "context": "teral minimal pleural effusion, minimal pericardial effusion. dilatation of the ascending aorta, cal"
+        }
+      ],
+      "Splenomegaly": [
+        {
+          "keyword": "splenomegaly",
+          "position": 2382,
+          "context": "oma in the coronary arteries and aorta. splenomegaly"
+        },
+        {
+          "keyword": "splenomegaly",
+          "position": 335,
+          "context": "oma in the coronary arteries and aorta. splenomegaly"
+        },
+        {
+          "keyword": "splenomegaly",
+          "position": 335,
+          "context": "oma in the coronary arteries and aorta. splenomegaly"
+        }
+      ]
+    },
+    "negated_findings": [
+      {
+        "disease": "Mass",
+        "keyword": "mass",
+        "context": "served in the esophagus. no discernible mass was detected in the upper abdominal org"
+      },
+      {
+        "disease": "Fracture_Lytic",
+        "keyword": "lytic-destructive",
+        "context": "the t4 vertebra within the sections. no lytic-destructive lesions were detected in the bone struc"
+      }
+    ],
+    "anatomy_mentioned": [
+      "trachea",
+      "vertebra",
+      "pleura",
+      "middle lobe",
+      "ascending aorta",
+      "lingular segment",
+      "upper lobe",
+      "left lung",
+      "coronary arteries",
+      "esophagogastric junction",
+      "bone structure",
+      "hilar region",
+      "bronchi",
+      "liver",
+      "esophagus",
+      "mediastinum",
+      "spleen",
+      "both lungs",
+      "right lung",
+      "lower lobe"
+    ],
+    "modifiers_mentioned": [
+      "central",
+      "nonspecific",
+      "minimally",
+      "predominantly",
+      "partially",
+      "minimal",
+      "peripheral",
+      "large",
+      "regressed",
+      "increased"
+    ]
+  },
+  "BGC3212225": {
+    "accession_no": "BGC3212225",
+    "source": "data_reports.xlsx; D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\superres\\ctvit_outputs\\samples.BGC3212225\\Thorax_150_Bl56_S3_512_512.txt",
+    "raw_text": "nan Non-contrast images were taken in the axial plane with a section thickness of 1.5 mm. Evaluation is suboptimal because of motion artifact. Trachea, both main bronchi are open and no occlusive pathology is detected. No pathological increase in wall thickness was observed in the thoracic esophagus. Sliding type hiatal hernia was observed at the lower end. Mediastinal vascular structures and cardiac examination could not be evaluated optimally because of the lack of IV contrast. It shows aneurysmatic dilatation with a diameter of 33 mm in the pulmonary trunk, 28 mm in the right main pulmonary artery, 29 mm in the left main pulmonary artery, and 32 mm in the descending aorta. An increase in heart size was observed. There are calcified atheromatous plaques on the walls of the thoracic aorta and coronary vascular structures. Pericardial, left pleural effusion was not detected. Minimal effusion was observed in the right pleural space. There was no finding in favor of active infiltration in both lungs. There are emphysematous changes and atelectasis in both lungs. Interlobular-interstitial septal thickness increases were observed in the right lung lower lobe, left lung lower lobe posterobasal segment and lingular segment. Findings suggest interstitial lung disease. In the lingular segment of the left lung, a pleural-based mass measuring 53x32 mm in soft tissue density was observed. Tissue diagnosis is recommended. In the mediastinum, there are lymph nodes with a fusiform configuration measuring 11 mm in diameter, the larger of which is located in the prevascular and aortopulmonary window. In the upper abdominal sections within the image, there is a low-density lesion measuring approximately 33x23 mm in size, with millimeter-sized fat densities in it (adenoma?). There is a hypodense fluid-density lesion (cyst?) with exophytic extension in the cortical location in the left kidney middle zone posterior. No lytic or destructive lesions were detected in the bone structures within the image. There are degenerative changes. Pleural-based soft tissue mass in the lingular segment of the left lung; tissue diagnosis is recommended. Emphysematous changes in both lungs, atelectasis in places, smooth interlobular-interstitial septal thickness increases in left lung lingular segment, right lung lower lobe; findings consistent with interstitial lung disease Pulmonary trunk, increased caliber of both pulmonary arteries and descending aorta, increased heart size, calcified atheroma plaques on the wall of thoracic aorta and coronary vascular structures Mediastinal lymph nodes Degenerative changes in bone structures Low density in left adrenal gland corpus , a lesion (adenoma?) in which fat densities are observed in millimeters. ",
+    "age": 77,
+    "sex": "Male",
+    "diseases": {
+      "Atelectasis": [
+        {
+          "keyword": "atelectasis",
+          "position": 1050,
+          "context": "gs. there are emphysematous changes and atelectasis in both lungs. interlobular-interstitia"
+        },
+        {
+          "keyword": "atelectasis",
+          "position": 2192,
+          "context": "d. emphysematous changes in both lungs, atelectasis in places, smooth interlobular-intersti"
+        },
+        {
+          "keyword": "atelectasis",
+          "position": 162,
+          "context": "d. emphysematous changes in both lungs, atelectasis in places, smooth interlobular-intersti"
+        },
+        {
+          "keyword": "atelectasis",
+          "position": 162,
+          "context": "d. emphysematous changes in both lungs, atelectasis in places, smooth interlobular-intersti"
+        }
+      ],
+      "Mass": [
+        {
+          "keyword": "mass",
+          "position": 1340,
+          "context": "gment of the left lung, a pleural-based mass measuring 53x32 mm in soft tissue densi"
+        },
+        {
+          "keyword": "mass",
+          "position": 2075,
+          "context": "tive changes. pleural-based soft tissue mass in the lingular segment of the left lun"
+        },
+        {
+          "keyword": "soft tissue mass",
+          "position": 2063,
+          "context": "are degenerative changes. pleural-based soft tissue mass in the lingular segment of the left lun"
+        },
+        {
+          "keyword": "mass",
+          "position": 45,
+          "context": "ars old male: pleural-based soft tissue mass in the lingular segment of the left lun"
+        },
+        {
+          "keyword": "soft tissue mass",
+          "position": 33,
+          "context": "77 years old male: pleural-based soft tissue mass in the lingular segment of the left lun"
+        },
+        {
+          "keyword": "mass",
+          "position": 45,
+          "context": "ars old male: pleural-based soft tissue mass in the lingular segment of the left lun"
+        },
+        {
+          "keyword": "soft tissue mass",
+          "position": 33,
+          "context": "77 years old male: pleural-based soft tissue mass in the lingular segment of the left lun"
+        }
+      ],
+      "Emphysema": [
+        {
+          "keyword": "emphysematous changes",
+          "position": 1024,
+          "context": "e infiltration in both lungs. there are emphysematous changes and atelectasis in both lungs. interlob"
+        },
+        {
+          "keyword": "emphysematous changes",
+          "position": 2155,
+          "context": " lung; tissue diagnosis is recommended. emphysematous changes in both lungs, atelectasis in places, s"
+        },
+        {
+          "keyword": "emphysematous changes",
+          "position": 125,
+          "context": " lung; tissue diagnosis is recommended. emphysematous changes in both lungs, atelectasis in places, s"
+        },
+        {
+          "keyword": "emphysematous changes",
+          "position": 125,
+          "context": " lung; tissue diagnosis is recommended. emphysematous changes in both lungs, atelectasis in places, s"
+        }
+      ],
+      "Atherosclerosis": [
+        {
+          "keyword": "atheroma",
+          "position": 2496,
+          "context": " aorta, increased heart size, calcified atheroma plaques on the wall of thoracic aorta a"
+        },
+        {
+          "keyword": "atheroma",
+          "position": 466,
+          "context": " aorta, increased heart size, calcified atheroma plaques on the wall of thoracic aorta a"
+        },
+        {
+          "keyword": "atheroma",
+          "position": 466,
+          "context": " aorta, increased heart size, calcified atheroma plaques on the wall of thoracic aorta a"
+        }
+      ],
+      "Dilatation_Aneurysm": [
+        {
+          "keyword": "dilatation",
+          "position": 507,
+          "context": "k of iv contrast. it shows aneurysmatic dilatation with a diameter of 33 mm in the pulmona"
+        }
+      ],
+      "Spondylosis_Degenerative": [
+        {
+          "keyword": "degenerative changes",
+          "position": 2027,
+          "context": " structures within the image. there are degenerative changes. pleural-based soft tissue mass in the "
+        },
+        {
+          "keyword": "degenerative changes",
+          "position": 2600,
+          "context": "ular structures mediastinal lymph nodes degenerative changes in bone structures low density in left "
+        },
+        {
+          "keyword": "degenerative changes",
+          "position": 570,
+          "context": "ular structures mediastinal lymph nodes degenerative changes in bone structures low density in left "
+        },
+        {
+          "keyword": "degenerative changes",
+          "position": 570,
+          "context": "ular structures mediastinal lymph nodes degenerative changes in bone structures low density in left "
+        }
+      ],
+      "Hernia": [
+        {
+          "keyword": "hernia",
+          "position": 322,
+          "context": "thoracic esophagus. sliding type hiatal hernia was observed at the lower end. mediasti"
+        },
+        {
+          "keyword": "hiatal hernia",
+          "position": 315,
+          "context": "in the thoracic esophagus. sliding type hiatal hernia was observed at the lower end. mediasti"
+        }
+      ],
+      "Cyst_Lesion": [
+        {
+          "keyword": "cyst",
+          "position": 1831,
+          "context": "re is a hypodense fluid-density lesion (cyst?) with exophytic extension in the corti"
+        },
+        {
+          "keyword": "lesion",
+          "position": 1685,
+          "context": "ithin the image, there is a low-density lesion measuring approximately 33x23 mm in siz"
+        },
+        {
+          "keyword": "lesion",
+          "position": 1823,
+          "context": "a?). there is a hypodense fluid-density lesion (cyst?) with exophytic extension in the"
+        },
+        {
+          "keyword": "lesion",
+          "position": 2685,
+          "context": "ensity in left adrenal gland corpus , a lesion (adenoma?) in which fat densities are o"
+        },
+        {
+          "keyword": "low density",
+          "position": 2640,
+          "context": "degenerative changes in bone structures low density in left adrenal gland corpus , a lesion"
+        },
+        {
+          "keyword": "low-density",
+          "position": 1673,
+          "context": "l sections within the image, there is a low-density lesion measuring approximately 33x23 mm"
+        },
+        {
+          "keyword": "lesion",
+          "position": 655,
+          "context": "ensity in left adrenal gland corpus , a lesion (adenoma?) in which fat densities are o"
+        },
+        {
+          "keyword": "low density",
+          "position": 610,
+          "context": "degenerative changes in bone structures low density in left adrenal gland corpus , a lesion"
+        },
+        {
+          "keyword": "lesion",
+          "position": 655,
+          "context": "ensity in left adrenal gland corpus , a lesion (adenoma?) in which fat densities are o"
+        },
+        {
+          "keyword": "low density",
+          "position": 610,
+          "context": "degenerative changes in bone structures low density in left adrenal gland corpus , a lesion"
+        }
+      ]
+    },
+    "negated_findings": [
+      {
+        "disease": "Pleural_Effusion",
+        "keyword": "pleural effusion",
+        "context": " vascular structures. pericardial, left pleural effusion was not detected. minimal effusion was "
+      },
+      {
+        "disease": "Pleural_Effusion",
+        "keyword": "left pleural effusion",
+        "context": "onary vascular structures. pericardial, left pleural effusion was not detected. minimal effusion was "
+      }
+    ],
+    "anatomy_mentioned": [
+      "lingular segment",
+      "trachea",
+      "mediastinum",
+      "pleural space",
+      "bronchi",
+      "pleura",
+      "left lung",
+      "descending aorta",
+      "both lungs",
+      "bone structure",
+      "soft tissue",
+      "thoracic aorta",
+      "esophagus",
+      "right lung",
+      "adrenal gland",
+      "lower lobe"
+    ],
+    "modifiers_mentioned": [
+      "minimal",
+      "increased",
+      "large"
+    ]
+  },
+  "BGC3515151": {
+    "accession_no": "BGC3515151",
+    "source": "data_reports.xlsx; D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\superres\\ctvit_outputs\\samples.BGC3515151\\Thorax_150_Bl56_S3_512_512.txt",
+    "raw_text": "Lung ca. Non-contrast images were taken in the axial plane with a section thickness of 1.5 mm. The current examination was compared with PET CT dated 11.10.2022 and CT scan dated 06.06.2022. Mediastinum and heart are deviated to the left. No occlusive pathology was observed in the trachea and lumen of both main bronchi. The mediastinum could not be evaluated optimally in the non-contrast examination. As far as can be seen; thoracic aorta calibration is natural. The diameter of the right pulmonary artery was 29 mm, and the diameter of the left pulmonary artery was 34 mm. Heart contour, size is normal. Pericardial effusion-thickening was not observed. Calcific atheroma plaques were observed in the aorta and coronary arteries. Stable lymph nodes were observed in the mediastinum, with short axes below 1 cm, which did not reach pathological dimensions, compared to the previous examination. Thoracic esophagus calibration was normal and no significant pathological wall thickening was detected. Sliding type hiatal hernia was observed at the lower end of the esophagus. Structural distortion and sequela parenchymal changes causing volume loss were observed in the localization of the mass observed in the left lung upper lobe lingular segment in previous CT examinations. In addition, in the current examination, soft tissue density increases-thickenings were observed around the upper-lower segment bronchi of the right lung. Peribronchial soft tissue densities were measured 47 mm in the widest part of the left lung lower lobe superior segment. In the previous examination, it was measured 37 mm and there is an increase in its dimensions. In the case with a history of radiotherapy, the findings were initially evaluated in favor of post-RT changes. Nodular consolidation areas with irregular borders, the largest of which is 9.8 mm in diameter, were observed in the posterior segment of the right lung upper lobe. New to current review (infective process?). There is increased peribronchial thickening and centriacinar nodular infiltrates-budding tree view in the basal segment of the lower lobe of the right lung. The described findings were evaluated in favor of infectious pathologies and were also present in the previous examinations of the patient. However, there is an increase. Emphysematous appearance was observed in both lungs. Pleural effusion on the left is stable. As far as can be seen within the sections; A faintly circumscribed hypodense lesion area measuring approximately 10x6 mm was observed in the lateral segment of the left lobe of the liver (cyst?). It is also present in the patient's previous examination. No significant difference was detected. Cortical cysts were observed in both kidneys. The right adrenal gland is normal. In the left adrenal gland corpus, a low-density lesion evaluated in favor of adenoma, which was also observed in previous CT and PET CT examinations, was observed. The spleen is natural. No lytic-destructive lesion was observed in the bone structures within the image. Degenerative changes are observed and bone structures are markedly osteoporotic. Peribronchial soft tissue-density increases causing parenchymal distortion-volume loss in the left lung, consolidation in the lower lobe superior segment-size increase in soft tissue density; the described findings were evaluated in favor of post-RT changes in the first plan. Follow-up is recommended. Minimal stable pleural effusion on the left. Newly revealed subpleural nodular consolidations in the right lung upper lobe posterior segment on current examination; It was initially evaluated in favor of infective pathologies. It is recommended to be evaluated together with clinical and laboratory. Emphysematous changes in both lungs. It is recommended to be evaluated together with clinical and laboratory. Other findings are stable. ",
+    "age": 78,
+    "sex": "Male",
+    "diseases": {
+      "Pleural_Effusion": [
+        {
+          "keyword": "pleural effusion",
+          "position": 2352,
+          "context": " appearance was observed in both lungs. pleural effusion on the left is stable. as far as can be"
+        },
+        {
+          "keyword": "pleural effusion",
+          "position": 3435,
+          "context": "ollow-up is recommended. minimal stable pleural effusion on the left. newly revealed subpleural "
+        },
+        {
+          "keyword": "pleural effusion",
+          "position": 337,
+          "context": "ollow-up is recommended. minimal stable pleural effusion on the left. newly revealed subpleural "
+        },
+        {
+          "keyword": "pleural effusion",
+          "position": 337,
+          "context": "ollow-up is recommended. minimal stable pleural effusion on the left. newly revealed subpleural "
+        }
+      ],
+      "Mass": [
+        {
+          "keyword": "mass",
+          "position": 1192,
+          "context": "ere observed in the localization of the mass observed in the left lung upper lobe li"
+        }
+      ],
+      "Consolidation": [
+        {
+          "keyword": "consolidation",
+          "position": 1770,
+          "context": "ed in favor of post-rt changes. nodular consolidation areas with irregular borders, the large"
+        },
+        {
+          "keyword": "consolidation",
+          "position": 3222,
+          "context": "istortion-volume loss in the left lung, consolidation in the lower lobe superior segment-size"
+        },
+        {
+          "keyword": "nodular consolidation",
+          "position": 1762,
+          "context": " evaluated in favor of post-rt changes. nodular consolidation areas with irregular borders, the large"
+        },
+        {
+          "keyword": "consolidation",
+          "position": 124,
+          "context": "istortion-volume loss in the left lung, consolidation in the lower lobe superior segment-size"
+        },
+        {
+          "keyword": "consolidation",
+          "position": 124,
+          "context": "istortion-volume loss in the left lung, consolidation in the lower lobe superior segment-size"
+        }
+      ],
+      "Emphysema": [
+        {
+          "keyword": "emphysematous changes",
+          "position": 3720,
+          "context": " together with clinical and laboratory. emphysematous changes in both lungs. it is recommended to be "
+        },
+        {
+          "keyword": "emphysematous changes",
+          "position": 622,
+          "context": " together with clinical and laboratory. emphysematous changes in both lungs. it is recommended to be "
+        },
+        {
+          "keyword": "emphysematous changes",
+          "position": 622,
+          "context": " together with clinical and laboratory. emphysematous changes in both lungs. it is recommended to be "
+        }
+      ],
+      "Atherosclerosis": [
+        {
+          "keyword": "atheroma",
+          "position": 667,
+          "context": "n-thickening was not observed. calcific atheroma plaques were observed in the aorta and "
+        }
+      ],
+      "Spondylosis_Degenerative": [
+        {
+          "keyword": "degenerative changes",
+          "position": 3036,
+          "context": "n the bone structures within the image. degenerative changes are observed and bone structures are ma"
+        }
+      ],
+      "Hernia": [
+        {
+          "keyword": "hernia",
+          "position": 1022,
+          "context": "ening was detected. sliding type hiatal hernia was observed at the lower end of the es"
+        },
+        {
+          "keyword": "hiatal hernia",
+          "position": 1015,
+          "context": "l thickening was detected. sliding type hiatal hernia was observed at the lower end of the es"
+        }
+      ],
+      "Transplant_Surgery": [
+        {
+          "keyword": "post-rt",
+          "position": 1745,
+          "context": "gs were initially evaluated in favor of post-rt changes. nodular consolidation areas wi"
+        },
+        {
+          "keyword": "post-rt",
+          "position": 3359,
+          "context": "bed findings were evaluated in favor of post-rt changes in the first plan. follow-up is"
+        },
+        {
+          "keyword": "post-rt",
+          "position": 261,
+          "context": "bed findings were evaluated in favor of post-rt changes in the first plan. follow-up is"
+        },
+        {
+          "keyword": "post-rt",
+          "position": 261,
+          "context": "bed findings were evaluated in favor of post-rt changes in the first plan. follow-up is"
+        }
+      ],
+      "Cyst_Lesion": [
+        {
+          "keyword": "cyst",
+          "position": 2580,
+          "context": " segment of the left lobe of the liver (cyst?). it is also present in the patient's "
+        },
+        {
+          "keyword": "lesion",
+          "position": 2469,
+          "context": "ions; a faintly circumscribed hypodense lesion area measuring approximately 10x6 mm wa"
+        },
+        {
+          "keyword": "lesion",
+          "position": 2815,
+          "context": "eft adrenal gland corpus, a low-density lesion evaluated in favor of adenoma, which wa"
+        },
+        {
+          "keyword": "hypodense lesion",
+          "position": 2459,
+          "context": "n the sections; a faintly circumscribed hypodense lesion area measuring approximately 10x6 mm wa"
+        },
+        {
+          "keyword": "low-density",
+          "position": 2803,
+          "context": "al. in the left adrenal gland corpus, a low-density lesion evaluated in favor of adenoma, w"
+        }
+      ]
+    },
+    "negated_findings": [
+      {
+        "disease": "Cyst_Lesion",
+        "keyword": "lesion",
+        "context": "spleen is natural. no lytic-destructive lesion was observed in the bone structures wit"
+      },
+      {
+        "disease": "Effusion_Pericardial",
+        "keyword": "pericardial effusion",
+        "context": "s 34 mm. heart contour, size is normal. pericardial effusion-thickening was not observed. calcific a"
+      },
+      {
+        "disease": "Fracture_Lytic",
+        "keyword": "destructive lesion",
+        "context": "served. the spleen is natural. no lytic-destructive lesion was observed in the bone structures wit"
+      },
+      {
+        "disease": "Fracture_Lytic",
+        "keyword": "lytic-destructive",
+        "context": "was observed. the spleen is natural. no lytic-destructive lesion was observed in the bone structu"
+      }
+    ],
+    "anatomy_mentioned": [
+      "trachea",
+      "pleura",
+      "thoracic aorta",
+      "adrenal gland",
+      "lingular segment",
+      "rib",
+      "upper lobe",
+      "left lung",
+      "coronary arteries",
+      "bone structure",
+      "bronchi",
+      "liver",
+      "esophagus",
+      "mediastinum",
+      "spleen",
+      "both lungs",
+      "soft tissue",
+      "right lung",
+      "lower lobe"
+    ],
+    "modifiers_mentioned": [
+      "new",
+      "stable",
+      "minimal",
+      "large",
+      "subpleural",
+      "increased"
+    ]
+  }
+}

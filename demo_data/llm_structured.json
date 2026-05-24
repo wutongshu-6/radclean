@@ -1,0 +1,984 @@
+{
+  "BGC3109958": {
+    "patient_id": "unknown",
+    "age": null,
+    "sex": "Unknown",
+    "organs": [
+      {
+        "name": "trachea",
+        "finding": "open",
+        "measurement": null,
+        "distribution": null,
+        "side": "bilateral"
+      },
+      {
+        "name": "main bronchi",
+        "finding": "open",
+        "measurement": null,
+        "distribution": null,
+        "side": "bilateral"
+      },
+      {
+        "name": "lung",
+        "finding": "atelectasis",
+        "measurement": null,
+        "distribution": "lower lobe",
+        "side": "right"
+      },
+      {
+        "name": "pleura",
+        "finding": "pleural effusion",
+        "measurement": null,
+        "distribution": null,
+        "side": "right"
+      },
+      {
+        "name": "lung",
+        "finding": "nonspecific nodules",
+        "measurement": "millimetric",
+        "distribution": "several",
+        "side": "bilateral"
+      },
+      {
+        "name": "heart",
+        "finding": "normal contour and size",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "aorta",
+        "finding": "atheroma plaques",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "coronary arteries",
+        "finding": "atheroma plaques",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "vertebral column",
+        "finding": "osteophytes",
+        "measurement": null,
+        "distribution": "vertebral corpus corners",
+        "side": null
+      }
+    ],
+    "pathologies": [
+      "right pleural effusion",
+      "atelectasis in right lower lobe",
+      "millimetric nonspecific nodules in both lungs",
+      "atherosclerotic changes in aorta and coronary arteries",
+      "thoracic spondylosis"
+    ],
+    "negated_findings": [
+      "occlusive pathology in trachea and main bronchi",
+      "mass or infiltrative lesion in lungs",
+      "pericardial effusion",
+      "pathologically enlarged lymph nodes in mediastinum and hilar regions",
+      "pathological increase in esophageal wall thickness",
+      "upper abdominal free fluid or pathologically enlarged lymph nodes",
+      "fractures or lytic-destructive lesions in bone structures"
+    ],
+    "recommendations": [],
+    "severity_rank": "medium",
+    "follow_up": false,
+    "anatomy_mentioned": [
+      "trachea",
+      "main bronchi",
+      "lung",
+      "pleura",
+      "mediastinum",
+      "heart",
+      "pericardium",
+      "aorta",
+      "coronary arteries",
+      "vena cava",
+      "esophagus",
+      "lymph nodes",
+      "vertebral column",
+      "neural foramina"
+    ],
+    "modifiers": [
+      "millimetric",
+      "nonspecific",
+      "adjacent",
+      "normal",
+      "atherosclerotic",
+      "thoracic"
+    ],
+    "impression_summary": "Right pleural effusion with adjacent atelectasis, millimetric nonspecific nodules in both lungs, atherosclerotic changes in aorta and coronary arteries, and thoracic spondylosis.",
+    "confidence_note": "Contrast not given; mediastinal structures suboptimally evaluated. Patient ID and age not provided."
+  },
+  "BGC3162381": {
+    "patient_id": "nan",
+    "age": null,
+    "sex": "Unknown",
+    "organs": [
+      {
+        "name": "trachea",
+        "finding": "open",
+        "measurement": null,
+        "distribution": null,
+        "side": "bilateral"
+      },
+      {
+        "name": "main bronchi",
+        "finding": "open",
+        "measurement": null,
+        "distribution": null,
+        "side": "bilateral"
+      },
+      {
+        "name": "thoracic aorta",
+        "finding": "calcified atherosclerotic changes, mild fusiform dilatation",
+        "measurement": "40 mm diameter",
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "coronary artery",
+        "finding": "calcified atherosclerotic changes",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "heart",
+        "finding": "natural contour size",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "pericardium",
+        "finding": "no thickening-effusion",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "thoracic esophagus",
+        "finding": "normal calibration, no significant pathological wall thickening",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "mediastinal structures",
+        "finding": "suboptimal evaluation due to unenhanced study",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "lymph nodes",
+        "finding": "no pathological size or appearance",
+        "measurement": null,
+        "distribution": null,
+        "side": "mediastinal and bilateral hilar"
+      },
+      {
+        "name": "subcutaneous lesion",
+        "finding": "well-circumscribed, benign-looking hypodense lesion (sebaceous cyst?)",
+        "measurement": "30x18 mm",
+        "distribution": null,
+        "side": "left scapula"
+      },
+      {
+        "name": "lung parenchyma",
+        "finding": "subpleural focal ground-glass density increases",
+        "measurement": null,
+        "distribution": "posterobasal segments of both lower lobes and left lower lobe superior segment",
+        "side": "bilateral"
+      },
+      {
+        "name": "lung parenchyma",
+        "finding": "nonspecific parenchymal nodules, some calcified",
+        "measurement": "a few millimetric",
+        "distribution": null,
+        "side": "bilateral"
+      },
+      {
+        "name": "pleura",
+        "finding": "free pleural effusion",
+        "measurement": "16 mm thickness",
+        "distribution": null,
+        "side": "right"
+      },
+      {
+        "name": "liver",
+        "finding": "right lobe transplantation",
+        "measurement": null,
+        "distribution": null,
+        "side": "right"
+      },
+      {
+        "name": "gallbladder",
+        "finding": "not observed (operated)",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "spleen",
+        "finding": "increased size (splenomegaly)",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "adrenal glands",
+        "finding": "normal calibration, no space-occupying lesion",
+        "measurement": null,
+        "distribution": null,
+        "side": "bilateral"
+      },
+      {
+        "name": "abdomen",
+        "finding": "incision line in midline, no significant hernia defect",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "bone structures",
+        "finding": "no lytic-destructive lesion",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      }
+    ],
+    "pathologies": [
+      "calcified atherosclerotic changes in thoracic aorta and coronary artery",
+      "mild fusiform dilatation of ascending aorta",
+      "subpleural focal ground-glass density increases in both lungs",
+      "nonspecific parenchymal nodules in both lungs",
+      "right pleural effusion",
+      "splenomegaly",
+      "liver right lobe transplantation",
+      "cholecystectomy"
+    ],
+    "negated_findings": [
+      "occlusive pathology in trachea and main bronchi",
+      "pericardial thickening-effusion",
+      "significant pathological wall thickening of thoracic esophagus",
+      "lymph nodes of pathological size or appearance in mediastinum and hila",
+      "significant hernia defect",
+      "lytic-destructive lesion in bone structures",
+      "space-occupying lesion in adrenal glands"
+    ],
+    "recommendations": [
+      "US control for subcutaneous lesion",
+      "Clinical and laboratory correlation for ground-glass opacities"
+    ],
+    "severity_rank": "medium",
+    "follow_up": true,
+    "anatomy_mentioned": [
+      "trachea",
+      "main bronchi",
+      "thoracic aorta",
+      "coronary artery",
+      "ascending aorta",
+      "heart",
+      "pericardium",
+      "thoracic esophagus",
+      "mediastinum",
+      "hila",
+      "lung lower lobes",
+      "pleura",
+      "subcutaneous tissue",
+      "scapula",
+      "liver",
+      "gallbladder",
+      "spleen",
+      "adrenal glands",
+      "abdomen",
+      "bone structures"
+    ],
+    "modifiers": [
+      "mild",
+      "fusiform",
+      "subpleural",
+      "focal",
+      "ground-glass",
+      "nonspecific",
+      "calcified",
+      "millimetric",
+      "benign-looking",
+      "well-circumscribed",
+      "hypodense",
+      "free",
+      "increased"
+    ],
+    "impression_summary": "Mild fusiform dilatation of ascending aorta with atherosclerotic changes, bilateral subpleural ground-glass opacities possibly related to viral infection, right pleural effusion, splenomegaly, and status post liver transplantation and cholecystectomy.",
+    "confidence_note": "Patient ID missing; age and sex not provided; unenhanced study limits mediastinal evaluation; some findings are nonspecific."
+  },
+  "BGC3176800": {
+    "patient_id": "unknown",
+    "age": null,
+    "sex": "Unknown",
+    "organs": [
+      {
+        "name": "heart",
+        "finding": "normal contour and size",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "pericardium",
+        "finding": "minimal pericardial effusion",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "ascending aorta",
+        "finding": "dilatation",
+        "measurement": "39 mm",
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "pleural space",
+        "finding": "pleural effusion",
+        "measurement": "2 cm thick",
+        "distribution": null,
+        "side": "right"
+      },
+      {
+        "name": "pleural space",
+        "finding": "minimal pleural effusion",
+        "measurement": null,
+        "distribution": null,
+        "side": "left"
+      },
+      {
+        "name": "lung",
+        "finding": "ground glass areas becoming consolidated",
+        "measurement": null,
+        "distribution": "peripheral, predominantly nodular",
+        "side": "bilateral"
+      },
+      {
+        "name": "lung",
+        "finding": "calcific nodule",
+        "measurement": "3.5 mm",
+        "distribution": null,
+        "side": "left upper lobe lingular segment"
+      },
+      {
+        "name": "lung",
+        "finding": "linear atelectasis",
+        "measurement": null,
+        "distribution": null,
+        "side": "left lung upper lobe lingular segment inferior subsegment and lower lobe medial segment, right lung middle lobe medial segment"
+      },
+      {
+        "name": "esophagogastric junction",
+        "finding": "sliding type hiatal hernia",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "spleen",
+        "finding": "splenomegaly",
+        "measurement": "141 mm AP diameter",
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "vertebra",
+        "finding": "nonspecific sclerotic lesion",
+        "measurement": null,
+        "distribution": null,
+        "side": "right pedicle of T4"
+      },
+      {
+        "name": "liver",
+        "finding": "transplant recipient, surgical suture materials",
+        "measurement": null,
+        "distribution": null,
+        "side": "right lobe"
+      }
+    ],
+    "pathologies": [
+      "viral pneumonia (COVID-19 pneumonia)",
+      "minimal pericardial effusion",
+      "dilatation of ascending aorta",
+      "bilateral pleural effusion",
+      "calcific nodule in left lung",
+      "linear atelectasis",
+      "sliding hiatal hernia",
+      "splenomegaly",
+      "nonspecific sclerotic lesion T4",
+      "calcific plaques of atheroma in coronary arteries and aorta"
+    ],
+    "negated_findings": [
+      "no pathologically enlarged lymph nodes in mediastinum and bilateral hilar regions",
+      "no occlusive pathology in trachea and both main bronchi",
+      "no pathological increase in wall thickness in esophagus",
+      "no discernible mass in upper abdominal organs",
+      "no lytic-destructive lesions in bone structures"
+    ],
+    "recommendations": [],
+    "severity_rank": "medium",
+    "follow_up": true,
+    "anatomy_mentioned": [
+      "heart",
+      "pericardium",
+      "ascending aorta",
+      "vena cava",
+      "mediastinum",
+      "hilar regions",
+      "trachea",
+      "main bronchi",
+      "pleural space",
+      "lungs",
+      "lingular segment",
+      "esophagogastric junction",
+      "esophagus",
+      "upper abdominal organs",
+      "liver",
+      "spleen",
+      "T4 vertebra",
+      "coronary arteries",
+      "aorta"
+    ],
+    "modifiers": [
+      "minimal",
+      "peripheral",
+      "nodular",
+      "consolidated",
+      "calcific",
+      "linear",
+      "sliding",
+      "nonspecific",
+      "sclerotic"
+    ],
+    "impression_summary": "Bilateral peripheral ground glass opacities with consolidation consistent with COVID-19 pneumonia, with regressing pleural and pericardial effusions, ascending aortic dilatation, splenomegaly, and a small calcific nodule in the left lung.",
+    "confidence_note": "Patient ID and age not provided; sex not specified; report is detailed but lacks some demographic data."
+  },
+  "BGC3212225": {
+    "patient_id": "nan",
+    "age": null,
+    "sex": "Unknown",
+    "organs": [
+      {
+        "name": "trachea",
+        "finding": "open",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "main bronchi",
+        "finding": "open",
+        "measurement": null,
+        "distribution": null,
+        "side": "both"
+      },
+      {
+        "name": "thoracic esophagus",
+        "finding": "no pathological increase in wall thickness",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "hiatal hernia",
+        "finding": "sliding type",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "pulmonary trunk",
+        "finding": "aneurysmatic dilatation",
+        "measurement": "33 mm",
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "right main pulmonary artery",
+        "finding": "aneurysmatic dilatation",
+        "measurement": "28 mm",
+        "distribution": null,
+        "side": "right"
+      },
+      {
+        "name": "left main pulmonary artery",
+        "finding": "aneurysmatic dilatation",
+        "measurement": "29 mm",
+        "distribution": null,
+        "side": "left"
+      },
+      {
+        "name": "descending aorta",
+        "finding": "aneurysmatic dilatation",
+        "measurement": "32 mm",
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "heart",
+        "finding": "increased size",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "thoracic aorta",
+        "finding": "calcified atheromatous plaques",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "coronary vascular structures",
+        "finding": "calcified atheromatous plaques",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "pericardial space",
+        "finding": "no effusion",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "left pleural space",
+        "finding": "no effusion",
+        "measurement": null,
+        "distribution": null,
+        "side": "left"
+      },
+      {
+        "name": "right pleural space",
+        "finding": "minimal effusion",
+        "measurement": null,
+        "distribution": null,
+        "side": "right"
+      },
+      {
+        "name": "lungs",
+        "finding": "no active infiltration",
+        "measurement": null,
+        "distribution": null,
+        "side": "both"
+      },
+      {
+        "name": "lungs",
+        "finding": "emphysematous changes",
+        "measurement": null,
+        "distribution": null,
+        "side": "both"
+      },
+      {
+        "name": "lungs",
+        "finding": "atelectasis",
+        "measurement": null,
+        "distribution": null,
+        "side": "both"
+      },
+      {
+        "name": "right lung lower lobe",
+        "finding": "interlobular-interstitial septal thickness increases",
+        "measurement": null,
+        "distribution": null,
+        "side": "right"
+      },
+      {
+        "name": "left lung lower lobe posterobasal segment",
+        "finding": "interlobular-interstitial septal thickness increases",
+        "measurement": null,
+        "distribution": null,
+        "side": "left"
+      },
+      {
+        "name": "lingular segment",
+        "finding": "interlobular-interstitial septal thickness increases",
+        "measurement": null,
+        "distribution": null,
+        "side": "left"
+      },
+      {
+        "name": "lingular segment of left lung",
+        "finding": "pleural-based mass",
+        "measurement": "53x32 mm",
+        "distribution": null,
+        "side": "left"
+      },
+      {
+        "name": "mediastinal lymph nodes",
+        "finding": "fusiform configuration",
+        "measurement": "11 mm",
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "left adrenal gland",
+        "finding": "low-density lesion with fat densities (adenoma?)",
+        "measurement": "33x23 mm",
+        "distribution": null,
+        "side": "left"
+      },
+      {
+        "name": "left kidney",
+        "finding": "hypodense fluid-density lesion (cyst?)",
+        "measurement": null,
+        "distribution": null,
+        "side": "left"
+      },
+      {
+        "name": "bone structures",
+        "finding": "degenerative changes",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      }
+    ],
+    "pathologies": [
+      "sliding type hiatal hernia",
+      "aneurysmatic dilatation of pulmonary trunk, pulmonary arteries, and descending aorta",
+      "increased heart size",
+      "calcified atheromatous plaques in thoracic aorta and coronary arteries",
+      "minimal right pleural effusion",
+      "emphysematous changes in both lungs",
+      "atelectasis in both lungs",
+      "interlobular-interstitial septal thickening (interstitial lung disease)",
+      "pleural-based mass in lingular segment of left lung",
+      "mediastinal lymphadenopathy",
+      "left adrenal lesion (adenoma?)",
+      "left renal cyst",
+      "degenerative bone changes"
+    ],
+    "negated_findings": [
+      "occlusive pathology in trachea or main bronchi",
+      "pathological increase in wall thickness of thoracic esophagus",
+      "pericardial effusion",
+      "left pleural effusion",
+      "active infiltration in both lungs",
+      "lytic or destructive bone lesions"
+    ],
+    "recommendations": [
+      "tissue diagnosis for pleural-based mass in left lung lingular segment"
+    ],
+    "severity_rank": "high",
+    "follow_up": true,
+    "anatomy_mentioned": [
+      "trachea",
+      "main bronchi",
+      "thoracic esophagus",
+      "hiatal hernia",
+      "mediastinal vascular structures",
+      "cardiac structures",
+      "pulmonary trunk",
+      "right main pulmonary artery",
+      "left main pulmonary artery",
+      "descending aorta",
+      "heart",
+      "thoracic aorta",
+      "coronary vascular structures",
+      "pericardial space",
+      "pleural space",
+      "lungs",
+      "right lung lower lobe",
+      "left lung lower lobe posterobasal segment",
+      "lingular segment",
+      "mediastinum",
+      "lymph nodes",
+      "upper abdominal sections",
+      "left adrenal gland",
+      "left kidney",
+      "bone structures"
+    ],
+    "modifiers": [
+      "sliding",
+      "aneurysmatic",
+      "calcified",
+      "atheromatous",
+      "minimal",
+      "emphysematous",
+      "interlobular-interstitial",
+      "pleural-based",
+      "fusiform",
+      "low-density",
+      "hypodense",
+      "fluid-density",
+      "exophytic",
+      "cortical",
+      "degenerative"
+    ],
+    "impression_summary": "Findings include aneurysmatic dilatation of pulmonary arteries and descending aorta, increased heart size, calcified atheromatous plaques, emphysematous changes, interstitial lung disease, a pleural-based mass in the left lung lingular segment requiring tissue diagnosis, mediastinal lymphadenopathy, and incidental adrenal and renal lesions.",
+    "confidence_note": "Report is suboptimal due to motion artifact and lack of IV contrast; patient ID missing; age and sex not provided; some findings are uncertain (e.g., adenoma?, cyst?)."
+  },
+  "BGC3515151": {
+    "patient_id": "unknown",
+    "age": null,
+    "sex": "Unknown",
+    "organs": [
+      {
+        "name": "mediastinum",
+        "finding": "deviated to the left, could not be evaluated optimally",
+        "measurement": null,
+        "distribution": null,
+        "side": "left"
+      },
+      {
+        "name": "trachea",
+        "finding": "no occlusive pathology",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "main bronchi",
+        "finding": "no occlusive pathology",
+        "measurement": null,
+        "distribution": null,
+        "side": "both"
+      },
+      {
+        "name": "thoracic aorta",
+        "finding": "calibration natural, calcific atheroma plaques",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "right pulmonary artery",
+        "finding": "diameter",
+        "measurement": "29 mm",
+        "distribution": null,
+        "side": "right"
+      },
+      {
+        "name": "left pulmonary artery",
+        "finding": "diameter",
+        "measurement": "34 mm",
+        "distribution": null,
+        "side": "left"
+      },
+      {
+        "name": "heart",
+        "finding": "contour and size normal",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "pericardium",
+        "finding": "no effusion or thickening",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "coronary arteries",
+        "finding": "calcific atheroma plaques",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "mediastinal lymph nodes",
+        "finding": "stable, not pathological",
+        "measurement": "short axes below 1 cm",
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "thoracic esophagus",
+        "finding": "calibration normal, no significant wall thickening",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "esophagus",
+        "finding": "sliding type hiatal hernia",
+        "measurement": null,
+        "distribution": null,
+        "side": "lower end"
+      },
+      {
+        "name": "left lung upper lobe lingular segment",
+        "finding": "structural distortion and sequela parenchymal changes causing volume loss (post-RT changes)",
+        "measurement": null,
+        "distribution": null,
+        "side": "left"
+      },
+      {
+        "name": "right lung upper-lower segment bronchi",
+        "finding": "soft tissue density increases-thickenings",
+        "measurement": null,
+        "distribution": "peribronchial",
+        "side": "right"
+      },
+      {
+        "name": "left lung lower lobe superior segment",
+        "finding": "peribronchial soft tissue densities, increased from 37 mm to 47 mm",
+        "measurement": "47 mm",
+        "distribution": null,
+        "side": "left"
+      },
+      {
+        "name": "right lung upper lobe posterior segment",
+        "finding": "nodular consolidation areas with irregular borders, largest 9.8 mm, new (infective process?)",
+        "measurement": "9.8 mm",
+        "distribution": null,
+        "side": "right"
+      },
+      {
+        "name": "right lung lower lobe basal segment",
+        "finding": "increased peribronchial thickening and centriacinar nodular infiltrates-budding tree view",
+        "measurement": null,
+        "distribution": null,
+        "side": "right"
+      },
+      {
+        "name": "lungs",
+        "finding": "emphysematous appearance",
+        "measurement": null,
+        "distribution": "both lungs",
+        "side": "bilateral"
+      },
+      {
+        "name": "pleura",
+        "finding": "pleural effusion on left, stable",
+        "measurement": null,
+        "distribution": null,
+        "side": "left"
+      },
+      {
+        "name": "left lobe of liver",
+        "finding": "faintly circumscribed hypodense lesion, 10x6 mm (cyst?)",
+        "measurement": "10x6 mm",
+        "distribution": null,
+        "side": "left"
+      },
+      {
+        "name": "kidneys",
+        "finding": "cortical cysts",
+        "measurement": null,
+        "distribution": "both",
+        "side": "bilateral"
+      },
+      {
+        "name": "right adrenal gland",
+        "finding": "normal",
+        "measurement": null,
+        "distribution": null,
+        "side": "right"
+      },
+      {
+        "name": "left adrenal gland corpus",
+        "finding": "low-density lesion, adenoma",
+        "measurement": null,
+        "distribution": null,
+        "side": "left"
+      },
+      {
+        "name": "spleen",
+        "finding": "natural",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      },
+      {
+        "name": "bone structures",
+        "finding": "no lytic-destructive lesion, degenerative changes, markedly osteoporotic",
+        "measurement": null,
+        "distribution": null,
+        "side": null
+      }
+    ],
+    "pathologies": [
+      "Lung cancer (history)",
+      "Sliding type hiatal hernia",
+      "Post-radiotherapy changes in left lung",
+      "Peribronchial soft tissue density increase (left lower lobe)",
+      "Nodular consolidation (right upper lobe posterior segment, new)",
+      "Infectious pathology (right lower lobe, increased)",
+      "Emphysematous changes (bilateral)",
+      "Left pleural effusion (stable)",
+      "Liver hypodense lesion (likely cyst)",
+      "Renal cortical cysts (bilateral)",
+      "Left adrenal adenoma",
+      "Degenerative bone changes",
+      "Osteoporosis"
+    ],
+    "negated_findings": [
+      "No occlusive pathology in trachea and main bronchi",
+      "No pericardial effusion or thickening",
+      "No significant pathological wall thickening of esophagus",
+      "No lytic-destructive bone lesions"
+    ],
+    "recommendations": [
+      "Follow-up recommended",
+      "Evaluate newly revealed subpleural nodular consolidations together with clinical and laboratory",
+      "Evaluate emphysematous changes together with clinical and laboratory"
+    ],
+    "severity_rank": "high",
+    "follow_up": true,
+    "anatomy_mentioned": [
+      "mediastinum",
+      "trachea",
+      "main bronchi",
+      "thoracic aorta",
+      "right pulmonary artery",
+      "left pulmonary artery",
+      "heart",
+      "pericardium",
+      "coronary arteries",
+      "mediastinal lymph nodes",
+      "thoracic esophagus",
+      "esophagus",
+      "left lung upper lobe lingular segment",
+      "right lung upper-lower segment bronchi",
+      "left lung lower lobe superior segment",
+      "right lung upper lobe posterior segment",
+      "right lung lower lobe basal segment",
+      "lungs",
+      "pleura",
+      "left lobe of liver",
+      "kidneys",
+      "right adrenal gland",
+      "left adrenal gland corpus",
+      "spleen",
+      "bone structures"
+    ],
+    "modifiers": [
+      "non-contrast",
+      "axial",
+      "stable",
+      "minimal",
+      "stable",
+      "new",
+      "increased",
+      "faintly circumscribed",
+      "degenerative",
+      "osteoporotic",
+      "markedly",
+      "peribronchial",
+      "centriacinar",
+      "subpleural",
+      "irregular borders",
+      "sliding type",
+      "sequela",
+      "structural distortion",
+      "volume loss"
+    ],
+    "impression_summary": "Post-radiotherapy changes in left lung with interval increase in peribronchial soft tissue density, new subpleural nodular consolidations in right upper lobe suspicious for infection, stable left pleural effusion, emphysematous changes, and multiple incidental findings including hiatal hernia, liver cyst, renal cysts, and left adrenal adenoma.",
+    "confidence_note": "Mediastinum suboptimally evaluated due to non-contrast study; patient ID and age not provided; sex not specified; report contains some uncertainty (e.g., 'infective process?', 'cyst?')."
+  }
+}

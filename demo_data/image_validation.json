@@ -1,0 +1,377 @@
+{
+  "total_files": 10,
+  "valid_files": 10,
+  "corrupt_files": 0,
+  "total_size_bytes": 1004818203,
+  "total_size_mb": 958.27,
+  "dimensions_variants": [
+    [
+      512,
+      512,
+      270
+    ],
+    [
+      512,
+      512,
+      302
+    ],
+    [
+      512,
+      512,
+      315
+    ],
+    [
+      512,
+      512,
+      275
+    ]
+  ],
+  "dimensions_consistent": false,
+  "voxel_spacing_variants": [
+    [
+      1.0,
+      1.0,
+      1.0
+    ]
+  ],
+  "voxel_spacing_consistent": true,
+  "orientations": [
+    "RAS"
+  ],
+  "orientation_consistent": true,
+  "has_metadata_json": 10,
+  "missing_metadata_json": 0,
+  "errors": [],
+  "files": [
+    {
+      "file": "Thorax_150_Bl56_S3_512_512.nii.gz",
+      "path": "D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\ctvit-transformer\\1\\BGC3212225\\Thorax_150_Bl56_S3_512_512.nii.gz",
+      "dimensions": [
+        512,
+        512,
+        270
+      ],
+      "voxel_spacing_mm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "data_type": "uint16",
+      "orientation": "RAS",
+      "file_size_bytes": 103864842,
+      "valid": true,
+      "metadata_json": {
+        "PatientAge": "077Y",
+        "PatientSex": "M",
+        "Manufacturer": "Siemens Healthineers",
+        "RescaleIntercept": "-8192",
+        "RescaleSlope": "1"
+      },
+      "metadata_keys": [
+        "PatientAge",
+        "PatientSex",
+        "Manufacturer",
+        "RescaleIntercept",
+        "RescaleSlope"
+      ],
+      "patient_id": "BGC3212225"
+    },
+    {
+      "file": "Thorax_150_Br40_S3_512_512.nii.gz",
+      "path": "D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\ctvit-transformer\\1\\BGC3212225\\Thorax_150_Br40_S3_512_512.nii.gz",
+      "dimensions": [
+        512,
+        512,
+        270
+      ],
+      "voxel_spacing_mm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "data_type": "uint16",
+      "orientation": "RAS",
+      "file_size_bytes": 89590275,
+      "valid": true,
+      "metadata_json": {
+        "PatientAge": "077Y",
+        "PatientSex": "M",
+        "Manufacturer": "Siemens Healthineers",
+        "RescaleIntercept": "-8192",
+        "RescaleSlope": "1"
+      },
+      "metadata_keys": [
+        "PatientAge",
+        "PatientSex",
+        "Manufacturer",
+        "RescaleIntercept",
+        "RescaleSlope"
+      ],
+      "patient_id": "BGC3212225"
+    },
+    {
+      "file": "Thorax_150_Bl56_S3_512_512.nii.gz",
+      "path": "D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\ctvit-transformer\\1\\BGC3515151\\Thorax_150_Bl56_S3_512_512.nii.gz",
+      "dimensions": [
+        512,
+        512,
+        275
+      ],
+      "voxel_spacing_mm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "data_type": "uint16",
+      "orientation": "RAS",
+      "file_size_bytes": 100788039,
+      "valid": true,
+      "metadata_json": {
+        "PatientAge": "078Y",
+        "PatientSex": "M",
+        "Manufacturer": "Siemens Healthineers",
+        "RescaleIntercept": "-8192",
+        "RescaleSlope": "1"
+      },
+      "metadata_keys": [
+        "PatientAge",
+        "PatientSex",
+        "Manufacturer",
+        "RescaleIntercept",
+        "RescaleSlope"
+      ],
+      "patient_id": "BGC3515151"
+    },
+    {
+      "file": "Thorax_150_Br40_S3_512_512.nii.gz",
+      "path": "D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\ctvit-transformer\\1\\BGC3515151\\Thorax_150_Br40_S3_512_512.nii.gz",
+      "dimensions": [
+        512,
+        512,
+        275
+      ],
+      "voxel_spacing_mm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "data_type": "uint16",
+      "orientation": "RAS",
+      "file_size_bytes": 84978059,
+      "valid": true,
+      "metadata_json": {
+        "PatientAge": "078Y",
+        "PatientSex": "M",
+        "Manufacturer": "Siemens Healthineers",
+        "RescaleIntercept": "-8192",
+        "RescaleSlope": "1"
+      },
+      "metadata_keys": [
+        "PatientAge",
+        "PatientSex",
+        "Manufacturer",
+        "RescaleIntercept",
+        "RescaleSlope"
+      ],
+      "patient_id": "BGC3515151"
+    },
+    {
+      "file": "Thorax_150_Br40_S3_512_512.nii.gz",
+      "path": "D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\ctvit-transformer\\2\\BGC3109958\\Thorax_150_Br40_S3_512_512.nii.gz",
+      "dimensions": [
+        512,
+        512,
+        275
+      ],
+      "voxel_spacing_mm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "data_type": "uint16",
+      "orientation": "RAS",
+      "file_size_bytes": 94455804,
+      "valid": true,
+      "metadata_json": {
+        "PatientAge": "059Y",
+        "PatientSex": "M",
+        "Manufacturer": "Siemens Healthineers",
+        "RescaleIntercept": "-8192",
+        "RescaleSlope": "1"
+      },
+      "metadata_keys": [
+        "PatientAge",
+        "PatientSex",
+        "Manufacturer",
+        "RescaleIntercept",
+        "RescaleSlope"
+      ],
+      "patient_id": "BGC3109958"
+    },
+    {
+      "file": "Thorax_150_Br60_S3_512_512.nii.gz",
+      "path": "D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\ctvit-transformer\\2\\BGC3109958\\Thorax_150_Br60_S3_512_512.nii.gz",
+      "dimensions": [
+        512,
+        512,
+        275
+      ],
+      "voxel_spacing_mm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "data_type": "uint16",
+      "orientation": "RAS",
+      "file_size_bytes": 106563805,
+      "valid": true,
+      "metadata_json": {
+        "PatientAge": "059Y",
+        "PatientSex": "M",
+        "Manufacturer": "Siemens Healthineers",
+        "RescaleIntercept": "-8192",
+        "RescaleSlope": "1"
+      },
+      "metadata_keys": [
+        "PatientAge",
+        "PatientSex",
+        "Manufacturer",
+        "RescaleIntercept",
+        "RescaleSlope"
+      ],
+      "patient_id": "BGC3109958"
+    },
+    {
+      "file": "Thorax_150_Br40_S3_512_512.nii.gz",
+      "path": "D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\ctvit-transformer\\2\\BGC3162381\\Thorax_150_Br40_S3_512_512.nii.gz",
+      "dimensions": [
+        512,
+        512,
+        315
+      ],
+      "voxel_spacing_mm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "data_type": "uint16",
+      "orientation": "RAS",
+      "file_size_bytes": 99361300,
+      "valid": true,
+      "metadata_json": {
+        "PatientAge": "059Y",
+        "PatientSex": "M",
+        "Manufacturer": "Siemens Healthineers",
+        "RescaleIntercept": "-8192",
+        "RescaleSlope": "1"
+      },
+      "metadata_keys": [
+        "PatientAge",
+        "PatientSex",
+        "Manufacturer",
+        "RescaleIntercept",
+        "RescaleSlope"
+      ],
+      "patient_id": "BGC3162381"
+    },
+    {
+      "file": "Thorax_150_Br60_S3_512_512.nii.gz",
+      "path": "D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\ctvit-transformer\\2\\BGC3162381\\Thorax_150_Br60_S3_512_512.nii.gz",
+      "dimensions": [
+        512,
+        512,
+        315
+      ],
+      "voxel_spacing_mm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "data_type": "uint16",
+      "orientation": "RAS",
+      "file_size_bytes": 112529862,
+      "valid": true,
+      "metadata_json": {
+        "PatientAge": "059Y",
+        "PatientSex": "M",
+        "Manufacturer": "Siemens Healthineers",
+        "RescaleIntercept": "-8192",
+        "RescaleSlope": "1"
+      },
+      "metadata_keys": [
+        "PatientAge",
+        "PatientSex",
+        "Manufacturer",
+        "RescaleIntercept",
+        "RescaleSlope"
+      ],
+      "patient_id": "BGC3162381"
+    },
+    {
+      "file": "Thorax_150_Br40_S3_512_512.nii.gz",
+      "path": "D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\ctvit-transformer\\2\\BGC3176800\\Thorax_150_Br40_S3_512_512.nii.gz",
+      "dimensions": [
+        512,
+        512,
+        302
+      ],
+      "voxel_spacing_mm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "data_type": "uint16",
+      "orientation": "RAS",
+      "file_size_bytes": 99389652,
+      "valid": true,
+      "metadata_json": {
+        "PatientAge": "059Y",
+        "PatientSex": "M",
+        "Manufacturer": "Siemens Healthineers",
+        "RescaleIntercept": "-8192",
+        "RescaleSlope": "1"
+      },
+      "metadata_keys": [
+        "PatientAge",
+        "PatientSex",
+        "Manufacturer",
+        "RescaleIntercept",
+        "RescaleSlope"
+      ],
+      "patient_id": "BGC3176800"
+    },
+    {
+      "file": "Thorax_150_Br60_S3_512_512.nii.gz",
+      "path": "D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\ctvit-transformer\\2\\BGC3176800\\Thorax_150_Br60_S3_512_512.nii.gz",
+      "dimensions": [
+        512,
+        512,
+        302
+      ],
+      "voxel_spacing_mm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "data_type": "uint16",
+      "orientation": "RAS",
+      "file_size_bytes": 113296565,
+      "valid": true,
+      "metadata_json": {
+        "PatientAge": "059Y",
+        "PatientSex": "M",
+        "Manufacturer": "Siemens Healthineers",
+        "RescaleIntercept": "-8192",
+        "RescaleSlope": "1"
+      },
+      "metadata_keys": [
+        "PatientAge",
+        "PatientSex",
+        "Manufacturer",
+        "RescaleIntercept",
+        "RescaleSlope"
+      ],
+      "patient_id": "BGC3176800"
+    }
+  ]
+}

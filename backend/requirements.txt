@@ -1,0 +1,6 @@
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+python-multipart>=0.0.6
+openai>=1.0.0  # LLM API 兼容层
+python-dotenv>=1.0.0
+reportlab>=4.0.0

@@ -1,0 +1,976 @@
+[
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Pleural_Effusion",
+    "standard_cn": "胸腔积液",
+    "variants": [
+      "pleural effusion",
+      "pleural fluid",
+      "free pleural effusion",
+      "bilateral pleural effusion",
+      "right pleural effusion",
+      "left pleural effusion",
+      "minimal pleural effusion"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Atelectasis",
+    "standard_cn": "肺不张",
+    "variants": [
+      "atelectasis",
+      "linear atelectasis",
+      "bandlike atelectasis",
+      "plate atelectasis",
+      "segmental atelectasis"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Nodule",
+    "standard_cn": "肺结节",
+    "variants": [
+      "nodule",
+      "nodules",
+      "micronodule",
+      "micronodules",
+      "millimetric nodule",
+      "nonspecific nodule",
+      "scattered nodule",
+      "calcified nodule",
+      "parenchymal nodule"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Mass",
+    "standard_cn": "肿块",
+    "variants": [
+      "mass",
+      "mass lesion",
+      "soft tissue mass",
+      "space-occupying lesion"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Consolidation",
+    "standard_cn": "实变",
+    "variants": [
+      "consolidation",
+      "consolidated",
+      "nodular consolidation",
+      "subpleural consolidation",
+      "parenchymal consolidation"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Ground_Glass_Opacity",
+    "standard_cn": "磨玻璃影",
+    "variants": [
+      "ground glass",
+      "ground-glass",
+      "groundglass opacity",
+      "ground-glass opacity",
+      "ground glass density",
+      "ground-glass density",
+      "subpleural ground glass",
+      "focal ground glass"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Emphysema",
+    "standard_cn": "肺气肿",
+    "variants": [
+      "emphysema",
+      "emphysematous change",
+      "emphysematous changes",
+      "bullous emphysema",
+      "paraseptal emphysema"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Pneumonia",
+    "standard_cn": "肺炎",
+    "variants": [
+      "pneumonia",
+      "pneumonic",
+      "viral pneumonia",
+      "covid-19 pneumonia",
+      "covid pneumonia",
+      "infective pathology",
+      "infectious process",
+      "bronchopneumonia",
+      "lobar pneumonia"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Fibrosis",
+    "standard_cn": "肺纤维化",
+    "variants": [
+      "fibrosis",
+      "pulmonary fibrosis",
+      "interstitial fibrosis",
+      "fibrotic change",
+      "honeycombing"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Atelectasis_Bronchiectasis",
+    "standard_cn": "支气管扩张",
+    "variants": [
+      "bronchiectasis",
+      "bronchial wall thickening"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Atherosclerosis",
+    "standard_cn": "动脉粥样硬化",
+    "variants": [
+      "atherosclerosis",
+      "atherosclerotic change",
+      "atheroma",
+      "atheromatous plaque",
+      "calcified atherosclerosis",
+      "atherosclerotic changes in the aorta",
+      "atherosclerotic changes in the coronary"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Dilatation_Aneurysm",
+    "standard_cn": "扩张/动脉瘤",
+    "variants": [
+      "dilatation",
+      "dilated",
+      "fusiform dilatation",
+      "aortic dilatation",
+      "ascending aorta dilatation",
+      "aneurysm",
+      "aortic aneurysm"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Spondylosis_Degenerative",
+    "standard_cn": "退行性变",
+    "variants": [
+      "spondylosis",
+      "degenerative change",
+      "degenerative changes",
+      "osteophyte",
+      "osteophytes",
+      "disc herniation",
+      "disc bulge"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Pneumothorax",
+    "standard_cn": "气胸",
+    "variants": [
+      "pneumothorax",
+      "hydropneumothorax",
+      "tension pneumothorax"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Hernia",
+    "standard_cn": "疝",
+    "variants": [
+      "hernia",
+      "hiatal hernia",
+      "diaphragmatic hernia"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Transplant_Surgery",
+    "standard_cn": "移植/术后改变",
+    "variants": [
+      "transplant",
+      "transplantation",
+      "transplant recipient",
+      "liver transplant",
+      "liver transplantation",
+      "cholecystectomy",
+      "postoperative",
+      "post-operative",
+      "post-rt",
+      "post rt",
+      "post-radiotherapy",
+      "surgical suture",
+      "resection",
+      "operation",
+      "surgery"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Cyst_Lesion",
+    "standard_cn": "囊肿/病变",
+    "variants": [
+      "cyst",
+      "sebaceous cyst",
+      "lesion",
+      "hypodense lesion",
+      "hypodense area",
+      "low density",
+      "low-density"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Lymphadenopathy",
+    "standard_cn": "淋巴结肿大",
+    "variants": [
+      "lymphadenopathy",
+      "enlarged lymph node",
+      "pathological lymph node",
+      "mediastinal lymph node",
+      "hilar lymph node"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Effusion_Pericardial",
+    "standard_cn": "心包积液",
+    "variants": [
+      "pericardial effusion",
+      "pericardial thickening"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Splenomegaly",
+    "standard_cn": "脾肿大",
+    "variants": [
+      "splenomegaly",
+      "spleen size increased",
+      "enlarged spleen"
+    ]
+  },
+  {
+    "type": "disease",
+    "type_cn": "疾病",
+    "standard_en": "Fracture_Lytic",
+    "standard_cn": "骨折/溶骨性病变",
+    "variants": [
+      "fracture",
+      "lytic lesion",
+      "destructive lesion",
+      "lytic-destructive"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "left lung",
+    "standard_cn": "左肺",
+    "variants": [
+      "left lung"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "right lung",
+    "standard_cn": "右肺",
+    "variants": [
+      "right lung"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "both lungs",
+    "standard_cn": "双肺",
+    "variants": [
+      "both lungs"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "bilateral lung",
+    "standard_cn": "双肺",
+    "variants": [
+      "bilateral lung"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "upper lobe",
+    "standard_cn": "上叶",
+    "variants": [
+      "upper lobe"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "lower lobe",
+    "standard_cn": "下叶",
+    "variants": [
+      "lower lobe"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "middle lobe",
+    "standard_cn": "中叶",
+    "variants": [
+      "middle lobe"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "lingular segment",
+    "standard_cn": "舌段",
+    "variants": [
+      "lingular segment"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "right upper lobe",
+    "standard_cn": "右上叶",
+    "variants": [
+      "right upper lobe"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "right lower lobe",
+    "standard_cn": "右下叶",
+    "variants": [
+      "right lower lobe"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "right middle lobe",
+    "standard_cn": "右中叶",
+    "variants": [
+      "right middle lobe"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "left upper lobe",
+    "standard_cn": "左上叶",
+    "variants": [
+      "left upper lobe"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "left lower lobe",
+    "standard_cn": "左下叶",
+    "variants": [
+      "left lower lobe"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "aorta",
+    "standard_cn": "主动脉",
+    "variants": [
+      "aorta"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "ascending aorta",
+    "standard_cn": "升主动脉",
+    "variants": [
+      "ascending aorta"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "descending aorta",
+    "standard_cn": "降主动脉",
+    "variants": [
+      "descending aorta"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "thoracic aorta",
+    "standard_cn": "胸主动脉",
+    "variants": [
+      "thoracic aorta"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "coronary artery",
+    "standard_cn": "冠状动脉",
+    "variants": [
+      "coronary artery"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "coronary arteries",
+    "standard_cn": "冠状动脉",
+    "variants": [
+      "coronary arteries"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "aortic arch",
+    "standard_cn": "主动脉弓",
+    "variants": [
+      "aortic arch"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "mediastinum",
+    "standard_cn": "纵隔",
+    "variants": [
+      "mediastinum"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "hilar region",
+    "standard_cn": "肺门区",
+    "variants": [
+      "hilar region"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "hilum",
+    "standard_cn": "肺门",
+    "variants": [
+      "hilum"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "pleura",
+    "standard_cn": "胸膜",
+    "variants": [
+      "pleura"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "pleural space",
+    "standard_cn": "胸膜腔",
+    "variants": [
+      "pleural space"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "trachea",
+    "standard_cn": "气管",
+    "variants": [
+      "trachea"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "main bronchus",
+    "standard_cn": "主支气管",
+    "variants": [
+      "main bronchus"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "bronchi",
+    "standard_cn": "支气管",
+    "variants": [
+      "bronchi"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "bronchus",
+    "standard_cn": "支气管",
+    "variants": [
+      "bronchus"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "esophagus",
+    "standard_cn": "食管",
+    "variants": [
+      "esophagus"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "esophagogastric junction",
+    "standard_cn": "食管胃结合部",
+    "variants": [
+      "esophagogastric junction"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "spleen",
+    "standard_cn": "脾脏",
+    "variants": [
+      "spleen"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "liver",
+    "standard_cn": "肝脏",
+    "variants": [
+      "liver"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "gallbladder",
+    "standard_cn": "胆囊",
+    "variants": [
+      "gallbladder"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "adrenal gland",
+    "standard_cn": "肾上腺",
+    "variants": [
+      "adrenal gland"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "adrenal",
+    "standard_cn": "肾上腺",
+    "variants": [
+      "adrenal"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "vertebra",
+    "standard_cn": "椎体",
+    "variants": [
+      "vertebra"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "vertebral body",
+    "standard_cn": "椎体",
+    "variants": [
+      "vertebral body"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "vertebral corpus",
+    "standard_cn": "椎体",
+    "variants": [
+      "vertebral corpus"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "spine",
+    "standard_cn": "脊柱",
+    "variants": [
+      "spine"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "bone structure",
+    "standard_cn": "骨结构",
+    "variants": [
+      "bone structure"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "rib",
+    "standard_cn": "肋骨",
+    "variants": [
+      "rib"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "sternum",
+    "standard_cn": "胸骨",
+    "variants": [
+      "sternum"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "scapula",
+    "standard_cn": "肩胛骨",
+    "variants": [
+      "scapula"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "clavicle",
+    "standard_cn": "锁骨",
+    "variants": [
+      "clavicle"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "subcutaneous tissue",
+    "standard_cn": "皮下组织",
+    "variants": [
+      "subcutaneous tissue"
+    ]
+  },
+  {
+    "type": "anatomy",
+    "type_cn": "解剖部位",
+    "standard_en": "soft tissue",
+    "standard_cn": "软组织",
+    "variants": [
+      "soft tissue"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "mild",
+    "standard_cn": "轻度",
+    "variants": [
+      "mild"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "moderate",
+    "standard_cn": "中度",
+    "variants": [
+      "moderate"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "severe",
+    "standard_cn": "重度",
+    "variants": [
+      "severe"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "minimal",
+    "standard_cn": "微量",
+    "variants": [
+      "minimal"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "small",
+    "standard_cn": "小",
+    "variants": [
+      "small"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "large",
+    "standard_cn": "大",
+    "variants": [
+      "large"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "multiple",
+    "standard_cn": "多发",
+    "variants": [
+      "multiple"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "scattered",
+    "standard_cn": "散在",
+    "variants": [
+      "scattered"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "several",
+    "standard_cn": "数个",
+    "variants": [
+      "several"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "few",
+    "standard_cn": "少量",
+    "variants": [
+      "few"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "a few",
+    "standard_cn": "少量",
+    "variants": [
+      "a few"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "focal",
+    "standard_cn": "局灶",
+    "variants": [
+      "focal"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "diffuse",
+    "standard_cn": "弥漫",
+    "variants": [
+      "diffuse"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "peripheral",
+    "standard_cn": "周围",
+    "variants": [
+      "peripheral"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "central",
+    "standard_cn": "中央",
+    "variants": [
+      "central"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "subpleural",
+    "standard_cn": "胸膜下",
+    "variants": [
+      "subpleural"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "predominantly",
+    "standard_cn": "主要",
+    "variants": [
+      "predominantly"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "partially",
+    "standard_cn": "部分",
+    "variants": [
+      "partially"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "completely",
+    "standard_cn": "完全",
+    "variants": [
+      "completely"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "minimally",
+    "standard_cn": "极微",
+    "variants": [
+      "minimally"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "millimetric",
+    "standard_cn": "毫米级",
+    "variants": [
+      "millimetric"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "micronodular",
+    "standard_cn": "微结节",
+    "variants": [
+      "micronodular"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "nonspecific",
+    "standard_cn": "非特异性",
+    "variants": [
+      "nonspecific"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "stable",
+    "standard_cn": "稳定",
+    "variants": [
+      "stable"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "new",
+    "standard_cn": "新发",
+    "variants": [
+      "new"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "increased",
+    "standard_cn": "增大",
+    "variants": [
+      "increased"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "decreased",
+    "standard_cn": "缩小",
+    "variants": [
+      "decreased"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "unchanged",
+    "standard_cn": "无变化",
+    "variants": [
+      "unchanged"
+    ]
+  },
+  {
+    "type": "modifier",
+    "type_cn": "修饰词",
+    "standard_en": "regressed",
+    "standard_cn": "消退",
+    "variants": [
+      "regressed"
+    ]
+  }
+]

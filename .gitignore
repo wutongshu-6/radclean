@@ -1,0 +1,23 @@
+# Environment
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Claude AI
+.claude/
+CLAUDE.md
+**/CLAUDE.md
+
+# Debug logs
+*.log

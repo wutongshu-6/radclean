@@ -1,0 +1,77 @@
+{
+  "BGC3109958": {
+    "overall_quality": "fair",
+    "confidence": 0.7,
+    "false_positives": [
+      "Transplant_Surgery (listed under negated_findings, but transplant is present in the text)",
+      "Cyst_Lesion (not mentioned in text at all)",
+      "large (modifier not present in text)"
+    ],
+    "false_negatives": [
+      "Central venous catheter",
+      "Osteophytes",
+      "Atheroma plaques (explicitly mentioned, not just atherosclerosis)"
+    ],
+    "negation_errors": [
+      "Transplant_Surgery listed as negated, but liver transplantation is explicitly stated as present"
+    ],
+    "anatomy_mismatches": [],
+    "brief_note": "规则引擎基本正确提取了主要病变和阴性发现，但存在将移植手术误判为否定、遗漏导管和骨赘等细节的问题，整体质量尚可。"
+  },
+  "BGC3162381": {
+    "overall_quality": "poor",
+    "confidence": 0.4,
+    "false_positives": [
+      "rib (not mentioned in text)",
+      "Mass (not mentioned in text)",
+      "Ground_Glass_Opacity listed in negated_findings (GGO is present, not negated)",
+      "Pneumonia listed in negated_findings (pneumonia is mentioned as differential, not negated)",
+      "Cyst_Lesion listed in negated_findings (cyst is present, not negated)",
+      "Fracture_Lytic (not mentioned in text)"
+    ],
+    "false_negatives": [
+      "Atherosclerotic changes (thoracic aorta, coronary artery)",
+      "Mild fusiform dilatation of ascending aorta",
+      "Subpleural focal ground-glass density increases (both lower lobes)",
+      "Right pleural effusion (16 mm)",
+      "Liver right lobe transplantation",
+      "Cholecystectomy (gallbladder not observed)",
+      "Splenomegaly (spleen size increased)",
+      "Incision line (midline abdomen)",
+      "Benign-looking hypodense lesion (left scapula region)"
+    ],
+    "negation_errors": [
+      "Ground_Glass_Opacity marked as negated but actually present",
+      "Pneumonia marked as negated but mentioned as possible differential (not definitively negated)",
+      "Cyst_Lesion marked as negated but lesion is present (sebaceous cyst?)",
+      "Effusion_Pericardial marked as negated correctly (pericardial thickening-effusion not detected) but duplicated",
+      "Hernia marked as negated correctly (no significant hernia defect) but duplicated"
+    ],
+    "anatomy_mismatches": [
+      "rib listed in anatomy_mentioned but not in text",
+      "Ground_Glass_Opacity in negated_findings but actually present in both lungs (no anatomy mismatch per se, but incorrect negation)"
+    ],
+    "brief_note": "规则引擎提取存在大量假阳性和假阴性，否定判断严重错误（如将实际存在的磨玻璃影、囊肿标记为否定），且遗漏了多个关键发现（如动脉粥样硬化、脾肿大、肝移植等），整体质量较差。"
+  },
+  "BGC3176800": {
+    "overall_quality": "fair",
+    "confidence": 0.75,
+    "false_positives": [
+      "Cyst_Lesion",
+      "Atherosclerosis"
+    ],
+    "false_negatives": [
+      "Calcific nodule",
+      "Hiatal hernia",
+      "Surgical suture materials",
+      "Sclerotic lesion (T4 vertebra)",
+      "Liver transplant recipient"
+    ],
+    "negation_errors": [],
+    "anatomy_mismatches": [
+      "pleura (mentioned but not as a specific finding)",
+      "middle lobe (right lung middle lobe mentioned, but rule engine lists as general anatomy without laterality)"
+    ],
+    "brief_note": "规则引擎提取了大部分关键病变，但存在假阳性（如囊肿和动脉粥样硬化未明确描述）和假阴性（如钙化结节、裂孔疝、手术缝线等），解剖部位匹配基本正确，但部分细节缺失。"
+  }
+}

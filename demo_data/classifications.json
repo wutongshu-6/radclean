@@ -1,0 +1,706 @@
+{
+  "BGC3109958": {
+    "accession_no": "BGC3109958",
+    "source": "data_reports.xlsx; D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\superres\\ctvit_outputs\\samples.BGC3109958\\Thorax_150_Br40_S3_512_512.txt",
+    "Pleural_Effusion": {
+      "present": true,
+      "negated": false,
+      "confidence": 1.0,
+      "mentions": 9
+    },
+    "Atelectasis": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.9,
+      "mentions": 4
+    },
+    "Nodule": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.9,
+      "mentions": 4
+    },
+    "Mass": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Consolidation": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Ground_Glass_Opacity": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Emphysema": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Pneumonia": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Fibrosis": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Atelectasis_Bronchiectasis": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Atherosclerosis": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.6,
+      "mentions": 1
+    },
+    "Dilatation_Aneurysm": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Spondylosis_Degenerative": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.9,
+      "mentions": 4
+    },
+    "Pneumothorax": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Hernia": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Transplant_Surgery": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Cyst_Lesion": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Lymphadenopathy": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Effusion_Pericardial": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Splenomegaly": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Fracture_Lytic": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "_positive_labels": [
+      "Pleural_Effusion",
+      "Atelectasis",
+      "Nodule",
+      "Atherosclerosis",
+      "Spondylosis_Degenerative"
+    ],
+    "_primary_diagnosis": "Pleural_Effusion"
+  },
+  "BGC3162381": {
+    "accession_no": "BGC3162381",
+    "source": "data_reports.xlsx; D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\superres\\ctvit_outputs\\samples.BGC3162381\\Thorax_150_Br40_S3_512_512.txt",
+    "Pleural_Effusion": {
+      "present": true,
+      "negated": false,
+      "confidence": 1.0,
+      "mentions": 8
+    },
+    "Atelectasis": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Nodule": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.9,
+      "mentions": 4
+    },
+    "Mass": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Consolidation": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Ground_Glass_Opacity": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.3,
+      "mentions": 2
+    },
+    "Emphysema": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Pneumonia": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Fibrosis": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Atelectasis_Bronchiectasis": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Atherosclerosis": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Dilatation_Aneurysm": {
+      "present": true,
+      "negated": false,
+      "confidence": 1.0,
+      "mentions": 8
+    },
+    "Spondylosis_Degenerative": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Pneumothorax": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Hernia": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Transplant_Surgery": {
+      "present": true,
+      "negated": false,
+      "confidence": 1.0,
+      "mentions": 7
+    },
+    "Cyst_Lesion": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.3,
+      "mentions": 4
+    },
+    "Lymphadenopathy": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Effusion_Pericardial": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Splenomegaly": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.9,
+      "mentions": 4
+    },
+    "Fracture_Lytic": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "_positive_labels": [
+      "Pleural_Effusion",
+      "Nodule",
+      "Dilatation_Aneurysm",
+      "Transplant_Surgery",
+      "Splenomegaly"
+    ],
+    "_primary_diagnosis": "Pleural_Effusion"
+  },
+  "BGC3176800": {
+    "accession_no": "BGC3176800",
+    "source": "data_reports.xlsx; D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\superres\\ctvit_outputs\\samples.BGC3176800\\Thorax_150_Br40_S3_512_512.txt",
+    "Pleural_Effusion": {
+      "present": true,
+      "negated": false,
+      "confidence": 1.0,
+      "mentions": 9
+    },
+    "Atelectasis": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.7,
+      "mentions": 2
+    },
+    "Nodule": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.6,
+      "mentions": 1
+    },
+    "Mass": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Consolidation": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.9,
+      "mentions": 4
+    },
+    "Ground_Glass_Opacity": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.9,
+      "mentions": 4
+    },
+    "Emphysema": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Pneumonia": {
+      "present": true,
+      "negated": false,
+      "confidence": 1.0,
+      "mentions": 10
+    },
+    "Fibrosis": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Atelectasis_Bronchiectasis": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Atherosclerosis": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.8,
+      "mentions": 3
+    },
+    "Dilatation_Aneurysm": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.8,
+      "mentions": 3
+    },
+    "Spondylosis_Degenerative": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Pneumothorax": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Hernia": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.7,
+      "mentions": 2
+    },
+    "Transplant_Surgery": {
+      "present": true,
+      "negated": false,
+      "confidence": 1.0,
+      "mentions": 10
+    },
+    "Cyst_Lesion": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.6,
+      "mentions": 1
+    },
+    "Lymphadenopathy": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Effusion_Pericardial": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.9,
+      "mentions": 4
+    },
+    "Splenomegaly": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.8,
+      "mentions": 3
+    },
+    "Fracture_Lytic": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "_positive_labels": [
+      "Pleural_Effusion",
+      "Atelectasis",
+      "Nodule",
+      "Consolidation",
+      "Ground_Glass_Opacity",
+      "Pneumonia",
+      "Atherosclerosis",
+      "Dilatation_Aneurysm",
+      "Hernia",
+      "Transplant_Surgery",
+      "Cyst_Lesion",
+      "Effusion_Pericardial",
+      "Splenomegaly"
+    ],
+    "_primary_diagnosis": "Pleural_Effusion"
+  },
+  "BGC3212225": {
+    "accession_no": "BGC3212225",
+    "source": "data_reports.xlsx; D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\superres\\ctvit_outputs\\samples.BGC3212225\\Thorax_150_Bl56_S3_512_512.txt",
+    "Pleural_Effusion": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Atelectasis": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.9,
+      "mentions": 4
+    },
+    "Nodule": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Mass": {
+      "present": true,
+      "negated": false,
+      "confidence": 1.0,
+      "mentions": 7
+    },
+    "Consolidation": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Ground_Glass_Opacity": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Emphysema": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.9,
+      "mentions": 4
+    },
+    "Pneumonia": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Fibrosis": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Atelectasis_Bronchiectasis": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Atherosclerosis": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.8,
+      "mentions": 3
+    },
+    "Dilatation_Aneurysm": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.6,
+      "mentions": 1
+    },
+    "Spondylosis_Degenerative": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.9,
+      "mentions": 4
+    },
+    "Pneumothorax": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Hernia": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.7,
+      "mentions": 2
+    },
+    "Transplant_Surgery": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Cyst_Lesion": {
+      "present": true,
+      "negated": false,
+      "confidence": 1.0,
+      "mentions": 10
+    },
+    "Lymphadenopathy": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Effusion_Pericardial": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Splenomegaly": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Fracture_Lytic": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "_positive_labels": [
+      "Atelectasis",
+      "Mass",
+      "Emphysema",
+      "Atherosclerosis",
+      "Dilatation_Aneurysm",
+      "Spondylosis_Degenerative",
+      "Hernia",
+      "Cyst_Lesion"
+    ],
+    "_primary_diagnosis": "Atelectasis"
+  },
+  "BGC3515151": {
+    "accession_no": "BGC3515151",
+    "source": "data_reports.xlsx; D:\\孵化项目\\26思必驰opc\\example_data\\example_data\\superres\\ctvit_outputs\\samples.BGC3515151\\Thorax_150_Bl56_S3_512_512.txt",
+    "Pleural_Effusion": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.9,
+      "mentions": 4
+    },
+    "Atelectasis": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Nodule": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Mass": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.6,
+      "mentions": 1
+    },
+    "Consolidation": {
+      "present": true,
+      "negated": false,
+      "confidence": 1.0,
+      "mentions": 5
+    },
+    "Ground_Glass_Opacity": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Emphysema": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.8,
+      "mentions": 3
+    },
+    "Pneumonia": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Fibrosis": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Atelectasis_Bronchiectasis": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Atherosclerosis": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.6,
+      "mentions": 1
+    },
+    "Dilatation_Aneurysm": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Spondylosis_Degenerative": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.6,
+      "mentions": 1
+    },
+    "Pneumothorax": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Hernia": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.7,
+      "mentions": 2
+    },
+    "Transplant_Surgery": {
+      "present": true,
+      "negated": false,
+      "confidence": 0.9,
+      "mentions": 4
+    },
+    "Cyst_Lesion": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.3,
+      "mentions": 5
+    },
+    "Lymphadenopathy": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Effusion_Pericardial": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Splenomegaly": {
+      "present": false,
+      "negated": false,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "Fracture_Lytic": {
+      "present": false,
+      "negated": true,
+      "confidence": 0.0,
+      "mentions": 0
+    },
+    "_positive_labels": [
+      "Pleural_Effusion",
+      "Mass",
+      "Consolidation",
+      "Emphysema",
+      "Atherosclerosis",
+      "Spondylosis_Degenerative",
+      "Hernia",
+      "Transplant_Surgery"
+    ],
+    "_primary_diagnosis": "Pleural_Effusion"
+  }
+}

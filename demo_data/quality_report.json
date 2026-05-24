@@ -1,0 +1,111 @@
+{
+  "completeness": {
+    "score": 1.0,
+    "threshold": 0.85,
+    "pass": true,
+    "fields": [
+      {
+        "field": "PatientAgeClean",
+        "missing_count": 0,
+        "missing_rate": 0.0,
+        "pass": true
+      },
+      {
+        "field": "PatientSexClean",
+        "missing_count": 0,
+        "missing_rate": 0.0,
+        "pass": true
+      },
+      {
+        "field": "RescaleInterceptClean",
+        "missing_count": 0,
+        "missing_rate": 0.0,
+        "pass": true
+      },
+      {
+        "field": "RescaleSlopeClean",
+        "missing_count": 0,
+        "missing_rate": 0.0,
+        "pass": true
+      },
+      {
+        "field": "ManufacturerClean",
+        "missing_count": 0,
+        "missing_rate": 0.0,
+        "pass": true
+      }
+    ]
+  },
+  "accuracy": {
+    "score": 1.0,
+    "threshold": 0.9,
+    "pass": true,
+    "issues": []
+  },
+  "consistency": {
+    "score": 0.8,
+    "threshold": 0.8,
+    "pass": true,
+    "issues": [],
+    "annotation_issues": [
+      {
+        "accession": "BGC3162381",
+        "field": "disease_labels",
+        "only_in_annotations": [
+          "Cyst_Lesion",
+          "Ground_Glass_Opacity"
+        ],
+        "only_in_classifications": []
+      },
+      {
+        "accession": "BGC3515151",
+        "field": "disease_labels",
+        "only_in_annotations": [
+          "Cyst_Lesion"
+        ],
+        "only_in_classifications": []
+      }
+    ]
+  },
+  "usability": {
+    "score": 0.94,
+    "threshold": 0.75,
+    "pass": true,
+    "annotation_coverage": 1.0,
+    "avg_confidence": 0.8,
+    "annotation_stats": [
+      {
+        "accession": "BGC3109958",
+        "disease_count": 5,
+        "avg_confidence": 0.86,
+        "has_annotations": true
+      },
+      {
+        "accession": "BGC3162381",
+        "disease_count": 7,
+        "avg_confidence": 0.771,
+        "has_annotations": true
+      },
+      {
+        "accession": "BGC3176800",
+        "disease_count": 13,
+        "avg_confidence": 0.823,
+        "has_annotations": true
+      },
+      {
+        "accession": "BGC3212225",
+        "disease_count": 8,
+        "avg_confidence": 0.85,
+        "has_annotations": true
+      },
+      {
+        "accession": "BGC3515151",
+        "disease_count": 9,
+        "avg_confidence": 0.711,
+        "has_annotations": true
+      }
+    ]
+  },
+  "overall_score": 0.935,
+  "overall_pass": true
+}
