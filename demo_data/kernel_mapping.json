@@ -1,0 +1,36 @@
+{
+  "vendor": "Siemens Healthineers",
+  "standard_ref": "DICOM PS3.3 §C.8.15.3.11 Convolution Kernel",
+  "mappings": [
+    {
+      "original": "Bl56",
+      "standard_code": "KC-LUNG-SHRP-01",
+      "kernel_family": "锐利/高对比度",
+      "sharpness_level": "very sharp",
+      "body_region": "肺部",
+      "clinical_use": "肺实质/结节评估"
+    },
+    {
+      "original": "Br40",
+      "standard_code": "KC-BODY-STD-01",
+      "kernel_family": "标准/平衡",
+      "sharpness_level": "medium",
+      "body_region": "胸部/腹部",
+      "clinical_use": "常规胸部/腹部平扫"
+    },
+    {
+      "original": "Br60",
+      "standard_code": "KC-BODY-SHRP-02",
+      "kernel_family": "锐利/高对比度",
+      "sharpness_level": "very sharp",
+      "body_region": "胸部/腹部",
+      "clinical_use": "增强扫描/骨细节评估"
+    }
+  ],
+  "cross_vendor_equivalents": {
+    "Bl56": { "GE": "Lung/Bone", "Philips": "Lung Enhanced (C)", "Canon": "FC52 (Lung Sharp)" },
+    "Br40": { "GE": "Standard", "Philips": "B (Standard)", "Canon": "FC13 (Body Standard)" },
+    "Br60": { "GE": "Bone Plus", "Philips": "D (Sharp)", "Canon": "FC52 (Body Sharp)" }
+  },
+  "note": "标准编码遵循 KC 命名体系 (Kernel Code): KC-{部位}-{特性}-{序号}。跨厂商等价关系基于临床等效性推断，非精确匹配。DICOM PS3.3 §C.8.15.3.11 定义了 Convolution Kernel 属性 (0018,1210)，但未标准化核名称——本映射为 RadClean 项目级标准。"
+}

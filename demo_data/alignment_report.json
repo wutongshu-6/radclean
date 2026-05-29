@@ -1,0 +1,20 @@
+{
+  "scan_date": "2026-05-28 14:32:20",
+  "pairs_checked": 10,
+  "matched": 10,
+  "unmatched": 0,
+  "orphan": 0,
+  "details": [
+    {"nifti":"Thorax_150_Bl56_S3_512_512.nii.gz","metadata":"Thorax_150_Bl56_S3_512_512_metadata.json","patient":"BGC3212225","status":"matched"},
+    {"nifti":"Thorax_150_Br40_S3_512_512.nii.gz","metadata":"Thorax_150_Br40_S3_512_512_metadata.json","patient":"BGC3212225","status":"matched"},
+    {"nifti":"Thorax_150_Bl56_S3_512_512.nii.gz","metadata":"Thorax_150_Bl56_S3_512_512_metadata.json","patient":"BGC3515151","status":"matched"},
+    {"nifti":"Thorax_150_Br40_S3_512_512.nii.gz","metadata":"Thorax_150_Br40_S3_512_512_metadata.json","patient":"BGC3515151","status":"matched"},
+    {"nifti":"Thorax_150_Br40_S3_512_512.nii.gz","metadata":"Thorax_150_Br40_S3_512_512_metadata.json","patient":"BGC3109958","status":"matched"},
+    {"nifti":"Thorax_150_Br60_S3_512_512.nii.gz","metadata":"Thorax_150_Br60_S3_512_512_metadata.json","patient":"BGC3109958","status":"matched"},
+    {"nifti":"Thorax_150_Br40_S3_512_512.nii.gz","metadata":"Thorax_150_Br40_S3_512_512_metadata.json","patient":"BGC3162381","status":"matched"},
+    {"nifti":"Thorax_150_Br60_S3_512_512.nii.gz","metadata":"Thorax_150_Br60_S3_512_512_metadata.json","patient":"BGC3162381","status":"matched"},
+    {"nifti":"Thorax_150_Br40_S3_512_512.nii.gz","metadata":"Thorax_150_Br40_S3_512_512_metadata.json","patient":"BGC3176800","status":"matched"},
+    {"nifti":"Thorax_150_Br60_S3_512_512.nii.gz","metadata":"Thorax_150_Br60_S3_512_512_metadata.json","patient":"BGC3176800","status":"matched"}
+  ],
+  "summary": "10 对 NIfTI—metadata JSON 全部匹配。文件命名规范一致 (Thorax_150_{Kernel}_S3_512_512)，patient_id 从路径正确提取。无孤儿文件，无未配对文件。可用于空间对齐分析。"
+}

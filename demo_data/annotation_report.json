@@ -1,0 +1,15 @@
+{
+  "scan_date": "2026-05-28 14:32:30",
+  "total_reports": 5,
+  "annotated_reports": 5,
+  "standard_ref": "RadLex RID / SNOMED CT SCTID / ACR Lung-RADS",
+  "coverage": {
+    "finding_types": ["Pleural Effusion","Atelectasis","Nodule","Mass","Consolidation","Ground Glass","Lymphadenopathy","Emphysema","Pneumothorax"],
+    "total_findings": 23,
+    "negated_findings": 3,
+    "anatomy_sites": ["Thorax","Lung","Pleura","Mediastinum"],
+    "severity_graded": 8
+  },
+  "note": "5 份放射学报告全部完成结构化标注。覆盖 9 个 finding 类型、4 个解剖部位。含否定语义检测 (规则引擎假阳性已纠正) 和时序变化提取。",
+  "summary": "标注完整性 100%，5/5 报告均有对应标注。规则引擎覆盖率达 87%，LLM 复核发现 2 处规则假阳性 (已纠正否定语义)。时序数据提取覆盖 5 例中的 3 例有既往对比记录。术语正通过 Agent 3 映射至 RadLex RID + SNOMED CT SCTID 双编码体系。"
+}

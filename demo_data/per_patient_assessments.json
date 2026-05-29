@@ -1,0 +1,648 @@
+{
+  "BGC3109958": {
+    "assessment_date": "2026-05-25T10:35:00",
+    "patient_id": "BGC3109958",
+    "overall_quality_score": 79.0,
+    "quality_grade": "B (良好,存在需关注的瑕疵)",
+    "four_dimensions": {
+      "completeness": {
+        "score": 80,
+        "grade": "B+",
+        "detail": {
+          "sequence_completeness": {
+            "score": 85,
+            "note": "Br40+Br60双核完整"
+          },
+          "metadata_completeness": {
+            "score": 100,
+            "note": "5字段全部填充"
+          },
+          "report_completeness": {
+            "score": 78,
+            "note": "Findings完整,ClinicalInformation为空"
+          },
+          "annotation_coverage": {
+            "score": 0,
+            "note": "无标注文件",
+            "excluded": true
+          }
+        },
+        "issues": []
+      },
+      "consistency": {
+        "score": 82,
+        "grade": "B+",
+        "detail": {
+          "naming_consistency": {
+            "score": 90,
+            "note": "文件命名统一"
+          },
+          "protocol_consistency": {
+            "score": 85,
+            "note": "层厚1.2mm,略厚于标准1.0mm"
+          },
+          "annotation_consistency": {
+            "score": 0,
+            "note": "无标注文件",
+            "excluded": true
+          }
+        },
+        "issues": []
+      },
+      "accuracy": {
+        "score": 78,
+        "grade": "B",
+        "detail": {
+          "hu_accuracy": {
+            "score": 95,
+            "note": "HU还原正确"
+          },
+          "anatomy_accuracy": {
+            "score": 75,
+            "note": "标注解剖区域定位准确"
+          },
+          "id_report_match": {
+            "score": 100,
+            "note": "匹配无误"
+          },
+          "kernel_image_consistency": {
+            "score": 65,
+            "note": "Br40与Br60纹理差异较大"
+          }
+        },
+        "issues": [
+          {
+            "type": "slice_thickness_variance",
+            "severity": "low",
+            "detail": "层厚1.2mm影响Z轴分辨率"
+          }
+        ]
+      },
+      "usability": {
+        "score": 80,
+        "grade": "B",
+        "detail": {
+          "image_readiness": {
+            "score": 85,
+            "note": "HU标准,NIfTI格式"
+          },
+          "dimension_suitability": {
+            "score": 82,
+            "note": "层厚需重采样至1.0mm"
+          },
+          "downstream_readiness": {
+            "tasks": [
+              {
+                "task_type": "肺结节检测",
+                "is_ready": true,
+                "blockers": []
+              },
+              {
+                "task_type": "骨质疏松评估",
+                "is_ready": true,
+                "blockers": []
+              },
+              {
+                "task_type": "淋巴结分割",
+                "is_ready": false,
+                "blockers": [
+                  "无对比剂"
+                ]
+              }
+            ]
+          }
+        },
+        "issues": []
+      }
+    }
+  },
+  "BGC3162381": {
+    "assessment_date": "2026-05-25T10:35:00",
+    "patient_id": "BGC3162381",
+    "overall_quality_score": 77.5,
+    "quality_grade": "B (良好,存在需关注的瑕疵)",
+    "four_dimensions": {
+      "completeness": {
+        "score": 82,
+        "grade": "B+",
+        "detail": {
+          "sequence_completeness": {
+            "score": 88,
+            "note": "Br40+Br60双核完整"
+          },
+          "metadata_completeness": {
+            "score": 100,
+            "note": "5字段全部填充"
+          },
+          "report_completeness": {
+            "score": 82,
+            "note": "Findings与Impressions完整"
+          },
+          "annotation_coverage": {
+            "score": 0,
+            "note": "无标注文件",
+            "excluded": true
+          }
+        },
+        "issues": []
+      },
+      "consistency": {
+        "score": 83,
+        "grade": "B+",
+        "detail": {
+          "naming_consistency": {
+            "score": 92,
+            "note": "文件命名统一"
+          },
+          "protocol_consistency": {
+            "score": 88,
+            "note": "Thorax 1.5mm平扫,协议一致"
+          },
+          "annotation_consistency": {
+            "score": 0,
+            "note": "无标注文件",
+            "excluded": true
+          }
+        },
+        "issues": []
+      },
+      "accuracy": {
+        "score": 76,
+        "grade": "B",
+        "detail": {
+          "hu_accuracy": {
+            "score": 93,
+            "note": "HU还原正确"
+          },
+          "anatomy_accuracy": {
+            "score": 78,
+            "note": "报告与图像一致"
+          },
+          "id_report_match": {
+            "score": 100,
+            "note": "匹配无误"
+          },
+          "kernel_image_consistency": {
+            "score": 72,
+            "note": "纹理差异可接受"
+          }
+        },
+        "issues": [
+          {
+            "type": "pleural_effusion",
+            "severity": "low",
+            "detail": "右侧少量胸水影响局部肺实质分析"
+          }
+        ]
+      },
+      "usability": {
+        "score": 77,
+        "grade": "B",
+        "detail": {
+          "image_readiness": {
+            "score": 85,
+            "note": "HU标准,NIfTI格式"
+          },
+          "dimension_suitability": {
+            "score": 85,
+            "note": "支持二维/三维模型"
+          },
+          "downstream_readiness": {
+            "tasks": [
+              {
+                "task_type": "肺结节检测",
+                "is_ready": true,
+                "blockers": []
+              },
+              {
+                "task_type": "肺气肿评估",
+                "is_ready": true,
+                "blockers": []
+              },
+              {
+                "task_type": "心脏功能分析",
+                "is_ready": false,
+                "blockers": [
+                  "无对比剂"
+                ]
+              }
+            ]
+          }
+        },
+        "issues": []
+      }
+    }
+  },
+  "BGC3176800": {
+    "assessment_date": "2026-05-25T10:35:00",
+    "patient_id": "BGC3176800",
+    "overall_quality_score": 72.0,
+    "quality_grade": "B- (条件就绪,需注意标签可信度)",
+    "four_dimensions": {
+      "completeness": {
+        "score": 85,
+        "grade": "B+",
+        "detail": {
+          "sequence_completeness": {
+            "score": 90,
+            "note": "Br40+Br60双核完整"
+          },
+          "metadata_completeness": {
+            "score": 100,
+            "note": "5字段全部填充"
+          },
+          "report_completeness": {
+            "score": 82,
+            "note": "Findings与Impressions完整"
+          },
+          "annotation_coverage": {
+            "score": 0,
+            "note": "无标注文件",
+            "excluded": true
+          }
+        },
+        "issues": []
+      },
+      "consistency": {
+        "score": 80,
+        "grade": "B",
+        "detail": {
+          "naming_consistency": {
+            "score": 88,
+            "note": "文件命名统一"
+          },
+          "protocol_consistency": {
+            "score": 85,
+            "note": "Thorax 1.0mm平扫,协议一致"
+          },
+          "annotation_consistency": {
+            "score": 0,
+            "note": "无标注文件",
+            "excluded": true
+          }
+        },
+        "issues": []
+      },
+      "accuracy": {
+        "score": 72,
+        "grade": "B-",
+        "detail": {
+          "hu_accuracy": {
+            "score": 90,
+            "note": "HU还原正确"
+          },
+          "anatomy_accuracy": {
+            "score": 68,
+            "note": "转移灶区域定位准确但缺乏病理确认"
+          },
+          "id_report_match": {
+            "score": 100,
+            "note": "匹配无误"
+          },
+          "kernel_image_consistency": {
+            "score": 68,
+            "note": "转移灶区域对比需谨慎"
+          }
+        },
+        "issues": [
+          {
+            "type": "suspected_metastasis",
+            "severity": "high",
+            "detail": "骨骼可疑转移性病变缺乏病理金标准,标签可信度受影像学局限性影响"
+          }
+        ]
+      },
+      "usability": {
+        "score": 65,
+        "grade": "C+",
+        "detail": {
+          "image_readiness": {
+            "score": 85,
+            "note": "HU标准,NIfTI格式"
+          },
+          "dimension_suitability": {
+            "score": 85,
+            "note": "支持二维/三维模型"
+          },
+          "downstream_readiness": {
+            "tasks": [
+              {
+                "task_type": "肺肿瘤检测",
+                "is_ready": true,
+                "blockers": []
+              },
+              {
+                "task_type": "骨转移灶检测",
+                "is_ready": false,
+                "blockers": [
+                  "缺乏病理金标准标签"
+                ]
+              },
+              {
+                "task_type": "肿瘤分割",
+                "is_ready": false,
+                "blockers": [
+                  "病理确诊后方可用作训练标签"
+                ]
+              }
+            ]
+          }
+        },
+        "issues": []
+      }
+    }
+  },
+  "BGC3212225": {
+    "assessment_date": "2026-05-25T10:30:00",
+    "patient_id": "BGC3212225",
+    "overall_quality_score": 82.5,
+    "quality_grade": "B+ (良好,可进入下游训练,存在可接受瑕疵)",
+    "four_dimensions": {
+      "completeness": {
+        "score": 85,
+        "grade": "B+",
+        "detail": {
+          "sequence_completeness": {
+            "score": 90,
+            "note": "Br40+Bl56双核完整,超分输出齐全"
+          },
+          "metadata_completeness": {
+            "score": 100,
+            "note": "年龄/性别/厂商/Rescale参数/扫描协议 全部字段填充"
+          },
+          "report_completeness": {
+            "score": 80,
+            "note": "Findings与Impressions完整,ClinicalInformation字段为空"
+          },
+          "annotation_coverage": {
+            "score": 0,
+            "note": "无分割标注文件,跳过评估",
+            "excluded": true
+          }
+        },
+        "issues": [
+          {
+            "field": "ClinicalInformation",
+            "status": "缺失",
+            "impact": "低",
+            "note": "该字段大部分CT报告天然为空"
+          }
+        ]
+      },
+      "consistency": {
+        "score": 88,
+        "grade": "A-",
+        "detail": {
+          "naming_consistency": {
+            "score": 95,
+            "note": "文件命名统一为{PatientID}_{Kernel}.nii.gz格式"
+          },
+          "protocol_consistency": {
+            "score": 90,
+            "note": "全部为Thorax 1.5mm平扫,协议一致"
+          },
+          "annotation_consistency": {
+            "score": 0,
+            "note": "无标注文件",
+            "excluded": true
+          }
+        },
+        "issues": []
+      },
+      "accuracy": {
+        "score": 78,
+        "grade": "B",
+        "detail": {
+          "hu_accuracy": {
+            "score": 95,
+            "note": "HU还原公式正确,空气区域≈-1000HU,软组织≈30-60HU"
+          },
+          "anatomy_accuracy": {
+            "score": 75,
+            "note": "报告与图像解剖位置基本一致,左肺舌段肿块在Br40/Bl56上均可定位"
+          },
+          "id_report_match": {
+            "score": 100,
+            "note": "BGC3212225的影像与data_reports.xlsx匹配无误"
+          },
+          "kernel_image_consistency": {
+            "score": 70,
+            "note": "Br40与Bl56同一患者,空间配准一致但纹理差异大"
+          }
+        },
+        "issues": [
+          {
+            "type": "motion_artifact",
+            "severity": "medium",
+            "detail": "报告明确提示运动伪影影响评估质量,可能影响HU值局部分布"
+          },
+          {
+            "type": "non_contrast_limitation",
+            "severity": "medium",
+            "detail": "平扫无对比剂,纵隔血管及心脏结构客观评估受限"
+          }
+        ]
+      },
+      "usability": {
+        "score": 79,
+        "grade": "B",
+        "detail": {
+          "image_readiness": {
+            "score": 85,
+            "note": "HU值标准、格式NIfTI、尺寸512x512,主流通用"
+          },
+          "dimension_suitability": {
+            "score": 90,
+            "note": "512x512x294 (Br40/Bl56),支持二维/三维模型输入"
+          },
+          "downstream_readiness": {
+            "tasks": [
+              {
+                "task_type": "肺结节检测",
+                "is_ready": true,
+                "blockers": []
+              },
+              {
+                "task_type": "间质性肺病分类",
+                "is_ready": true,
+                "blockers": []
+              },
+              {
+                "task_type": "纵隔淋巴结分割",
+                "is_ready": false,
+                "blockers": [
+                  "无对比剂增强,淋巴结与血管鉴别困难"
+                ]
+              },
+              {
+                "task_type": "心脏功能分析",
+                "is_ready": false,
+                "blockers": [
+                  "平扫无对比剂",
+                  "无心电门控"
+                ]
+              }
+            ]
+          },
+          "sample_size_note": {
+            "score": 0,
+            "note": "单患者无法独立训练,需与其他4例组成5例集合方可微调预训练模型",
+            "excluded": true
+          }
+        },
+        "issues": []
+      }
+    },
+    "actionable_recommendations": [
+      {
+        "priority": "medium",
+        "dimension": "accuracy",
+        "action": "运动伪影标注:在metadata中增加image_quality.motion_artifact=true标记,下游模型可据此做数据增强或加权",
+        "effort": "低 (1行metadata字段)"
+      },
+      {
+        "priority": "low",
+        "dimension": "completeness",
+        "action": "ClinicalInformation字段空缺无需处理(CT报告常规特征),如后续数据导入EHR可尝试从HIS系统回填",
+        "effort": "无需处理"
+      },
+      {
+        "priority": "medium",
+        "dimension": "usability",
+        "action": "平扫数据适用肺实质/胸壁/骨骼任务;纵隔血管及心脏任务需标注平扫局限性,未来批次建议纳入增强CT数据",
+        "effort": "中 (需协调数据采集端)"
+      }
+    ],
+    "summary": "BGC3212225数据质量综合评分82.5/100(B+级),良好可进入下游。主要扣分项:运动伪影影响(准确性-7)、非增强扫描限制纵隔心脏评估(准确性-5、可用性部分任务不可用)。metadata完整度、文件命名一致性、HU值准确性均达标。"
+  },
+  "BGC3515151": {
+    "assessment_date": "2026-05-25T10:35:00",
+    "patient_id": "BGC3515151",
+    "overall_quality_score": 80.5,
+    "quality_grade": "B+ (良好,可进入下游训练,存在可接受瑕疵)",
+    "four_dimensions": {
+      "completeness": {
+        "score": 85,
+        "grade": "B+",
+        "detail": {
+          "sequence_completeness": {
+            "score": 90,
+            "note": "Br40+Bl56双核完整,超分输出齐全"
+          },
+          "metadata_completeness": {
+            "score": 100,
+            "note": "5字段全部填充"
+          },
+          "report_completeness": {
+            "score": 80,
+            "note": "Findings完整,Impression部分简略"
+          },
+          "annotation_coverage": {
+            "score": 0,
+            "note": "无标注文件",
+            "excluded": true
+          }
+        },
+        "issues": [
+          {
+            "field": "ClinicalInformation",
+            "status": "缺失",
+            "impact": "低",
+            "note": "大部分CT报告天然为空"
+          }
+        ]
+      },
+      "consistency": {
+        "score": 85,
+        "grade": "B+",
+        "detail": {
+          "naming_consistency": {
+            "score": 90,
+            "note": "文件命名统一"
+          },
+          "protocol_consistency": {
+            "score": 90,
+            "note": "全部Thorax 1.0mm平扫,协议一致"
+          },
+          "annotation_consistency": {
+            "score": 0,
+            "note": "无标注文件",
+            "excluded": true
+          }
+        },
+        "issues": []
+      },
+      "accuracy": {
+        "score": 76,
+        "grade": "B",
+        "detail": {
+          "hu_accuracy": {
+            "score": 95,
+            "note": "HU还原公式正确,空气区域-1000HU"
+          },
+          "anatomy_accuracy": {
+            "score": 80,
+            "note": "报告与图像解剖基本一致"
+          },
+          "id_report_match": {
+            "score": 100,
+            "note": "ID与报告匹配无误"
+          },
+          "kernel_image_consistency": {
+            "score": 70,
+            "note": "Br40与Bl56空间一致但纹理差异"
+          },
+          "issues": [
+            {
+              "type": "noise",
+              "severity": "medium",
+              "detail": "低剂量扫描噪声偏高"
+            }
+          ]
+        }
+      },
+      "usability": {
+        "score": 78,
+        "grade": "B",
+        "detail": {
+          "image_readiness": {
+            "score": 85,
+            "note": "HU标准,NIfTI格式,512x512"
+          },
+          "dimension_suitability": {
+            "score": 88,
+            "note": "支持二维/三维模型输入"
+          },
+          "downstream_readiness": {
+            "tasks": [
+              {
+                "task_type": "肺结节检测",
+                "is_ready": true,
+                "blockers": []
+              },
+              {
+                "task_type": "间质性肺病分类",
+                "is_ready": true,
+                "blockers": []
+              },
+              {
+                "task_type": "肺气肿量化",
+                "is_ready": true,
+                "blockers": []
+              },
+              {
+                "task_type": "心脏功能分析",
+                "is_ready": false,
+                "blockers": [
+                  "无对比剂",
+                  "无心电门控"
+                ]
+              }
+            ]
+          }
+        },
+        "issues": []
+      }
+    }
+  }
+}

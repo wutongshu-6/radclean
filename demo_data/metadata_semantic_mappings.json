@@ -1,0 +1,208 @@
+{
+  "BGC3109958": {
+    "patient_id": "BGC3109958",
+    "standardization_date": "2026-05-25T10:30:00",
+    "agent1_formatted_value": "agent1格式标准化后的字段值",
+    "agent3_semantic_value": "agent3语义标准化后的字段值",
+    "fields": [
+      {
+        "field": "age_years",
+        "agent1_format_value": 59,
+        "agent3_semantic_value": "中年(45-64岁)",
+        "loinc_code": "LOINC:30525-0",
+        "snomed_code": "SNOMED:255410008",
+        "note": "年龄组划分依据WHO标准"
+      },
+      {
+        "field": "sex",
+        "agent1_format_value": "female",
+        "agent3_semantic_value": "女性",
+        "loinc_code": "LOINC:LA3-6",
+        "snomed_code": "SNOMED:248152002"
+      },
+      {
+        "field": "manufacturer",
+        "agent1_format_value": "Siemens(格式标准化后)",
+        "agent3_semantic_value": "Siemens Healthineers",
+        "dicom_tag": "DICOM:(0008,0070)",
+        "note": "厂商名从精简名反向映射到DICOM标准完整厂商编码"
+      },
+      {
+        "field": "scan_protocol",
+        "agent1_format_value": "Thorax non-contrast",
+        "agent3_semantic_value": "胸部CT平扫",
+        "loinc_code": "LOINC:24627-2",
+        "note": "扫描协议语义标准化"
+      }
+    ]
+  },
+  "BGC3162381": {
+    "patient_id": "BGC3162381",
+    "standardization_date": "2026-05-25T10:30:00",
+    "agent1_formatted_value": "agent1格式标准化后的字段值",
+    "agent3_semantic_value": "agent3语义标准化后的字段值",
+    "fields": [
+      {
+        "field": "age_years",
+        "agent1_format_value": 72,
+        "agent3_semantic_value": "老年(>=65岁)",
+        "loinc_code": "LOINC:30525-0",
+        "snomed_code": "SNOMED:255410009",
+        "note": "年龄组划分依据WHO标准"
+      },
+      {
+        "field": "sex",
+        "agent1_format_value": "male",
+        "agent3_semantic_value": "男性",
+        "loinc_code": "LOINC:LA2-8",
+        "snomed_code": "SNOMED:248153007"
+      },
+      {
+        "field": "manufacturer",
+        "agent1_format_value": "Siemens(格式标准化后)",
+        "agent3_semantic_value": "Siemens Healthineers",
+        "dicom_tag": "DICOM:(0008,0070)",
+        "note": "厂商名从精简名反向映射到DICOM标准完整厂商编码"
+      },
+      {
+        "field": "scan_protocol",
+        "agent1_format_value": "Thorax non-contrast",
+        "agent3_semantic_value": "胸部CT平扫",
+        "loinc_code": "LOINC:24627-2",
+        "note": "扫描协议语义标准化"
+      }
+    ]
+  },
+  "BGC3176800": {
+    "patient_id": "BGC3176800",
+    "standardization_date": "2026-05-25T10:30:00",
+    "agent1_formatted_value": "agent1格式标准化后的字段值",
+    "agent3_semantic_value": "agent3语义标准化后的字段值",
+    "fields": [
+      {
+        "field": "age_years",
+        "agent1_format_value": 78,
+        "agent3_semantic_value": "老年(>=65岁)",
+        "loinc_code": "LOINC:30525-0",
+        "snomed_code": "SNOMED:255410009",
+        "note": "年龄组划分依据WHO标准"
+      },
+      {
+        "field": "sex",
+        "agent1_format_value": "female",
+        "agent3_semantic_value": "女性",
+        "loinc_code": "LOINC:LA3-6",
+        "snomed_code": "SNOMED:248152002"
+      },
+      {
+        "field": "manufacturer",
+        "agent1_format_value": "Siemens(格式标准化后)",
+        "agent3_semantic_value": "Siemens Healthineers",
+        "dicom_tag": "DICOM:(0008,0070)",
+        "note": "厂商名从精简名反向映射到DICOM标准完整厂商编码"
+      },
+      {
+        "field": "scan_protocol",
+        "agent1_format_value": "Thorax non-contrast",
+        "agent3_semantic_value": "胸部CT平扫",
+        "loinc_code": "LOINC:24627-2",
+        "note": "扫描协议语义标准化"
+      }
+    ]
+  },
+  "BGC3212225": {
+    "patient_id": "BGC3212225",
+    "standardization_date": "2026-05-25T10:25:30",
+    "original_fields": {
+      "PatientAge": "077Y",
+      "PatientSex": "M",
+      "Manufacturer": "Siemens Healthineers"
+    },
+    "standardized_fields": [
+      {
+        "field": "age",
+        "original_value": "077Y",
+        "agent1_formatted_value": 77,
+        "semantic_standard_value": "老年 (Elderly, ≥65岁)",
+        "standard_code": "LOINC:30525-0",
+        "code_system": "LOINC",
+        "code_description": "Age"
+      },
+      {
+        "field": "sex",
+        "original_value": "M",
+        "agent1_formatted_value": "male",
+        "semantic_standard_value": "男性 (Male)",
+        "standard_code": "LA2-8",
+        "code_system": "LOINC",
+        "code_description": "Male"
+      },
+      {
+        "field": "manufacturer",
+        "original_value": "Siemens Healthineers",
+        "agent1_formatted_value": "Siemens",
+        "semantic_standard_value": "Siemens Healthineers",
+        "standard_code": "DCM:0008,0070",
+        "code_system": "DICOM",
+        "code_description": "Manufacturer (0008,0070)"
+      }
+    ],
+    "additional_semantic_annotations": [
+      {
+        "field": "age_group",
+        "value": "老年 (≥65)",
+        "code": "SNOMED:255410009",
+        "derived_from": "age_years = 77"
+      },
+      {
+        "field": "scan_type",
+        "value": "胸部CT平扫 (Thorax CT non-contrast)",
+        "code": "LOINC:24627-2",
+        "derived_from": "scan_protocol"
+      },
+      {
+        "field": "body_region",
+        "value": "胸部 (Chest/Thorax)",
+        "code": "SNOMED:51185008",
+        "derived_from": "scan_protocol"
+      }
+    ]
+  },
+  "BGC3515151": {
+    "patient_id": "BGC3515151",
+    "standardization_date": "2026-05-25T10:30:00",
+    "agent1_formatted_value": "agent1格式标准化后的字段值",
+    "agent3_semantic_value": "agent3语义标准化后的字段值",
+    "fields": [
+      {
+        "field": "age_years",
+        "agent1_format_value": 68,
+        "agent3_semantic_value": "老年(>=65岁)",
+        "loinc_code": "LOINC:30525-0",
+        "snomed_code": "SNOMED:255410009",
+        "note": "年龄组划分依据WHO标准"
+      },
+      {
+        "field": "sex",
+        "agent1_format_value": "male",
+        "agent3_semantic_value": "男性",
+        "loinc_code": "LOINC:LA2-8",
+        "snomed_code": "SNOMED:248153007"
+      },
+      {
+        "field": "manufacturer",
+        "agent1_format_value": "Siemens(格式标准化后)",
+        "agent3_semantic_value": "Siemens Healthineers",
+        "dicom_tag": "DICOM:(0008,0070)",
+        "note": "厂商名从精简名反向映射到DICOM标准完整厂商编码"
+      },
+      {
+        "field": "scan_protocol",
+        "agent1_format_value": "Thorax non-contrast",
+        "agent3_semantic_value": "胸部CT平扫",
+        "loinc_code": "LOINC:24627-2",
+        "note": "扫描协议语义标准化"
+      }
+    ]
+  }
+}

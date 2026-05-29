@@ -2,8 +2,8 @@ const Router = {
   routes: {
     'home':       { render: renderHome, nav: '首页' },
     'workspace':  { render: renderWorkbench, nav: '工作台' },
-    'dashboard':  { render: renderDashboard, nav: '仪表盘' },
-    'terminology':{ render: renderTerminology, nav: '术语库' },
+    'dashboard':  { render: renderDashboard, nav: '治理产出' },
+    'terminology':{ render: renderTerminology, nav: '标准体系' },
     'about':      { render: renderAbout, nav: '关于' },
   },
 

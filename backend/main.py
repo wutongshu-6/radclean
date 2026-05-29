@@ -9,7 +9,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from .api import demo, pipeline, terminology
+from .api import demo, outputs, pipeline, terminology
 
 app = FastAPI(title="RadClean API", docs_url="/docs")
 
@@ -21,6 +21,7 @@ app.add_middleware(
 )
 
 app.include_router(demo.router)
+app.include_router(outputs.router)
 app.include_router(pipeline.router)
 app.include_router(terminology.router)
 

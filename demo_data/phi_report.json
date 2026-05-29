@@ -1,0 +1,17 @@
+{
+  "scan_date": "2026-05-28 14:32:25",
+  "scanned_files": 10,
+  "standard_ref": "HIPAA §164.514(b) / DICOM PS3.15 §E",
+  "confirmed_phi": [],
+  "false_positives": [
+    {"file":"Thorax_150_Bl56_S3_512_512_metadata.json (BGC3212225)","matched_text":"BGC3212225","pattern":"字母+7位数字 (病历号模式)","verdict":"研究编号，非 PHI","basis":"DICOM (0010,0020) PatientID — 研究编码"},
+    {"file":"Thorax_150_Br40_S3_512_512_metadata.json (BGC3212225)","matched_text":"BGC3212225","pattern":"字母+7位数字","verdict":"研究编号，非 PHI","basis":"DICOM (0010,0020) PatientID"}
+  ],
+  "phi_scan_statistics": {
+    "regex_matches_total": 10,
+    "llm_reviewed_candidates": 10,
+    "confirmed_phi_count": 0,
+    "false_positive_rate": "100%"
+  },
+  "action_required": "扫描完成，未发现真实 PHI。BGC 前缀的 Accession Number 经 LLM 复核确认为研究编号，不构成受保护健康信息。metadata JSON 不包含姓名、生日、身份证号、电话号码等 PHI 字段。"
+}

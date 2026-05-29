@@ -1,0 +1,18 @@
+{
+  "scan_date": "2026-05-28 14:32:15",
+  "total_files": 10,
+  "standard": "DICOM PS3.3 / PS3.5",
+  "field_completeness": {
+    "PatientAge":        {"vr":"AS","coverage":"100% (10/10)","required":"Type 1","compliant":true},
+    "PatientSex":        {"vr":"CS","coverage":"100% (10/10)","required":"Type 1","compliant":true},
+    "Manufacturer":      {"vr":"LO","coverage":"100% (10/10)","required":"Type 2","compliant":true},
+    "RescaleIntercept":  {"vr":"DS","coverage":"100% (10/10)","required":"Type 1","compliant":true},
+    "RescaleSlope":      {"vr":"DS","coverage":"100% (10/10)","required":"Type 1","compliant":true},
+    "AccessionNumber":   {"vr":"SH","coverage":"100% (10/10)","required":"Type 2","compliant":true,"note":"从源路径 BGC 前缀提取"},
+    "StudyInstanceUID":  {"vr":"UI","coverage":"0% (0/10)","required":"Type 1","compliant":false,"note":"源 metadata JSON 未提供"},
+    "SeriesInstanceUID": {"vr":"UI","coverage":"0% (0/10)","required":"Type 1","compliant":false,"note":"源 metadata JSON 未提供"},
+    "SliceThickness":    {"vr":"DS","coverage":"0% (0/10)","required":"Type 2","compliant":false,"note":"源 metadata JSON 未提供"},
+    "KVP":               {"vr":"DS","coverage":"0% (0/10)","required":"Type 2","compliant":false,"note":"源 metadata JSON 未提供"}
+  },
+  "summary": "核心五字段 (Type 1/2) 覆盖率 100%，VR 类型全部合规。4 个 DICOM 必填/条件字段 (StudyInstanceUID、SeriesInstanceUID、SliceThickness、KVP) 缺失，因源端 NIfTI sidecar JSON 不包含这些 Tag。对 AI 训练管线无影响，如需 DICOM SR 合规需从原始 DICOM 补充。"
+}

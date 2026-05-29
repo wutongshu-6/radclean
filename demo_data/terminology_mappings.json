@@ -1,0 +1,359 @@
+{
+  "BGC3109958": {
+    "patient_id": "BGC3109958",
+    "standardization_date": "2026-05-25T10:27:00",
+    "terminology_version": "RadLex v4.1.1 / SNOMED CT 2026-01",
+    "mappings": [
+      {
+        "finding_id": 1,
+        "original_term": "磨玻璃密度小结节",
+        "radlex_term": "ground glass opacity",
+        "radlex_id": "RID5592",
+        "snomed_ct": "253219004",
+        "snomed_term": "磨玻璃影",
+        "confidence": 0.95,
+        "source": "llm_semantic"
+      },
+      {
+        "finding_id": 3,
+        "original_term": "散在微小结节",
+        "radlex_term": "pulmonary micronodules",
+        "radlex_id": "RID28880",
+        "snomed_ct": "233703005",
+        "snomed_term": "肺部微小结节",
+        "confidence": 0.9,
+        "source": "llm_semantic"
+      },
+      {
+        "finding_id": 5,
+        "original_term": "淋巴结轻度增大",
+        "radlex_term": "lymphadenopathy",
+        "radlex_id": "RID28808",
+        "snomed_ct": "307460006",
+        "snomed_term": "淋巴结肿大",
+        "confidence": 0.96,
+        "source": "rule_dict"
+      },
+      {
+        "finding_id": 6,
+        "original_term": "冠状动脉钙化",
+        "radlex_term": "coronary artery calcification",
+        "radlex_id": "RID5188",
+        "snomed_ct": "233876005",
+        "snomed_term": "冠状动脉钙化",
+        "confidence": 0.99,
+        "source": "rule_dict"
+      },
+      {
+        "finding_id": 7,
+        "original_term": "管壁钙化",
+        "radlex_term": "vascular calcification",
+        "radlex_id": "RID5190",
+        "snomed_ct": "74968002",
+        "snomed_term": "血管钙化",
+        "confidence": 0.94,
+        "source": "llm_semantic"
+      },
+      {
+        "finding_id": 8,
+        "original_term": "陈旧性骨折",
+        "radlex_term": "old fracture",
+        "radlex_id": "RID5166",
+        "snomed_ct": "399963005",
+        "snomed_term": "陈旧性骨折",
+        "confidence": 0.97,
+        "source": "rule_dict"
+      }
+    ]
+  },
+  "BGC3162381": {
+    "patient_id": "BGC3162381",
+    "standardization_date": "2026-05-25T10:28:00",
+    "terminology_version": "RadLex v4.1.1 / SNOMED CT 2026-01",
+    "mappings": [
+      {
+        "finding_id": 1,
+        "original_term": "实性结节",
+        "radlex_term": "solid pulmonary nodule",
+        "radlex_id": "RID28814",
+        "snomed_ct": "233709007",
+        "snomed_term": "肺部实性结节",
+        "confidence": 0.93,
+        "source": "llm_semantic"
+      },
+      {
+        "finding_id": 4,
+        "original_term": "胸腔积液",
+        "radlex_term": "pleural effusion",
+        "radlex_id": "RID3452",
+        "snomed_ct": "60046008",
+        "snomed_term": "胸腔积液",
+        "confidence": 0.99,
+        "source": "rule_dict"
+      },
+      {
+        "finding_id": 5,
+        "original_term": "肺大疱",
+        "radlex_term": "bulla",
+        "radlex_id": "RID4784",
+        "snomed_ct": "24859001",
+        "snomed_term": "肺大疱",
+        "confidence": 0.98,
+        "source": "rule_dict"
+      },
+      {
+        "finding_id": 6,
+        "original_term": "粥样硬化",
+        "radlex_term": "atherosclerosis",
+        "radlex_id": "RID4876",
+        "snomed_ct": "266574000",
+        "snomed_term": "动脉粥样硬化",
+        "confidence": 0.95,
+        "source": "llm_semantic"
+      }
+    ]
+  },
+  "BGC3176800": {
+    "patient_id": "BGC3176800",
+    "standardization_date": "2026-05-25T10:29:00",
+    "terminology_version": "RadLex v4.1.1 / SNOMED CT 2026-01",
+    "mappings": [
+      {
+        "finding_id": 1,
+        "original_term": "不规则软组织肿块",
+        "radlex_term": "soft tissue mass",
+        "radlex_id": "RID3872",
+        "snomed_ct": "860490009",
+        "snomed_term": "软组织肿块",
+        "confidence": 0.94,
+        "source": "llm_semantic"
+      },
+      {
+        "finding_id": 2,
+        "original_term": "淋巴结肿大",
+        "radlex_term": "mediastinal lymphadenopathy",
+        "radlex_id": "RID28808",
+        "snomed_ct": "307460006",
+        "snomed_term": "纵隔淋巴结肿大",
+        "confidence": 0.97,
+        "source": "rule_dict"
+      },
+      {
+        "finding_id": 5,
+        "original_term": "多发成骨性转移可能",
+        "radlex_term": "osteoblastic lesion",
+        "radlex_id": "RID3672",
+        "snomed_ct": "95928003",
+        "snomed_term": "成骨性病变",
+        "confidence": 0.85,
+        "source": "llm_semantic"
+      },
+      {
+        "finding_id": 6,
+        "original_term": "低密度结节",
+        "radlex_term": "thyroid nodule",
+        "radlex_id": "RID3878",
+        "snomed_ct": "237497007",
+        "snomed_term": "甲状腺结节",
+        "confidence": 0.92,
+        "source": "llm_semantic"
+      }
+    ]
+  },
+  "BGC3212225": {
+    "patient_id": "BGC3212225",
+    "standardization_date": "2026-05-25T10:25:00",
+    "terminology_version": "RadLex v4.1.1 / SNOMED CT 2026-01",
+    "mappings": [
+      {
+        "finding_id": 4,
+        "original_term": "动脉瘤样扩张",
+        "radlex_term": "aneurysmal dilatation",
+        "radlex_id": "RID4512",
+        "snomed_ct": "253582008",
+        "snomed_term": "动脉扩张 (Aneurysmal dilatation)",
+        "confidence": 0.95,
+        "source": "llm_semantic"
+      },
+      {
+        "finding_id": 7,
+        "original_term": "心影增大",
+        "radlex_term": "cardiomegaly",
+        "radlex_id": "RID5631",
+        "snomed_ct": "8186001",
+        "snomed_term": "心脏扩大 (Cardiomegaly)",
+        "confidence": 0.97,
+        "source": "rule_dict"
+      },
+      {
+        "finding_id": 8,
+        "original_term": "钙化性粥样硬化斑块",
+        "radlex_term": "calcified atherosclerotic plaque",
+        "radlex_id": "RID4876",
+        "snomed_ct": "266574000",
+        "snomed_term": "动脉粥样硬化 (Atherosclerosis)",
+        "confidence": 0.93,
+        "source": "llm_semantic"
+      },
+      {
+        "finding_id": 9,
+        "original_term": "微量胸腔积液",
+        "radlex_term": "pleural effusion",
+        "radlex_id": "RID3452",
+        "snomed_ct": "60046008",
+        "snomed_term": "胸腔积液 (Pleural effusion)",
+        "confidence": 0.98,
+        "source": "rule_dict",
+        "severity_modifier": "微量"
+      },
+      {
+        "finding_id": 10,
+        "original_term": "胸膜基底软组织密度肿块",
+        "radlex_term": "pleural-based soft tissue mass",
+        "radlex_id": "RID3872",
+        "snomed_ct": "860490009",
+        "snomed_term": "肺肿块 (Mass of lung)",
+        "confidence": 0.91,
+        "source": "llm_semantic"
+      },
+      {
+        "finding_id": 11,
+        "original_term": "肺气肿",
+        "radlex_term": "pulmonary emphysema",
+        "radlex_id": "RID4788",
+        "snomed_ct": "19947006",
+        "snomed_term": "肺气肿 (Emphysema)",
+        "confidence": 0.99,
+        "source": "rule_dict"
+      },
+      {
+        "finding_id": 12,
+        "original_term": "小叶间隔增厚",
+        "radlex_term": "interlobular septal thickening",
+        "radlex_id": "RID28469",
+        "snomed_ct": "233709007",
+        "snomed_term": "间质性肺病 (Interstitial lung disease)",
+        "confidence": 0.88,
+        "source": "llm_semantic",
+        "note": "小叶间隔增厚为ILD影像学征象,映射至ILD概念"
+      },
+      {
+        "finding_id": 13,
+        "original_term": "纵隔淋巴结肿大",
+        "radlex_term": "mediastinal lymphadenopathy",
+        "radlex_id": "RID28808",
+        "snomed_ct": "307460006",
+        "snomed_term": "淋巴结肿大 (Lymphadenopathy)",
+        "confidence": 0.96,
+        "source": "rule_dict"
+      },
+      {
+        "finding_id": 3,
+        "original_term": "滑动型食管裂孔疝",
+        "radlex_term": "sliding hiatal hernia",
+        "radlex_id": "RID28911",
+        "snomed_ct": "39976001",
+        "snomed_term": "食管裂孔疝 (Esophageal hiatal hernia)",
+        "confidence": 0.94,
+        "source": "llm_semantic"
+      },
+      {
+        "finding_id": 14,
+        "original_term": "骨退行性改变",
+        "radlex_term": "degenerative bone change",
+        "radlex_id": "RID5196",
+        "snomed_ct": "399963005",
+        "snomed_term": "退行性病变 (Degenerative disorder)",
+        "confidence": 0.97,
+        "source": "rule_dict"
+      }
+    ],
+    "unmapped_terms": [],
+    "coverage_statistics": {
+      "total_terms": 10,
+      "mapped": 10,
+      "unmapped": 0,
+      "coverage_pct": 100.0,
+      "rule_dict_hits": 5,
+      "llm_semantic_hits": 5,
+      "avg_confidence": 0.948
+    }
+  },
+  "BGC3515151": {
+    "patient_id": "BGC3515151",
+    "standardization_date": "2026-05-25T10:26:00",
+    "terminology_version": "RadLex v4.1.1 / SNOMED CT 2026-01",
+    "mappings": [
+      {
+        "finding_id": 2,
+        "original_term": "少许索条影",
+        "radlex_term": "fibrotic band",
+        "radlex_id": "RID28579",
+        "snomed_ct": "233719006",
+        "snomed_term": "纤维条索",
+        "confidence": 0.91,
+        "source": "llm_semantic"
+      },
+      {
+        "finding_id": 3,
+        "original_term": "多发小叶中心型肺气肿",
+        "radlex_term": "pulmonary emphysema",
+        "radlex_id": "RID4788",
+        "snomed_ct": "19947006",
+        "snomed_term": "肺气肿",
+        "confidence": 0.96,
+        "source": "rule_dict"
+      },
+      {
+        "finding_id": 4,
+        "original_term": "支气管壁增厚",
+        "radlex_term": "bronchial wall thickening",
+        "radlex_id": "RID28445",
+        "snomed_ct": "233701008",
+        "snomed_term": "支气管壁增厚",
+        "confidence": 0.97,
+        "source": "rule_dict"
+      },
+      {
+        "finding_id": 7,
+        "original_term": "管壁钙化",
+        "radlex_term": "vascular calcification",
+        "radlex_id": "RID5190",
+        "snomed_ct": "74968002",
+        "snomed_term": "血管钙化",
+        "confidence": 0.94,
+        "source": "llm_semantic"
+      },
+      {
+        "finding_id": 8,
+        "original_term": "钙化斑块",
+        "radlex_term": "calcified atherosclerotic plaque",
+        "radlex_id": "RID4876",
+        "snomed_ct": "266574000",
+        "snomed_term": "动脉粥样硬化",
+        "confidence": 0.93,
+        "source": "llm_semantic"
+      },
+      {
+        "finding_id": 9,
+        "original_term": "骨质增生",
+        "radlex_term": "osteophyte",
+        "radlex_id": "RID5196",
+        "snomed_ct": "399963005",
+        "snomed_term": "骨赘",
+        "confidence": 0.98,
+        "source": "rule_dict"
+      },
+      {
+        "finding_id": 10,
+        "original_term": "双侧胸膜增厚",
+        "radlex_term": "pleural thickening",
+        "radlex_id": "RID3462",
+        "snomed_ct": "233721001",
+        "snomed_term": "胸膜增厚",
+        "confidence": 0.96,
+        "source": "rule_dict"
+      }
+    ]
+  }
+}

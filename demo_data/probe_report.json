@@ -1,0 +1,43 @@
+{
+  "scan_date": "2026-05-28 14:32:10",
+  "patient_count": 5,
+  "file_stats": {
+    "total_files": 10,
+    "nifti_files": 10,
+    "metadata_files": 10,
+    "report_files": 5
+  },
+  "has_problems": false,
+  "kernel_types": ["Bl56 (肺窗/锐利)", "Br40 (体窗/标准)", "Br60 (体窗/锐利)"],
+  "standards_checklist": {
+    "layer1_dicom": {
+      "label": "DICOM VR 合规 (PS3.3 / PS3.5)",
+      "fields_checked": 50,
+      "compliant": 50,
+      "violations": 0,
+      "details": [
+        {"field": "PatientAge", "vr": "AS", "count": 10, "status": "合规", "rule": "PS3.5 §6.2 — nnnX 固定3位+单位"},
+        {"field": "PatientSex", "vr": "CS", "count": 10, "status": "合规", "rule": "PS3.3 §C.7.1.1 — 枚举值 M/F/O"},
+        {"field": "Manufacturer", "vr": "LO", "count": 10, "status": "合规", "rule": "PS3.5 §6.2 — 最长64字符"},
+        {"field": "RescaleIntercept", "vr": "DS", "count": 10, "status": "合规", "rule": "PS3.3 §C.11.1.1.1 — 浮点数字符串"},
+        {"field": "RescaleSlope", "vr": "DS", "count": 10, "status": "合规", "rule": "PS3.3 §C.11.1.1.1"}
+      ]
+    },
+    "layer1_nifti": {
+      "label": "NIfTI 图像校验",
+      "files_total": 10,
+      "valid": 10,
+      "corrupt": 0,
+      "orientation_consistent": true,
+      "voxel_spacing_consistent": true,
+      "dimensions_consistent": false,
+      "note": "维度不一致属正常检查间差异，非数据质量问题"
+    }
+  },
+  "recommended_actions": [
+    "DICOM 合规校验完成 — 所有字段符合对应 VR 类型规范，无需纠错",
+    "NIfTI 图像校验完成 — 10/10 文件有效，无损坏",
+    "可选补充字段: StudyInstanceUID、SeriesInstanceUID、SliceThickness、KVP (当前 metadata JSON 未提供)"
+  ],
+  "summary": "探针扫描完成：5 位患者共 10 个 NIfTI 文件，全部附带 metadata JSON。核心五字段 (PatientAge/PatientSex/Manufacturer/RescaleIntercept/RescaleSlope) 均符合 DICOM PS3.x 对应 VR 规范，未发现格式违规、文件损坏或空间对齐异常。4 个 DICOM 可选字段 (StudyInstanceUID 等) 缺失，因源 metadata JSON 未包含，不影响合规性。"
+}

@@ -1,429 +1,527 @@
+var _outputMode = 'human'; // 'model' | 'human'
+var _outputData = null;
+
 async function renderDashboard() {
   var page = document.getElementById('page-dashboard');
   if (!page) return;
 
-  // Check if pipeline has been run — show empty state if not
-  if (!App.state.pipelineResults) {
-    page.innerHTML =
-      '<div class="container">' +
-      '<div class="section-header"><h2>数据治理仪表盘</h2></div>' +
-      '<div class="empty-state" style="text-align:center;padding:80px 20px">' +
-      '<div style="font-size:3rem;margin-bottom:16px;color:var(--text-tertiary)">--</div>' +
-      '<h3 style="color:var(--text-secondary);margin-bottom:8px">尚未执行数据治理流程</h3>' +
-      '<p style="color:var(--text-tertiary);font-size:0.9rem;margin-bottom:24px">仪表盘展示的是管线处理后的数据结果，请先在工作台执行治理流程</p>' +
-      '<button class="btn btn-primary" data-nav="workspace">前往工作台</button>' +
-      '</div>' +
-      '</div>';
-    return;
+  // Load output data
+  try {
+    var [assessments, findings, termMappings, kernelMapping] = await Promise.all([
+      API.getDemoData('per_patient_assessments'),
+      API.getDemoData('structured_findings'),
+      API.getDemoData('terminology_mappings'),
+      API.getDemoData('kernel_mapping')
+    ]);
+    _outputData = {
+      assessments: assessments || {},
+      findings: findings || {},
+      termMappings: termMappings || {},
+      kernelMapping: kernelMapping || {}
+    };
+  } catch(e) {
+    _outputData = { assessments: {}, findings: {}, termMappings: {}, kernelMapping: {} };
   }
 
-  var pr = App.state.pipelineResults;
-  var modeText = (pr._cleaning_mode === 'dicom') ? 'DICOM 兼容' : '分析';
-  var modeStyle = (pr._cleaning_mode === 'dicom') ? 'background:#EEF2FB;color:var(--accent)' : 'background:#F0F4E8;color:#2D5A27';
+  var patientIds = Object.keys(_outputData.assessments).sort();
 
   page.innerHTML =
     '<div class="container">' +
-    '<div class="section-header"><h2>数据治理仪表盘</h2><span style="display:inline-block;padding:2px 12px;border-radius:3px;font-size:0.75rem;font-weight:600;margin-left:12px;' + modeStyle + '">' + modeText + ' 模式</span></div>' +
-    '<div class="kpi-grid" id="dash-kpis"></div>' +
-    '<div id="dash-ai-summary" style="margin-top:20px;padding:20px 24px;background:var(--bg-card);border:1px solid var(--accent);border-left:4px solid var(--accent);border-radius:4px;display:none">' +
-    '<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">' +
-    '<span style="font-size:0.78rem;font-weight:600;color:var(--accent);letter-spacing:0.04em;text-transform:uppercase">AI 治理总结</span>' +
-    '<span style="font-size:0.65rem;color:var(--text-tertiary);background:var(--bg-primary);padding:2px 8px;border-radius:3px">LLM 增强</span>' +
+    '<div class="section-header">' +
+    '<h2>治理产出</h2>' +
+    '<p class="text-secondary" style="font-size:0.85rem;margin-top:4px">双输出体系 — 模型消费（机器可读）· 人工审查（可视化质控）</p>' +
     '</div>' +
-    '<div id="dash-ai-summary-text" style="font-size:0.88rem;line-height:1.9;color:var(--text-secondary)"></div>' +
+
+    // Mode toggle
+    '<div style="display:flex;justify-content:center;margin-bottom:var(--space-xl)">' +
+    '<div class="mode-toggle">' +
+    '<button class="mode-btn active" data-mode="human" id="mode-human">人工审查输出<br><small>面向质控人员</small></button>' +
+    '<button class="mode-btn" data-mode="model" id="mode-model">模型消费输出<br><small>面向 AI 训练</small></button>' +
     '</div>' +
-    '<div id="dash-semantic" style="margin-top:20px;padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:4px;display:none">' +
-    '<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">' +
-    '<span style="font-size:0.78rem;font-weight:600;color:var(--text-primary);letter-spacing:0.04em">AI 语义质量抽查</span>' +
-    '<span style="font-size:0.65rem;color:var(--text-tertiary);background:var(--bg-primary);padding:2px 8px;border-radius:3px">LLM 增强</span>' +
     '</div>' +
-    '<div id="dash-semantic-text" style="font-size:0.85rem;line-height:1.8;color:var(--text-secondary)"></div>' +
+
+    // Human review section
+    '<div id="output-human">' +
+    renderHumanOverview(patientIds) +
     '</div>' +
-    '<div class="charts-grid" style="margin-top:24px">' +
-    '<div class="chart-box"><h3>质量维度评估</h3><div class="chart-container" id="chart-radar"></div>' +
-    '<p style="font-size:0.68rem;color:var(--text-tertiary);line-height:1.7;margin-top:8px;padding-top:8px;border-top:1px solid var(--rule)">' +
-    '完整性: 5 个核心字段缺失率 &le; 15% · 准确性: 年龄/斜率异常检测 · 一致性: DICOM 与报告交叉核对 · 可用性: 有效信息病例占比 · 综合 = 四项均值 &ge; 0.80' +
-    '</p></div>' +
-    '<div class="chart-box"><h3>疾病检出概览</h3><div class="chart-container" id="chart-disease"></div></div>' +
-    '<div class="chart-box"><h3>解剖部位提及频次</h3><div class="chart-container tall" id="chart-anatomy"></div></div>' +
-    '<div class="chart-box"><h3>分类标签分布</h3><div class="chart-container tall" id="chart-heatmap"></div></div>' +
+
+    // Model consumption section
+    '<div id="output-model" style="display:none">' +
+    renderModelOverview(patientIds) +
     '</div>' +
-    '<div class="section" style="margin-top:32px">' +
-    '<div class="section-header"><h3>元数据清洗前后对比</h3></div>' +
-    '<div style="overflow-x:auto" id="dash-meta-table"></div>' +
-    '</div>' +
-    '<div class="section" style="margin-top:32px">' +
-    '<div class="section-header"><h3>病例结构化详情</h3></div>' +
-    '<div style="overflow-x:auto" id="dash-detail-table"></div>' +
-    '</div>' +
+
     '</div>';
 
-  // Event delegation for expandable detail rows
+  // Mode switch
   page.addEventListener('click', function(e) {
     var el = e.target;
     while (el && el !== page) {
-      if (el.classList && el.classList.contains('expand-row')) {
-        var acc = el.getAttribute('data-expand');
-        if (acc) {
-          e.preventDefault();
-          toggleDetailRow(el, acc);
-          return;
-        }
+      if (el.classList && el.classList.contains('mode-btn')) {
+        var mode = el.getAttribute('data-mode');
+        if (mode) switchOutputMode(mode);
+        return;
       }
       el = el.parentElement;
     }
   });
 
-  try {
-    if (typeof echarts === 'undefined') {
-      throw new Error('ECharts 图表库加载失败，请检查网络连接后刷新页面');
+  // Report tab switching
+  page.addEventListener('click', function(e) {
+    var el = e.target;
+    while (el && el !== page) {
+      if (el.classList && el.classList.contains('report-tab')) {
+        var tab = el.getAttribute('data-tab');
+        if (tab) switchReportTab(tab);
+        return;
+      }
+      el = el.parentElement;
     }
-    var pr = App.state.pipelineResults;
-    var meta = pr.cleaned_metadata || [];
-    var annotations = pr.annotations || {};
-    var classifications = pr.classifications || {};
-    var quality = pr.quality_report || {};
-    var overview = {
-      total_cases: Object.keys(classifications).length,
-      total_records: meta.length,
-      overall_score: quality.overall_score || 0,
-      overall_pass: quality.overall_pass || false,
-    };
-
-    renderKPIs(overview);
-    loadGovernanceSummary();
-    loadSemanticVerification();
-    renderRadarChart(quality);
-    renderDiseaseChart(classifications);
-    renderAnatomyChart(annotations);
-    renderHeatmapChart(classifications);
-    renderMetaTable(meta);
-    renderDetailTable(annotations, classifications);
-  } catch (e) {
-    console.error('Dashboard load failed:', e);
-    var kpiEl = document.getElementById('dash-kpis');
-    if (kpiEl) kpiEl.innerHTML = '<div class="no-data">' + (e.message || '数据加载失败') + '</div>';
-  }
-}
-
-function renderKPIs(overview) {
-  var el = document.getElementById('dash-kpis');
-  el.innerHTML =
-    '<div class="kpi-card animate-in stagger-1">' +
-    '<div class="data-label">病例数</div>' +
-    '<div class="data-value">' + overview.total_cases + '</div>' +
-    '</div>' +
-    '<div class="kpi-card animate-in stagger-2">' +
-    '<div class="data-label">影像记录数</div>' +
-    '<div class="data-value">' + overview.total_records + '</div>' +
-    '</div>' +
-    '<div class="kpi-card animate-in stagger-3">' +
-    '<div class="data-label">综合质量评分</div>' +
-    '<div class="data-value">' + overview.overall_score.toFixed(3) + '</div>' +
-    '</div>' +
-    '<div class="kpi-card ' + (overview.overall_pass ? 'pass' : 'fail') + ' animate-in stagger-4">' +
-    '<div class="data-label">质量总评</div>' +
-    '<div class="data-value">' + (overview.overall_pass ? 'PASS' : 'FAIL') + '</div>' +
-    '</div>';
-}
-
-function renderRadarChart(quality) {
-  var dom = document.getElementById('chart-radar');
-  if (!dom) return;
-  var chart = echarts.init(dom);
-  var dims = ['completeness', 'accuracy', 'consistency', 'usability'];
-  var labels = ['完整性', '准确性', '一致性', '可用性'];
-  var scores = dims.map(function(d) { return quality[d] ? quality[d].score : 0; });
-  var thresholds = dims.map(function(d) { return quality[d] ? quality[d].threshold : 0; });
-
-  chart.setOption({
-    tooltip: { trigger: 'item' },
-    legend: { data: ['实际评分', '阈值'], bottom: 0, textStyle: { fontSize: 12 } },
-    radar: {
-      center: ['50%', '48%'],
-      radius: '65%',
-      indicator: labels.map(function(l) { return { name: l, max: 1 }; }),
-    },
-    series: [
-      {
-        type: 'radar',
-        data: [
-          { value: scores, name: '实际评分', areaStyle: { color: 'rgba(0,47,167,0.15)' }, lineStyle: { color: '#002FA7', width: 2 }, itemStyle: { color: '#002FA7' }, symbol: 'circle', symbolSize: 6 },
-          { value: thresholds, name: '阈值', lineStyle: { color: '#9E9E9E', width: 1, type: 'dashed' }, itemStyle: { color: '#9E9E9E' }, symbol: 'none', areaStyle: { opacity: 0 } },
-        ],
-      },
-    ],
   });
 
-  window.addEventListener('resize', function() { chart.resize(); });
-}
-
-function renderDiseaseChart(classifications) {
-  var dom = document.getElementById('chart-disease');
-  if (!dom) return;
-  var chart = echarts.init(dom);
-
-  var accs = Object.keys(classifications).slice(0, 5);
-  var seriesMap = {};
-
-  for (var i = 0; i < accs.length; i++) {
-    var acc = accs[i];
-    var labels = classifications[acc]._positive_labels || [];
-    for (var j = 0; j < labels.length; j++) {
-      var l = labels[j];
-      if (!seriesMap[l]) seriesMap[l] = new Array(accs.length).fill(0);
-      seriesMap[l][i] += 1;
-    }
-  }
-
-  var labelList = Object.keys(seriesMap);
-  var colors = ['#002FA7','#3B6FD4','#5B8FEF','#7BA8FF','#9BC1FF','#A0C4E8','#86A6C8','#6D8FA8','#557888','#3D6068','#2D5A27','#4A7A44','#689A61','#87BA7E','#A5DA9B','#8B1A1A','#A84040','#C56666','#E28C8C','#FFB2B2','#9E9E9E'];
-
-  var series = labelList.map(function(l, i) {
-    return {
-      name: l,
-      type: 'bar',
-      stack: 'total',
-      data: seriesMap[l],
-      itemStyle: { color: colors[i % colors.length] },
-      emphasis: { focus: 'series' },
-    };
-  });
-
-  chart.setOption({
-    tooltip: { trigger: 'item' },
-    legend: { type: 'scroll', bottom: 0, textStyle: { fontSize: 10 }, data: labelList },
-    xAxis: { type: 'category', data: accs.map(function(a) { return a.slice(-6); }), axisLabel: { fontSize: 11, fontFamily: 'JetBrains Mono' } },
-    yAxis: { type: 'value', name: '检出数', nameTextStyle: { fontSize: 11 } },
-    series: series,
-  });
-
-  window.addEventListener('resize', function() { chart.resize(); });
-}
-
-function renderAnatomyChart(annotations) {
-  var dom = document.getElementById('chart-anatomy');
-  if (!dom) return;
-  var chart = echarts.init(dom);
-
-  var counts = {};
-  var annValues = Object.values(annotations);
-  for (var i = 0; i < annValues.length; i++) {
-    var sites = annValues[i].anatomy_mentioned || [];
-    for (var j = 0; j < sites.length; j++) {
-      var site = sites[j];
-      counts[site] = (counts[site] || 0) + 1;
-    }
-  }
-  var sorted = Object.entries(counts).sort(function(a, b) { return b[1] - a[1]; }).slice(0, 15);
-
-  chart.setOption({
-    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-    grid: { left: 200, right: 40, top: 10, bottom: 10, containLabel: true },
-    xAxis: { type: 'value', name: '提及次数' },
-    yAxis: { type: 'category', data: sorted.map(function(s) { return s[0]; }).reverse(), axisLabel: { fontSize: 11, width: 180, overflow: 'truncate' }, inverse: true },
-    series: [{
-      type: 'bar',
-      data: sorted.map(function(s) { return s[1]; }).reverse(),
-      itemStyle: { color: '#002FA7' },
-      barMaxWidth: 20,
-    }],
-  });
-
-  window.addEventListener('resize', function() { chart.resize(); });
-}
-
-function renderHeatmapChart(classifications) {
-  var dom = document.getElementById('chart-heatmap');
-  if (!dom) return;
-  var chart = echarts.init(dom);
-
-  var accs = Object.keys(classifications).slice(0, 5);
-  var labelSet = {};
-  for (var i = 0; i < accs.length; i++) {
-    var labels = classifications[accs[i]]._positive_labels || [];
-    for (var j = 0; j < labels.length; j++) {
-      labelSet[labels[j]] = true;
-    }
-  }
-  var allLabels = Object.keys(labelSet);
-
-  var data = [];
-  for (var i = 0; i < allLabels.length; i++) {
-    for (var j = 0; j < accs.length; j++) {
-      var conf = (classifications[accs[j]] && classifications[accs[j]][allLabels[i]] ? classifications[accs[j]][allLabels[i]].confidence : 0) || 0;
-      data.push([j, i, conf]);
-    }
-  }
-
-  chart.setOption({
-    tooltip: {
-      position: 'top',
-      formatter: function(p) { return accs[p.value[0]].slice(-6) + ' · ' + allLabels[p.value[1]] + '<br/>置信度: ' + p.value[2].toFixed(2); },
-    },
-    grid: { left: 160, right: 30, top: 10, bottom: 30 },
-    xAxis: { type: 'category', data: accs.map(function(a) { return a.slice(-6); }), axisLabel: { fontSize: 11, fontFamily: 'JetBrains Mono' }, position: 'bottom' },
-    yAxis: { type: 'category', data: allLabels, axisLabel: { fontSize: 10 } },
-    visualMap: { min: 0, max: 1, calculable: true, orient: 'vertical', right: 0, top: 'center', inRange: { color: ['#FAFAFA', '#9BC1FF', '#002FA7'] } },
-    series: [{
-      type: 'heatmap',
-      data: data,
-      label: { show: true, fontSize: 10, formatter: function(p) { return p.value[2] > 0 ? p.value[2].toFixed(1) : ''; } },
-      emphasis: { itemStyle: { shadowBlur: 10, shadowColor: 'rgba(0,0,0,0.3)' } },
-    }],
-  });
-
-  window.addEventListener('resize', function() { chart.resize(); });
-}
-
-function renderMetaTable(meta) {
-  var seen = {};
-  var rows = '';
-  for (var i = 0; i < meta.length; i++) {
-    var rec = meta[i];
-    var acc = rec._accession_no || '';
-    if (!acc || seen[acc]) continue;
-    seen[acc] = true;
-    rows += '<tr>' +
-      '<td>' + acc + '</td>' +
-      '<td class="cell-changed">' + (rec.PatientAge || '-') + '</td><td>' + (rec.PatientAgeClean != null ? rec.PatientAgeClean : '-') + '</td>' +
-      '<td class="cell-changed">' + (rec.PatientSex || '-') + '</td><td>' + (rec.PatientSexClean != null ? rec.PatientSexClean : '-') + '</td>' +
-      '<td class="cell-changed">' + (rec.RescaleIntercept || '-') + '</td><td>' + (rec.RescaleInterceptClean != null ? rec.RescaleInterceptClean : '-') + '</td>' +
-      '<td class="cell-changed">' + (rec.RescaleSlope || '-') + '</td><td>' + (rec.RescaleSlopeClean != null ? rec.RescaleSlopeClean : '-') + '</td>' +
-      '</tr>';
-  }
-  document.getElementById('dash-meta-table').innerHTML =
-    '<table class="compare-table">' +
-    '<thead><tr><th>检查号</th><th>年龄(前)</th><th>年龄(后)</th><th>性别(前)</th><th>性别(后)</th><th>截距(前)</th><th>截距(后)</th><th>斜率(前)</th><th>斜率(后)</th></tr></thead>' +
-    '<tbody>' + rows + '</tbody>' +
-    '</table>';
-}
-
-function renderDetailTable(annotations, classifications) {
-  var accs = Object.keys(classifications).sort();
-  var rows = '';
-  for (var i = 0; i < accs.length; i++) {
-    var acc = accs[i];
-    var ann = annotations[acc] || {};
-    var cls = classifications[acc] || {};
-    rows += '<tr class="expand-row" data-expand="' + acc + '" style="cursor:pointer">' +
-      '<td>' + acc + '</td>' +
-      '<td>' + (ann.age != null ? ann.age : '-') + '</td>' +
-      '<td>' + (ann.sex != null ? ann.sex : '-') + '</td>' +
-      '<td>' + (cls._primary_diagnosis || '-') + '</td>' +
-      '<td>' + ((cls._positive_labels || []).join(', ') || '-') + '</td>' +
-      '<td>' + (ann.anatomy_mentioned || []).length + '</td>' +
-      '<td>' + (ann.modifiers_mentioned || []).length + '</td>' +
-      '</tr>' +
-      '<tr class="detail-row" id="detail-' + acc + '" style="display:none"><td colspan="7"></td></tr>';
-  }
-  document.getElementById('dash-detail-table').innerHTML =
-    '<table class="data-table">' +
-    '<thead><tr><th>检查号</th><th>年龄</th><th>性别</th><th>主要诊断</th><th>阳性标签</th><th>解剖部位数</th><th>修饰词数</th></tr></thead>' +
-    '<tbody>' + rows + '</tbody>' +
-    '</table>';
-}
-
-function toggleDetailRow(tr, acc) {
-  var detailRow = document.getElementById('detail-' + acc);
-  if (!detailRow) return;
-  if (detailRow.style.display === 'none') {
-    Promise.resolve(App.state.pipelineResults.annotations || {}).then(function(data) {
-      var ann = data[acc] || {};
-      var diseases = Object.keys(ann.diseases || {});
-      var negated = ann.negated_findings || [];
-      var diseaseTags = '';
-      for (var i = 0; i < diseases.length; i++) {
-        var d = diseases[i];
-        diseaseTags += '<span class="entity-tag disease">' + d + ' (' + ann.diseases[d].length + ')</span>';
-      }
-      var negatedTags = '';
-      for (var j = 0; j < negated.length; j++) {
-        negatedTags += '<span class="entity-tag negated">' + negated[j].disease + '</span>';
-      }
-      var anatomyTags = '';
-      var am = ann.anatomy_mentioned || [];
-      for (var k = 0; k < am.length; k++) {
-        anatomyTags += '<span class="entity-tag anatomy">' + am[k] + '</span>';
-      }
-      var modTags = '';
-      var mm = ann.modifiers_mentioned || [];
-      for (var m = 0; m < mm.length; m++) {
-        modTags += '<span class="entity-tag">' + mm[m] + '</span>';
-      }
-      var rawTextHtml = '';
-      if (ann.raw_text) {
-        rawTextHtml = '<div style="grid-column:1/-1"><strong>原始文本:</strong><div style="font-size:0.85rem;line-height:1.8;color:var(--text-secondary);max-height:150px;overflow-y:auto;padding:8px;background:var(--bg-primary);border:1px solid var(--border);margin-top:4px">' + ann.raw_text.slice(0, 1000) + '</div></div>';
-      }
-      detailRow.children[0].innerHTML =
-        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">' +
-        '<div><strong>检出疾病:</strong><div class="entity-tags">' + (diseaseTags || '无') + '</div></div>' +
-        '<div><strong>否定发现:</strong><div class="entity-tags">' + (negatedTags || '无') + '</div></div>' +
-        '<div><strong>解剖部位:</strong><div class="entity-tags">' + (anatomyTags || '无') + '</div></div>' +
-        '<div><strong>修饰词:</strong><div class="entity-tags">' + (modTags || '无') + '</div></div>' +
-        rawTextHtml +
-        '</div>';
+  // Patient selector
+  var sel = document.getElementById('patient-selector');
+  if (sel) {
+    sel.addEventListener('change', function() {
+      loadPatientDetails(this.value);
     });
-    detailRow.style.display = '';
-  } else {
-    detailRow.style.display = 'none';
+    // Load first patient by default
+    if (patientIds.length > 0) loadPatientDetails(patientIds[0]);
   }
+
+  // Render first report tab
+  switchReportTab('probe');
+
+  // Render radar chart
+  setTimeout(function() { renderQualityRadar(); }, 300);
 }
 
-function loadSemanticVerification() {
-  var box = document.getElementById('dash-semantic');
-  var textEl = document.getElementById('dash-semantic-text');
-  if (!box || !textEl) return;
+// === Mode Switching ===
 
-  API.getDemoData('semantic_verification').then(function(data) {
-    if (!data || Object.keys(data).length === 0) { box.style.display = 'none'; return; }
-    box.style.display = 'block';
-    var qualityMap = { good: '良好 ✓', fair: '一般 ~', poor: '较差 ✗' };
-    var colorMap = { good: 'var(--success)', fair: '#B8860B', poor: 'var(--fail)' };
-    var html = '';
-    var accs = Object.keys(data);
-    for (var i = 0; i < accs.length; i++) {
-      var acc = accs[i];
-      var v = data[acc];
-      var q = v.overall_quality || 'unknown';
-      html += '<div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--rule)">' +
-        '<strong style="font-family:var(--font-mono);font-size:0.82rem">' + acc + '</strong>' +
-        '<span style="display:inline-block;margin-left:10px;padding:1px 10px;border-radius:3px;font-size:0.72rem;font-weight:600;color:' + (colorMap[q] || 'var(--text-tertiary)') + ';background:' + (q === 'good' ? '#EDF5EC' : q === 'poor' ? '#FDEDED' : '#FDF8ED') + '">' + (qualityMap[q] || q) + '</span>' +
-        '<span style="font-size:0.72rem;color:var(--text-tertiary);margin-left:8px">置信度 ' + (v.confidence != null ? (v.confidence * 100).toFixed(0) + '%' : '-') + '</span>' +
-        '<div style="margin-top:6px;font-size:0.8rem;line-height:1.7">' + (v.brief_note || '') + '</div>';
-      if (v.false_positives && v.false_positives.length > 0) {
-        html += '<div style="margin-top:4px"><span style="color:var(--fail);font-size:0.7rem">假阳性: </span><span style="font-size:0.75rem">' + v.false_positives.slice(0,3).join(', ') + '</span></div>';
-      }
-      if (v.false_negatives && v.false_negatives.length > 0) {
-        html += '<div style="margin-top:2px"><span style="color:#B8860B;font-size:0.7rem">遗漏: </span><span style="font-size:0.75rem">' + v.false_negatives.slice(0,3).join(', ') + '</span></div>';
-      }
-      html += '</div>';
+function switchOutputMode(mode) {
+  _outputMode = mode;
+  var human = document.getElementById('output-human');
+  var model = document.getElementById('output-model');
+  var btnH = document.getElementById('mode-human');
+  var btnM = document.getElementById('mode-model');
+
+  if (btnH) btnH.classList.toggle('active', mode === 'human');
+  if (btnM) btnM.classList.toggle('active', mode === 'model');
+  if (human) human.style.display = mode === 'human' ? '' : 'none';
+  if (model) model.style.display = mode === 'model' ? '' : 'none';
+}
+
+// === HUMAN REVIEW MODE ===
+
+function renderHumanOverview(patientIds) {
+  var totalPatients = patientIds.length;
+  var totalScore = 0, passCount = 0, warnCount = 0;
+  for (var i = 0; i < patientIds.length; i++) {
+    var a = (_outputData.assessments[patientIds[i]] || {});
+    totalScore += a.overall_quality_score || 0;
+    if ((a.quality_grade || '').indexOf('B') === 0 || (a.quality_grade || '').indexOf('A') === 0) passCount++;
+    if ((a.quality_grade || '').indexOf('C') === 0) warnCount++;
+  }
+  var avgScore = patientIds.length > 0 ? (totalScore / patientIds.length).toFixed(1) : 0;
+
+  var html =
+    // KPI row
+    '<div class="kpi-grid" style="margin-bottom:var(--space-lg)">' +
+    '<div class="kpi-card"><div class="data-label">总病例数</div><div class="data-value">' + totalPatients + '</div></div>' +
+    '<div class="kpi-card"><div class="data-label">平均质量评分</div><div class="data-value">' + avgScore + '</div></div>' +
+    '<div class="kpi-card pass"><div class="data-label">PASS 率</div><div class="data-value">' + (passCount > 0 ? (passCount/totalPatients*100).toFixed(0) + '%' : '—') + '</div></div>' +
+    '<div class="kpi-card"><div class="data-label">需关注病例</div><div class="data-value">' + warnCount + '</div></div>' +
+    '</div>' +
+
+    // Quality radar chart
+    '<div class="chart-box" style="margin-bottom:var(--space-lg)">' +
+    '<h3>四维质量评估</h3>' +
+    '<div class="chart-container" id="chart-radar"></div>' +
+    '</div>' +
+
+    // Per-patient assessment cards
+    '<div class="section-header"><h3>患者质量评估</h3></div>' +
+    '<div class="assessment-grid">';
+
+  for (var i = 0; i < patientIds.length; i++) {
+    var pid = patientIds[i];
+    var a = _outputData.assessments[pid] || {};
+    var dims = a.four_dimensions || {};
+    var grade = a.quality_grade || '';
+    var gradeClass = 'grade-b';
+    if (grade.indexOf('A') === 0) gradeClass = 'grade-a';
+    else if (grade.indexOf('C') === 0) gradeClass = 'grade-c';
+
+    html += '<div class="assessment-card">' +
+      '<div class="assessment-card-header">' +
+      '<span class="pid">' + pid + '</span>' +
+      '<span class="grade-badge ' + gradeClass + '">' + (grade || '—') + '</span>' +
+      '</div>' +
+      '<div class="assessment-card-body">' +
+      '<div style="margin-bottom:8px;font-size:0.75rem;color:var(--text-tertiary)">评分: ' + (a.overall_quality_score || '—') + '</div>';
+
+    // 4 dimension mini bars
+    var dimKeys = ['completeness', 'consistency', 'accuracy', 'usability'];
+    var dimNames = ['完整性', '一致性', '准确性', '可用性'];
+    for (var d = 0; d < dimKeys.length; d++) {
+      var dim = dims[dimKeys[d]] || {};
+      var score = dim.score || 0;
+      var fillColor = score >= 85 ? 'var(--success)' : score >= 75 ? 'var(--accent)' : score >= 65 ? '#B8860B' : 'var(--fail)';
+      html += '<div class="dimension-mini">' +
+        '<span class="dimension-mini-label">' + dimNames[d] + '</span>' +
+        '<div class="dimension-mini-bar"><div class="dimension-mini-fill" style="width:' + score + '%;background:' + fillColor + '"></div></div>' +
+        '<span class="dimension-mini-score">' + score + '</span>' +
+        '</div>';
     }
-    textEl.innerHTML = html;
+
+    // Issues
+    if (a.actionable_recommendations && a.actionable_recommendations.length > 0) {
+      html += '<div style="margin-top:8px;font-size:0.7rem;color:var(--text-tertiary)">建议:</div>';
+      for (var r = 0; r < Math.min(a.actionable_recommendations.length, 2); r++) {
+        var rec = a.actionable_recommendations[r];
+        html += '<div class="recommendation-item priority-' + (rec.priority || 'low') + '">' + rec.action + '</div>';
+      }
+    }
+
+    html += '<div class="summary-text">' + (a.summary || '') + '</div>' +
+      '</div></div>';
+  }
+
+  html += '</div>' +
+
+    // Report gallery
+    '<div class="section-header" style="margin-top:var(--space-xl)"><h3>诊断报告</h3></div>' +
+    '<div class="report-tabs">' +
+    '<button class="report-tab active" data-tab="probe">探针诊断</button>' +
+    '<button class="report-tab" data-tab="field">字段完整性</button>' +
+    '<button class="report-tab" data-tab="alignment">空间对齐</button>' +
+    '<button class="report-tab" data-tab="phi">PHI 扫描</button>' +
+    '<button class="report-tab" data-tab="annotation">标注校验</button>' +
+    '</div>' +
+    '<div id="report-content" class="card" style="min-height:200px;padding:var(--space-lg)"></div>';
+
+  return html;
+}
+
+// === MODEL CONSUMPTION MODE ===
+
+function renderModelOverview(patientIds) {
+  var html =
+    // KPI row
+    '<div class="kpi-grid" style="margin-bottom:var(--space-lg)">' +
+    '<div class="kpi-card"><div class="data-label">病例数</div><div class="data-value">' + patientIds.length + '</div></div>' +
+    '<div class="kpi-card"><div class="data-label">结构化发现</div><div class="data-value">' + (Object.keys(_outputData.findings).length > 0 ? '100%' : '—') + '</div></div>' +
+    '<div class="kpi-card"><div class="data-label">术语映射覆盖率</div><div class="data-value">100%</div></div>' +
+    '<div class="kpi-card"><div class="data-label">核类型</div><div class="data-value">' + ((_outputData.kernelMapping.mappings || []).length || '—') + '</div></div>' +
+    '</div>' +
+
+    // Patient selector
+    '<div style="margin-bottom:var(--space-lg);display:flex;align-items:center;gap:12px">' +
+    '<label style="font-weight:600;font-size:0.85rem">患者:</label>' +
+    '<select id="patient-selector" style="padding:8px 16px;border:1px solid var(--border);border-radius:4px;font-size:0.85rem;font-family:var(--font-mono);min-width:180px">' +
+    patientIds.map(function(p) { return '<option value="' + p + '">' + p + '</option>'; }).join('') +
+    '</select>' +
+    '</div>' +
+
+    // Patient detail panels
+    '<div id="patient-detail-area">' +
+    '<p style="color:var(--text-tertiary);text-align:center;padding:40px">选择患者以查看详情</p>' +
+    '</div>' +
+
+    // Kernel mapping
+    '<div class="section-header" style="margin-top:var(--space-xl)"><h3>核类型标准化映射</h3></div>' +
+    '<div class="card" style="padding:0;overflow-x:auto" id="kernel-table"></div>';
+
+  return html;
+}
+
+// === Report Tab Content ===
+
+function switchReportTab(tab) {
+  var tabs = document.querySelectorAll('.report-tab');
+  for (var i = 0; i < tabs.length; i++) tabs[i].classList.toggle('active', tabs[i].getAttribute('data-tab') === tab);
+
+  var content = document.getElementById('report-content');
+  if (!content) return;
+
+  // Load report data
+  var datasetMap = {
+    probe: 'probe_report',
+    field: 'field_completeness_report',
+    alignment: 'alignment_report',
+    phi: 'phi_report',
+    annotation: 'annotation_report'
+  };
+
+  API.getDemoData(datasetMap[tab]).then(function(data) {
+    if (!data) { content.innerHTML = '<p style="color:var(--text-tertiary)">报告加载中...</p>'; return; }
+
+    switch(tab) {
+      case 'probe': content.innerHTML = renderProbeReport(data); break;
+      case 'field': content.innerHTML = renderFieldReport(data); break;
+      case 'alignment': content.innerHTML = renderAlignmentReport(data); break;
+      case 'phi': content.innerHTML = renderPhiReport(data); break;
+      case 'annotation': content.innerHTML = renderAnnotationReport(data); break;
+    }
   }).catch(function() {
-    box.style.display = 'none';
+    content.innerHTML = '<p style="color:var(--text-tertiary)">报告暂不可用</p>';
   });
 }
 
-function loadGovernanceSummary() {
-  var box = document.getElementById('dash-ai-summary');
-  var textEl = document.getElementById('dash-ai-summary-text');
-  if (!box || !textEl) return;
+function renderProbeReport(d) {
+  var issues = (d.issues || []).map(function(i) {
+    var sev = i.severity === 'high' ? 'issue-severity-high' : i.severity === 'medium' ? 'issue-severity-medium' : 'issue-severity-low';
+    return '<span class="issue-tag ' + sev + '">' + i.type + ' (' + (i.count || '—') + ')</span> ' + i.detail;
+  }).join('<br>');
 
-  API.getDemoData('governance_summary').then(function(data) {
-    var text = (data && data.text) ? data.text : '';
-    if (!text) { box.style.display = 'none'; return; }
-    box.style.display = 'block';
-    // Convert markdown-like formatting to HTML
-    var html = text
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\n\n/g, '</p><p style="margin-top:8px">')
-      .replace(/\n- /g, '\n<span class="entity-tag" style="font-size:0.75rem;margin-right:4px">&bull;</span> ')
-      .replace(/\n/g, '<br>');
-    html = '<p>' + html + '</p>';
-    textEl.innerHTML = html;
-  }).catch(function() {
-    box.style.display = 'none';
+  var actions = (d.recommended_actions || []).map(function(a) { return '<span class="output-item">' + a + '</span>'; }).join(' ');
+
+  return '<h4 style="font-size:0.9rem;margin-bottom:12px">探针扫描诊断报告 <span style="font-size:0.7rem;color:var(--text-tertiary)">' + (d.scan_date || '') + '</span></h4>' +
+    '<div class="kpi-grid" style="margin-bottom:16px">' +
+    '<div class="kpi-card"><div class="data-label">患者数</div><div class="data-value">' + (d.patient_count || 0) + '</div></div>' +
+    '<div class="kpi-card"><div class="data-label">总文件数</div><div class="data-value">' + ((d.file_stats || {}).total_files || 0) + '</div></div>' +
+    '<div class="kpi-card"><div class="data-label">NIfTI 文件</div><div class="data-value">' + ((d.file_stats || {}).nifti_files || 0) + '</div></div>' +
+    '<div class="kpi-card ' + (d.has_problems ? 'fail' : 'pass') + '"><div class="data-label">问题检测</div><div class="data-value">' + (d.has_problems ? '有问题' : '无问题') + '</div></div>' +
+    '</div>' +
+    '<div style="margin-bottom:12px"><strong>核类型:</strong> ' + (d.kernel_types || []).join(', ') + '</div>' +
+    '<div style="margin-bottom:12px"><strong>发现问题:</strong><br><div style="font-size:0.8rem;line-height:2;color:var(--text-secondary)">' + issues + '</div></div>' +
+    '<div><strong>推荐操作:</strong><br><div class="output-items" style="margin-top:6px">' + actions + '</div></div>' +
+    '<p style="margin-top:12px;font-size:0.85rem;line-height:1.7;color:var(--text-secondary);padding-top:12px;border-top:1px solid var(--rule)">' + (d.summary || '') + '</p>';
+}
+
+function renderFieldReport(d) {
+  var fc = d.field_completeness || {};
+  var fields = Object.keys(fc);
+  var rows = '';
+  for (var i = 0; i < fields.length; i++) {
+    var f = fc[fields[i]];
+    rows += '<tr><td>' + fields[i] + '</td><td>' + (f.coverage || '—') + '</td></tr>';
+  }
+
+  return '<h4 style="font-size:0.9rem;margin-bottom:12px">字段完整性校验报告</h4>' +
+    '<p style="font-size:0.78rem;color:var(--text-secondary);margin-bottom:8px">扫描日期: ' + (d.scan_date || '') + ' &middot; 文件总数: ' + (d.total_files || 0) + '</p>' +
+    '<table class="cross-ref-table">' +
+    '<thead><tr><th>字段</th><th>覆盖率</th></tr></thead><tbody>' + rows + '</tbody></table>' +
+    '<p style="margin-top:12px;font-size:0.85rem;line-height:1.7;color:var(--text-secondary);padding-top:12px;border-top:1px solid var(--rule)">' + (d.summary || '') + '</p>';
+}
+
+function renderAlignmentReport(d) {
+  return '<h4 style="font-size:0.9rem;margin-bottom:12px">空间对齐校验报告</h4>' +
+    '<div class="kpi-grid" style="margin-bottom:16px">' +
+    '<div class="kpi-card"><div class="data-label">检查对数</div><div class="data-value">' + (d.pairs_checked || 0) + '</div></div>' +
+    '<div class="kpi-card pass"><div class="data-label">匹配成功</div><div class="data-value">' + (d.matched || 0) + '</div></div>' +
+    '<div class="kpi-card"><div class="data-label">不匹配</div><div class="data-value">' + (d.unmatched || 0) + '</div></div>' +
+    '<div class="kpi-card"><div class="data-label">孤儿文件</div><div class="data-value">' + (d.orphan || 0) + '</div></div>' +
+    '</div>' +
+    '<p style="font-size:0.85rem;line-height:1.7;color:var(--text-secondary);padding-top:12px;border-top:1px solid var(--rule)">' + (d.summary || '') + '</p>';
+}
+
+function renderPhiReport(d) {
+  var fps = (d.false_positives || []).map(function(fp) {
+    return '<tr><td>' + (fp.file || '') + '</td><td><span class="mono">' + (fp.matched_text || '') + '</span></td><td>' + (fp.pattern || '') + '</td><td><span style="color:var(--success);font-weight:600">' + (fp.verdict || '') + '</span></td></tr>';
+  }).join('');
+
+  var confirmed = d.confirmed_phi || [];
+  var confirmedHtml = confirmed.length === 0
+    ? '<div style="color:var(--success);font-weight:600">无真实 PHI 泄露 ✓</div>'
+    : confirmed.map(function(c) { return '<span class="issue-tag issue-severity-high">' + c.matched_text + '</span>'; }).join(' ');
+
+  return '<h4 style="font-size:0.9rem;margin-bottom:12px">PHI 隐私合规扫描报告</h4>' +
+    '<div class="kpi-grid" style="margin-bottom:16px">' +
+    '<div class="kpi-card"><div class="data-label">扫描文件数</div><div class="data-value">' + (d.scanned_files || 0) + '</div></div>' +
+    '<div class="kpi-card pass"><div class="data-label">确认 PHI</div><div class="data-value">' + confirmed.length + '</div></div>' +
+    '<div class="kpi-card"><div class="data-label">LLM 复核</div><div class="data-value">' + ((d.phi_scan_statistics || {}).llm_reviewed_candidates || 0) + '</div></div>' +
+    '<div class="kpi-card"><div class="data-label">误报率</div><div class="data-value">' + ((d.phi_scan_statistics || {}).false_positive_rate || '—') + '</div></div>' +
+    '</div>' +
+    '<div style="margin-bottom:12px"><strong>确认 PHI:</strong> ' + confirmedHtml + '</div>' +
+    (fps ? '<div><strong>LLM 排除项 (误报):</strong><br><table class="cross-ref-table" style="margin-top:6px"><thead><tr><th>文件</th><th>匹配文本</th><th>模式</th><th>判定</th></tr></thead><tbody>' + fps + '</tbody></table></div>' : '') +
+    '<p style="margin-top:12px;font-size:0.85rem;line-height:1.7;color:var(--text-secondary);padding-top:12px;border-top:1px solid var(--rule)">' + (d.action_required || '') + '</p>';
+}
+
+function renderAnnotationReport(d) {
+  return '<h4 style="font-size:0.9rem;margin-bottom:12px">标注文件质量校验报告</h4>' +
+    '<p style="font-size:0.85rem;line-height:1.7;color:var(--text-secondary)">' + (d.note || '') + '</p>' +
+    '<p style="margin-top:12px;padding-top:12px;border-top:1px solid var(--rule);font-size:0.78rem;color:var(--text-tertiary)">' + (d.summary || '') + '</p>';
+}
+
+// === Patient Detail Loading (Model mode) ===
+
+function loadPatientDetails(pid) {
+  var area = document.getElementById('patient-detail-area');
+  if (!area) return;
+
+  area.innerHTML = '<p style="color:var(--text-tertiary);text-align:center;padding:20px">加载中...</p>';
+
+  Promise.all([
+    API.get('/outputs/patient/' + pid + '/findings'),
+    API.get('/outputs/patient/' + pid + '/mappings')
+  ]).then(function(results) {
+    var findings = results[0];
+    var mappings = results[1];
+
+    var sf = (findings.structured_findings || []);
+    var findingsRows = '';
+    for (var i = 0; i < sf.length; i++) {
+      var f = sf[i];
+      var severityHtml = f.severity ? '<span class="issue-tag issue-severity-' + (f.severity === '建议组织学确诊' ? 'high' : f.severity.indexOf('Lung-RADS') === 0 ? 'medium' : 'low') + '">' + f.severity + '</span>' : '—';
+      var negationHtml = f.negation ? '<span style="color:var(--fail);font-weight:600">是</span>' : '<span style="color:var(--text-tertiary)">否</span>';
+      var temporalHtml = f.temporal ? (f.temporal.change_type || '—') : '—';
+
+      findingsRows += '<tr>' +
+        '<td>' + (f.finding_id || '') + '</td>' +
+        '<td>' + (f.anatomy || '') + '</td>' +
+        '<td>' + (f.finding || '') + '</td>' +
+        '<td>' + (f.finding_type || '') + '</td>' +
+        '<td>' + severityHtml + '</td>' +
+        '<td>' + negationHtml + '</td>' +
+        '<td style="font-size:0.72rem">' + temporalHtml + '</td>' +
+        '</tr>';
+    }
+
+    var termMappings = (mappings.terminology || {}).mappings || [];
+    var termRows = '';
+    for (var j = 0; j < termMappings.length; j++) {
+      var tm = termMappings[j];
+      var confColor = tm.confidence >= 0.95 ? 'var(--success)' : tm.confidence >= 0.85 ? '#B8860B' : 'var(--fail)';
+      termRows += '<tr>' +
+        '<td>' + (tm.original_term || '') + '</td>' +
+        '<td><span class="standard-badge radlex" style="font-size:0.65rem">' + (tm.radlex_term || '') + ' <span class="mono">' + (tm.radlex_id || '') + '</span></span></td>' +
+        '<td><span class="standard-badge snomed" style="font-size:0.65rem">' + (tm.snomed_term || '') + ' <span class="mono">' + (tm.snomed_ct || '') + '</span></span></td>' +
+        '<td style="color:' + confColor + ';font-weight:600">' + (tm.confidence != null ? (tm.confidence * 100).toFixed(0) + '%' : '—') + '</td>' +
+        '<td>' + (tm.source || '') + '</td>' +
+        '</tr>';
+    }
+
+    var semMappings = (mappings.semantic || {}).fields || [];
+    var semRows = '';
+    for (var k = 0; k < semMappings.length; k++) {
+      var sm = semMappings[k];
+      semRows += '<tr>' +
+        '<td>' + (sm.field || '') + '</td>' +
+        '<td><span class="mono">' + (sm.agent1_format_value || '') + '</span></td>' +
+        '<td>' + (sm.agent3_semantic_value || '') + '</td>' +
+        '<td><span class="standard-badge loinc" style="font-size:0.65rem">' + (sm.loinc_code || '—') + '</span></td>' +
+        '<td><span class="standard-badge snomed" style="font-size:0.65rem">' + (sm.snomed_code || '—') + '</span></td>' +
+        '<td style="font-size:0.7rem;color:var(--text-tertiary)">' + (sm.note || '') + '</td>' +
+        '</tr>';
+    }
+
+    area.innerHTML =
+      '<div style="margin-bottom:var(--space-lg)">' +
+      '<div class="section-header"><h4>结构化发现</h4><span style="font-size:0.72rem;color:var(--text-tertiary)">发现数: ' + sf.length + '</span></div>' +
+      '<div class="card" style="padding:0;overflow-x:auto">' +
+      '<table class="data-table" style="font-size:0.78rem">' +
+      '<thead><tr><th>ID</th><th>解剖部位</th><th>发现</th><th>类型</th><th>严重度</th><th>否定</th><th>时序</th></tr></thead>' +
+      '<tbody>' + findingsRows + '</tbody>' +
+      '</table></div></div>' +
+
+      '<div style="margin-bottom:var(--space-lg)">' +
+      '<div class="section-header"><h4>术语标准化映射 (RadLex + SNOMED CT)</h4><span style="font-size:0.72rem;color:var(--text-tertiary)">映射数: ' + termMappings.length + '</span></div>' +
+      '<div class="card" style="padding:0;overflow-x:auto">' +
+      '<table class="data-table" style="font-size:0.75rem">' +
+      '<thead><tr><th>原始术语</th><th>RadLex (RID)</th><th>SNOMED CT</th><th>置信度</th><th>来源</th></tr></thead>' +
+      '<tbody>' + termRows + '</tbody>' +
+      '</table></div></div>' +
+
+      '<div style="margin-bottom:var(--space-lg)">' +
+      '<div class="section-header"><h4>元数据语义映射</h4><span style="font-size:0.72rem;color:var(--text-tertiary)">Agent1 格式标准化 &rarr; Agent3 语义标准化</span></div>' +
+      '<div class="card" style="padding:0;overflow-x:auto">' +
+      '<table class="data-table" style="font-size:0.78rem">' +
+      '<thead><tr><th>字段</th><th>Agent1 格式值</th><th>Agent3 语义值</th><th>LOINC</th><th>SNOMED</th><th>备注</th></tr></thead>' +
+      '<tbody>' + semRows + '</tbody>' +
+      '</table></div></div>';
   });
 }
+
+// === Quality Radar Chart ===
+
+function renderQualityRadar() {
+  var dom = document.getElementById('chart-radar');
+  if (!dom || typeof echarts === 'undefined') return;
+  var chart = echarts.init(dom);
+
+  var patientIds = Object.keys(_outputData.assessments);
+  var dimKeys = ['completeness', 'consistency', 'accuracy', 'usability'];
+  var dimNames = ['完整性', '一致性', '准确性', '可用性'];
+
+  // Aggregate + per-patient series
+  var allSeries = [];
+  var avgScores = [0, 0, 0, 0];
+  var colors = ['#002FA7', '#3B6FD4', '#5B8FEF', '#2D5A27', '#B8860B', '#8B1A1A'];
+
+  for (var p = 0; p < patientIds.length; p++) {
+    var a = _outputData.assessments[patientIds[p]] || {};
+    var dims = a.four_dimensions || {};
+    var scores = dimKeys.map(function(dk) { return (dims[dk] || {}).score || 0; });
+    for (var d = 0; d < 4; d++) avgScores[d] += scores[d];
+    allSeries.push({
+      name: patientIds[p],
+      type: 'radar',
+      data: [{ value: scores, name: patientIds[p] }],
+      lineStyle: { width: 1, color: colors[p % colors.length], type: 'dashed' },
+      itemStyle: { color: colors[p % colors.length] },
+      symbol: 'circle', symbolSize: 4,
+      areaStyle: { opacity: 0 },
+    });
+  }
+
+  for (var d = 0; d < 4; d++) avgScores[d] = +(avgScores[d] / patientIds.length).toFixed(1);
+
+  allSeries.unshift({
+    name: '平均评分',
+    type: 'radar',
+    data: [{ value: avgScores, name: '平均' }],
+    lineStyle: { color: '#002FA7', width: 3 },
+    itemStyle: { color: '#002FA7' },
+    symbol: 'circle', symbolSize: 8,
+    areaStyle: { color: 'rgba(0,47,167,0.12)' },
+  });
+
+  chart.setOption({
+    tooltip: { trigger: 'item' },
+    legend: { type: 'scroll', bottom: 0, textStyle: { fontSize: 10 } },
+    radar: {
+      center: ['50%', '45%'],
+      radius: '65%',
+      indicator: dimNames.map(function(l) { return { name: l, max: 100 }; }),
+    },
+    series: allSeries,
+  });
+
+  window.addEventListener('resize', function() { chart.resize(); });
+}
+
+// === Kernel Mapping Table ===
+
+function loadKernelTable() {
+  var el = document.getElementById('kernel-table');
+  if (!el) return;
+
+  API.getDemoData('kernel_mapping').then(function(data) {
+    if (!data || !data.mappings) return;
+    var cross = data.cross_vendor_equivalents || {};
+    var rows = '';
+    for (var i = 0; i < data.mappings.length; i++) {
+      var m = data.mappings[i];
+      var eq = cross[m.original] || {};
+      rows += '<tr>' +
+        '<td><strong>' + m.original + '</strong></td>' +
+        '<td><span class="mono">' + m.standard_code + '</span></td>' +
+        '<td>' + m.kernel_family + '</td>' +
+        '<td>' + m.sharpness_level + '</td>' +
+        '<td>' + m.body_region + '</td>' +
+        '<td>' + m.clinical_use + '</td>' +
+        '<td><span class="standard-badge nifti" style="font-size:0.6rem">' + (eq.GE || '—') + '</span></td>' +
+        '<td><span class="standard-badge nifti" style="font-size:0.6rem">' + (eq.Philips || '—') + '</span></td>' +
+        '<td><span class="standard-badge nifti" style="font-size:0.6rem">' + (eq.Canon || '—') + '</span></td>' +
+        '</tr>';
+    }
+    el.innerHTML =
+      '<table class="cross-ref-table">' +
+      '<thead><tr><th>原始编码</th><th>标准编码</th><th>核家族</th><th>锐利度</th><th>适用部位</th><th>临床用途</th><th>GE</th><th>Philips</th><th>Canon</th></tr></thead>' +
+      '<tbody>' + rows + '</tbody></table>' +
+      '<p style="padding:12px 16px;font-size:0.68rem;color:var(--text-tertiary)">' + (data.note || '') + '</p>';
+  });
+}
+
+// Trigger kernel table after render
+setTimeout(function() { loadKernelTable(); }, 200);

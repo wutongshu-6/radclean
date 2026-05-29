@@ -1,0 +1,689 @@
+{
+  "BGC3109958": {
+    "patient_id": "BGC3109958",
+    "report_source": "data_reports.xlsx",
+    "parse_date": "2026-05-25T10:22:00",
+    "rule_engine_coverage_pct": 82.1,
+    "llm_intervention_count": 4,
+    "llm_token_used": 2850,
+    "findings_count": 9,
+    "structured_findings": [
+      {
+        "finding_id": 1,
+        "anatomy": "右肺上叶",
+        "anatomy_code": "RUL",
+        "finding": "磨玻璃密度小结节",
+        "finding_type": "GroundGlassNodule",
+        "characteristics": {
+          "size": "6mm",
+          "density": "磨玻璃",
+          "margin": "边界清晰"
+        },
+        "severity": "Lung-RADS 2",
+        "negation": false,
+        "temporal": {
+          "change_type": "无变化",
+          "reference_date": "2024-09-15",
+          "note": "与前片比较无明显变化"
+        }
+      },
+      {
+        "finding_id": 2,
+        "anatomy": "右肺中叶",
+        "anatomy_code": "RML",
+        "finding": "未见明显异常",
+        "finding_type": "NormalFinding",
+        "characteristics": {},
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 3,
+        "anatomy": "左肺上叶",
+        "anatomy_code": "LUL",
+        "finding": "散在微小结节",
+        "finding_type": "Micronodule",
+        "characteristics": {
+          "size": "2-3mm",
+          "density": "实性",
+          "distribution": "散在"
+        },
+        "severity": "Lung-RADS 1",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 4,
+        "anatomy": "左肺下叶",
+        "anatomy_code": "LLL",
+        "finding": "未见明确占位",
+        "finding_type": "NormalFinding",
+        "characteristics": {},
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 5,
+        "anatomy": "纵隔",
+        "anatomy_code": "Mediastinum",
+        "finding": "淋巴结轻度增大",
+        "finding_type": "Lymphadenopathy",
+        "characteristics": {
+          "size": "13mm",
+          "location": "4R区"
+        },
+        "severity": null,
+        "negation": false,
+        "temporal": {
+          "change_type": "增大",
+          "reference_date": "2024-09-15",
+          "previous_size": "10mm"
+        }
+      },
+      {
+        "finding_id": 6,
+        "anatomy": "心脏",
+        "anatomy_code": "Heart",
+        "finding": "冠状动脉钙化",
+        "finding_type": "CoronaryCalcification",
+        "characteristics": {
+          "vessel": "多支"
+        },
+        "severity": "中度",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 7,
+        "anatomy": "胸主动脉",
+        "anatomy_code": "ThoracicAorta",
+        "finding": "管壁钙化",
+        "finding_type": "VascularCalcification",
+        "characteristics": {},
+        "severity": "轻度",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 8,
+        "anatomy": "肋骨",
+        "anatomy_code": "Rib",
+        "finding": "左侧第5肋陈旧性骨折",
+        "finding_type": "OldFracture",
+        "characteristics": {
+          "side": "左",
+          "rib": "第5肋"
+        },
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 9,
+        "anatomy": "甲状腺",
+        "anatomy_code": "Thyroid",
+        "finding": "未见异常密度",
+        "finding_type": "NormalFinding",
+        "characteristics": {},
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      }
+    ]
+  },
+  "BGC3162381": {
+    "patient_id": "BGC3162381",
+    "report_source": "data_reports.xlsx",
+    "parse_date": "2026-05-25T10:23:00",
+    "rule_engine_coverage_pct": 83.5,
+    "llm_intervention_count": 3,
+    "llm_token_used": 2400,
+    "findings_count": 7,
+    "structured_findings": [
+      {
+        "finding_id": 1,
+        "anatomy": "右肺下叶",
+        "anatomy_code": "RLL",
+        "finding": "实性结节",
+        "finding_type": "SolidNodule",
+        "characteristics": {
+          "size": "10mm",
+          "density": "实性",
+          "margin": "毛刺状"
+        },
+        "severity": "Lung-RADS 3",
+        "negation": false,
+        "temporal": {
+          "change_type": "增大",
+          "reference_date": "2024-12-20",
+          "previous_size": "7mm"
+        }
+      },
+      {
+        "finding_id": 2,
+        "anatomy": "左肺",
+        "anatomy_code": "LeftLung",
+        "finding": "未见明确实变",
+        "finding_type": "NormalFinding",
+        "characteristics": {},
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 3,
+        "anatomy": "纵隔",
+        "anatomy_code": "Mediastinum",
+        "finding": "未见淋巴结肿大",
+        "finding_type": "NormalFinding",
+        "characteristics": {},
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 4,
+        "anatomy": "胸膜",
+        "anatomy_code": "Pleura",
+        "finding": "右侧少量胸腔积液",
+        "finding_type": "PleuralEffusion",
+        "characteristics": {
+          "side": "右",
+          "volume": "少量"
+        },
+        "severity": "轻度",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 5,
+        "anatomy": "双肺",
+        "anatomy_code": "BilateralLungs",
+        "finding": "肺大疱",
+        "finding_type": "Bulla",
+        "characteristics": {
+          "location": "双上肺",
+          "size": "最大约3cm"
+        },
+        "severity": "中度",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 6,
+        "anatomy": "胸主动脉",
+        "anatomy_code": "ThoracicAorta",
+        "finding": "粥样硬化",
+        "finding_type": "Atherosclerosis",
+        "characteristics": {},
+        "severity": "中度",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 7,
+        "anatomy": "胸椎",
+        "anatomy_code": "ThoracicSpine",
+        "finding": "未见压缩性骨折",
+        "finding_type": "NormalFinding",
+        "characteristics": {},
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      }
+    ]
+  },
+  "BGC3176800": {
+    "patient_id": "BGC3176800",
+    "report_source": "data_reports.xlsx",
+    "parse_date": "2026-05-25T10:24:00",
+    "rule_engine_coverage_pct": 84.0,
+    "llm_intervention_count": 3,
+    "llm_token_used": 2180,
+    "findings_count": 6,
+    "structured_findings": [
+      {
+        "finding_id": 1,
+        "anatomy": "左肺上叶",
+        "anatomy_code": "LUL",
+        "finding": "不规则软组织肿块",
+        "finding_type": "SoftTissueMass",
+        "characteristics": {
+          "size": "45x32mm",
+          "density": "软组织",
+          "margin": "分叶状,毛刺"
+        },
+        "severity": "建议组织学确诊",
+        "negation": false,
+        "temporal": {
+          "change_type": "新出现",
+          "reference_date": "无既往影像"
+        }
+      },
+      {
+        "finding_id": 2,
+        "anatomy": "纵隔",
+        "anatomy_code": "Mediastinum",
+        "finding": "淋巴结肿大",
+        "finding_type": "Lymphadenopathy",
+        "characteristics": {
+          "size": "15mm",
+          "location": "4R区"
+        },
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 3,
+        "anatomy": "双侧肺",
+        "anatomy_code": "BilateralLungs",
+        "finding": "未见其他实性结节",
+        "finding_type": "NormalFinding",
+        "characteristics": {},
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 4,
+        "anatomy": "胸膜",
+        "anatomy_code": "Pleura",
+        "finding": "无胸腔积液",
+        "finding_type": "NormalFinding",
+        "characteristics": {},
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 5,
+        "anatomy": "骨骼",
+        "anatomy_code": "Skeletal",
+        "finding": "多发成骨性转移可能",
+        "finding_type": "OsteoblasticLesion",
+        "characteristics": {
+          "location": "胸椎,肋骨",
+          "distribution": "多发"
+        },
+        "severity": "可疑恶性",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 6,
+        "anatomy": "甲状腺",
+        "anatomy_code": "Thyroid",
+        "finding": "低密度结节",
+        "finding_type": "ThyroidNodule",
+        "characteristics": {
+          "size": "8mm",
+          "density": "低密度"
+        },
+        "severity": "建议超声随访",
+        "negation": false,
+        "temporal": null
+      }
+    ]
+  },
+  "BGC3212225": {
+    "patient_id": "BGC3212225",
+    "report_source": "data_reports.xlsx",
+    "parse_date": "2026-05-25T10:20:00",
+    "rule_engine_coverage_pct": 81.5,
+    "llm_intervention_count": 5,
+    "llm_token_used": 3420,
+    "findings_count": 14,
+    "structured_findings": [
+      {
+        "finding_id": 1,
+        "anatomy": "气管及主支气管",
+        "anatomy_code": "Trachea_Bronchi",
+        "finding": "未见闭塞性病变",
+        "finding_type": "NormalFinding",
+        "characteristics": {},
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 2,
+        "anatomy": "胸段食管",
+        "anatomy_code": "Thoracic_Esophagus",
+        "finding": "未见病理性管壁增厚",
+        "finding_type": "NormalFinding",
+        "characteristics": {},
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 3,
+        "anatomy": "食管下端",
+        "anatomy_code": "Lower_Esophagus",
+        "finding": "滑动型食管裂孔疝",
+        "finding_type": "HiatalHernia",
+        "characteristics": {
+          "type": "滑动型",
+          "size": "未描述"
+        },
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 4,
+        "anatomy": "肺动脉干",
+        "anatomy_code": "Pulmonary_Trunk",
+        "finding": "动脉瘤样扩张",
+        "finding_type": "AneurysmalDilatation",
+        "characteristics": {
+          "diameter_mm": 33
+        },
+        "severity": "中度",
+        "negation": false,
+        "temporal": null,
+        "related_findings": [
+          5,
+          6
+        ]
+      },
+      {
+        "finding_id": 5,
+        "anatomy": "右肺动脉",
+        "anatomy_code": "Right_Pulmonary_Artery",
+        "finding": "管径增宽",
+        "finding_type": "VascularDilatation",
+        "characteristics": {
+          "diameter_mm": 28
+        },
+        "severity": "轻度",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 6,
+        "anatomy": "降主动脉",
+        "anatomy_code": "Descending_Aorta",
+        "finding": "管径增宽",
+        "finding_type": "VascularDilatation",
+        "characteristics": {
+          "diameter_mm": 32
+        },
+        "severity": "轻度",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 7,
+        "anatomy": "心脏",
+        "anatomy_code": "Heart",
+        "finding": "心影增大",
+        "finding_type": "Cardiomegaly",
+        "characteristics": {},
+        "severity": "未分级",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 8,
+        "anatomy": "胸主动脉壁及冠状动脉",
+        "anatomy_code": "Thoracic_Aorta_Coronary",
+        "finding": "钙化性粥样硬化斑块",
+        "finding_type": "Atherosclerosis",
+        "characteristics": {
+          "type": "钙化性",
+          "location": "胸主动脉壁及冠状动脉血管结构"
+        },
+        "severity": "未分级",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 9,
+        "anatomy": "右侧胸膜腔",
+        "anatomy_code": "Right_Pleural_Space",
+        "finding": "微量胸腔积液",
+        "finding_type": "PleuralEffusion",
+        "characteristics": {
+          "severity": "微量",
+          "side": "右"
+        },
+        "severity": "微量",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 10,
+        "anatomy": "左肺舌段",
+        "anatomy_code": "Left_Lung_Lingular",
+        "finding": "胸膜基底软组织密度肿块",
+        "finding_type": "PleuralBasedMass",
+        "characteristics": {
+          "size_mm": "53×32",
+          "density": "软组织密度",
+          "position": "胸膜基底",
+          "margin": "未描述"
+        },
+        "severity": "建议组织学确诊",
+        "negation": false,
+        "temporal": null,
+        "recommendation": "组织学诊断"
+      },
+      {
+        "finding_id": 11,
+        "anatomy": "双肺",
+        "anatomy_code": "Bilateral_Lungs",
+        "finding": "肺气肿",
+        "finding_type": "Emphysema",
+        "characteristics": {
+          "distribution": "双肺弥漫"
+        },
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 12,
+        "anatomy": "右肺下叶、左肺下叶后基底段、左肺舌段",
+        "anatomy_code": "RLL_LLL_Lingular",
+        "finding": "小叶间隔增厚",
+        "finding_type": "InterlobularSeptalThickening",
+        "characteristics": {
+          "distribution": "右肺下叶、左肺下叶后基底段、左肺舌段",
+          "pattern": "平滑性"
+        },
+        "severity": null,
+        "negation": false,
+        "temporal": null,
+        "suggests": "间质性肺病(ILD)"
+      },
+      {
+        "finding_id": 13,
+        "anatomy": "纵隔（血管前区、主肺动脉窗）",
+        "anatomy_code": "Mediastinum_Prevascular_APWindow",
+        "finding": "淋巴结肿大",
+        "finding_type": "Lymphadenopathy",
+        "characteristics": {
+          "max_diameter_mm": 11,
+          "configuration": "梭形",
+          "count": "多枚"
+        },
+        "severity": "轻度",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 14,
+        "anatomy": "骨结构",
+        "anatomy_code": "Bone_Structures",
+        "finding": "退行性改变",
+        "finding_type": "DegenerativeChanges",
+        "characteristics": {},
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      }
+    ],
+    "impression_summary": "左肺舌段胸膜基底软组织肿块(53×32mm),建议组织学确诊;双肺间质性肺病改变(肺气肿、肺不张、小叶间隔增厚);肺动脉干及主动脉扩张;心脏增大;动脉粥样硬化;纵隔淋巴结肿大;骨退行性变。",
+    "quality_flags": {
+      "motion_artifact": "报告主观提示运动伪影影响评估",
+      "non_contrast_limitation": "缺乏IV对比剂,纵隔血管及心脏结构评估受限"
+    }
+  },
+  "BGC3515151": {
+    "patient_id": "BGC3515151",
+    "report_source": "data_reports.xlsx",
+    "parse_date": "2026-05-25T10:21:00",
+    "rule_engine_coverage_pct": 79.3,
+    "llm_intervention_count": 6,
+    "llm_token_used": 3980,
+    "findings_count": 11,
+    "structured_findings": [
+      {
+        "finding_id": 1,
+        "anatomy": "右肺上叶",
+        "anatomy_code": "RUL",
+        "finding": "未见明确实性结节",
+        "finding_type": "NormalFinding",
+        "characteristics": {},
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 2,
+        "anatomy": "右肺中叶",
+        "anatomy_code": "RML",
+        "finding": "少许索条影",
+        "finding_type": "FibroticBand",
+        "characteristics": {
+          "density": "纤维条索状"
+        },
+        "severity": "轻度",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 3,
+        "anatomy": "左肺上叶",
+        "anatomy_code": "LUL",
+        "finding": "多发小叶中心型肺气肿",
+        "finding_type": "Emphysema",
+        "characteristics": {
+          "type": "小叶中心型",
+          "distribution": "多发"
+        },
+        "severity": "中度",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 4,
+        "anatomy": "左肺下叶",
+        "anatomy_code": "LLL",
+        "finding": "支气管壁增厚",
+        "finding_type": "BronchialWallThickening",
+        "characteristics": {
+          "pattern": "弥漫性"
+        },
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 5,
+        "anatomy": "纵隔",
+        "anatomy_code": "Mediastinum",
+        "finding": "未见占位性病变",
+        "finding_type": "NormalFinding",
+        "characteristics": {},
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 6,
+        "anatomy": "心脏",
+        "anatomy_code": "Heart",
+        "finding": "心影大小形态未见异常",
+        "finding_type": "NormalFinding",
+        "characteristics": {},
+        "severity": null,
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 7,
+        "anatomy": "胸主动脉",
+        "anatomy_code": "ThoracicAorta",
+        "finding": "管壁钙化",
+        "finding_type": "VascularCalcification",
+        "characteristics": {
+          "location": "主动脉弓"
+        },
+        "severity": "轻度",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 8,
+        "anatomy": "冠状动脉",
+        "anatomy_code": "CoronaryArtery",
+        "finding": "钙化斑块",
+        "finding_type": "CoronaryCalcification",
+        "characteristics": {
+          "vessel": "左前降支"
+        },
+        "severity": "中度",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 9,
+        "anatomy": "胸椎",
+        "anatomy_code": "ThoracicSpine",
+        "finding": "骨质增生",
+        "finding_type": "Osteophyte",
+        "characteristics": {
+          "segments": "T5-T8"
+        },
+        "severity": "轻度",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 10,
+        "anatomy": "胸膜",
+        "anatomy_code": "Pleura",
+        "finding": "双侧胸膜增厚",
+        "finding_type": "PleuralThickening",
+        "characteristics": {
+          "laterality": "双侧"
+        },
+        "severity": "轻度",
+        "negation": false,
+        "temporal": null
+      },
+      {
+        "finding_id": 11,
+        "anatomy": "双肺",
+        "anatomy_code": "BilateralLungs",
+        "finding": "陈旧性病变",
+        "finding_type": "OldLesion",
+        "characteristics": {
+          "type": "陈旧性"
+        },
+        "severity": null,
+        "negation": false,
+        "temporal": {
+          "change_type": "稳定",
+          "reference_date": "2023-06-10",
+          "note": "与前片比较无明显变化"
+        }
+      }
+    ]
+  }
+}

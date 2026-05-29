@@ -1,9 +1,72 @@
 var wbState = {
   dataSource: 'demo',
+  formatStandard: 'dicom',
   cleaningMode: 'analysis',
   stageStatus: { agent1: 'idle', agent2: 'idle', agent3: 'idle' },
   results: null,
+  toolStatus: { agent1: {}, agent2: {}, agent3: {} }
 };
+
+var AGENT_TOOLS = {
+  agent1: ['探针扫描', '残留清理', '后缀修复', '零字节检测', '格式标准化', 'HU值还原', '完整性校验', '空间对齐', 'PHI扫描', '患者索引'],
+  agent2: ['规则提取', 'LLM增强', '否定检测', '时序提取'],
+  agent3: ['术语标准化', '核类型映射']
+};
+
+function initToolStatus(agentKey) {
+  var tools = AGENT_TOOLS[agentKey];
+  wbState.toolStatus[agentKey] = {};
+  for (var i = 0; i < tools.length; i++) {
+    wbState.toolStatus[agentKey][tools[i]] = 'pending';
+  }
+  updateAllToolChips(agentKey);
+}
+
+function setToolStatus(agentKey, toolName, status) {
+  if (!wbState.toolStatus[agentKey]) wbState.toolStatus[agentKey] = {};
+  var current = wbState.toolStatus[agentKey][toolName];
+  if (status === 'running' && current === 'pending') { /* ok */ }
+  else if (status === 'done' && (current === 'running' || current === 'pending')) { /* ok */ }
+  else { return; }
+  wbState.toolStatus[agentKey][toolName] = status;
+  updateToolChip(agentKey, toolName, status);
+}
+
+function updateToolChip(agentKey, toolName, status) {
+  var chip = document.getElementById('tool-' + agentKey + '-' + toolName);
+  if (!chip) return;
+  chip.classList.remove('pending', 'active', 'done');
+  if (status === 'running') chip.classList.add('active');
+  else if (status === 'done') chip.classList.add('done');
+  else chip.classList.add('pending');
+}
+
+function completeAllTools(agentKey) {
+  var tools = AGENT_TOOLS[agentKey];
+  for (var i = 0; i < tools.length; i++) {
+    if (wbState.toolStatus[agentKey][tools[i]] !== 'done') {
+      wbState.toolStatus[agentKey][tools[i]] = 'done';
+      updateToolChip(agentKey, tools[i], 'done');
+    }
+  }
+}
+
+function updateAllToolChips(agentKey) {
+  var statuses = wbState.toolStatus[agentKey] || {};
+  var tools = AGENT_TOOLS[agentKey];
+  for (var i = 0; i < tools.length; i++) {
+    updateToolChip(agentKey, tools[i], statuses[tools[i]] || 'pending');
+  }
+}
+
+async function animateTools(agentKey, delayMs) {
+  var tools = AGENT_TOOLS[agentKey];
+  for (var i = 0; i < tools.length; i++) {
+    setToolStatus(agentKey, tools[i], 'running');
+    await delay(delayMs + Math.random() * 100);
+    setToolStatus(agentKey, tools[i], 'done');
+  }
+}
 
 function renderWorkbench() {
   var page = document.getElementById('page-workspace');
@@ -16,72 +79,35 @@ function renderWorkbench() {
     setTimeout(function() { runPipeline('all'); }, 400);
   }
 
-  // Strategy popover HTML (shared, rendered once)
-  var strategyPopoverHTML =
-    '<div class="strategy-popover" id="strategy-popover">' +
-    '<div id="strategy-desc-analysis">' +
-    '<div style="font-weight:600;margin-bottom:8px;color:var(--accent);font-size:0.82rem">分析模式 &mdash; 面向数据科学</div>' +
-    '<div class="strategy-fields">' +
-    '<div class="sf-row"><span class="sf-label">年龄</span><span class="vr-tag">AS</span> <code>077Y</code> <span class="sf-arrow">&rarr;</span> <code class="sf-result">77</code></div>' +
-    '<div class="sf-row"><span class="sf-label">性别</span><span class="vr-tag">CS</span> <code>M</code> <span class="sf-arrow">&rarr;</span> <code class="sf-result">Male</code></div>' +
-    '<div class="sf-row"><span class="sf-label">截距</span><span class="vr-tag">DS</span> <code>&quot;-8192&quot;</code> <span class="sf-arrow">&rarr;</span> <code class="sf-result">-8192.0</code></div>' +
-    '<div class="sf-row"><span class="sf-label">斜率</span><span class="vr-tag">DS</span> <code>&quot;1&quot;</code> <span class="sf-arrow">&rarr;</span> <code class="sf-result">1.0</code></div>' +
-    '<div class="sf-row"><span class="sf-label">厂商</span><span class="vr-tag">LO</span> <code>siemens</code> <span class="sf-arrow">&rarr;</span> <code class="sf-result">Siemens</code></div>' +
-    '</div>' +
-    '<div class="strategy-refs">' +
-    '<div class="ref-title">DICOM 标准依据</div>' +
-    '<div><span class="vr-tag">AS</span> Age String &mdash; PS3.5 §6.2, nnnX 固定3位+单位(Y/M/W/D)</div>' +
-    '<div><span class="vr-tag">CS</span> Code String &mdash; PS3.3 §C.7.1.1, 枚举值 M/F/O</div>' +
-    '<div><span class="vr-tag">DS</span> Decimal String &mdash; PS3.5 §6.2, 浮点数字符串</div>' +
-    '<div><span class="vr-tag">LO</span> Long String &mdash; PS3.5 §6.2, 最长64字符</div>' +
-    '</div>' +
-    '<div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:0.68rem;color:var(--text-tertiary)">' +
-    '适用场景: 统计分析 · ML 特征工程 · 通用数据仓库' +
-    '</div></div>' +
-    '<div id="strategy-desc-dicom" style="display:none">' +
-    '<div style="font-weight:600;margin-bottom:8px;color:var(--accent);font-size:0.82rem">DICOM 兼容 &mdash; 面向医学系统</div>' +
-    '<div class="strategy-fields">' +
-    '<div class="sf-row"><span class="sf-label">年龄</span><span class="vr-tag">AS</span> <code>77</code> <span class="sf-arrow">&rarr;</span> <code class="sf-result">077Y</code></div>' +
-    '<div class="sf-row"><span class="sf-label">性别</span><span class="vr-tag">CS</span> <code>Male</code> <span class="sf-arrow">&rarr;</span> <code class="sf-result">M</code></div>' +
-    '<div class="sf-row"><span class="sf-label">截距</span><span class="vr-tag">DS</span> <code>&quot;-8192&quot;</code> <span class="sf-arrow">&rarr;</span> <code class="sf-result">-8192.0</code></div>' +
-    '<div class="sf-row"><span class="sf-label">斜率</span><span class="vr-tag">DS</span> <code>&quot;1&quot;</code> <span class="sf-arrow">&rarr;</span> <code class="sf-result">1.0</code></div>' +
-    '<div class="sf-row"><span class="sf-label">厂商</span><span class="vr-tag">LO</span> <code>siemens</code> <span class="sf-arrow">&rarr;</span> <code class="sf-result">Siemens</code></div>' +
-    '</div>' +
-    '<div class="strategy-refs">' +
-    '<div class="ref-title">DICOM 标准依据</div>' +
-    '<div><span class="vr-tag">AS</span> Age String &mdash; PS3.5 §6.2, nnnX 固定3位+单位(Y/M/W/D)</div>' +
-    '<div><span class="vr-tag">CS</span> Code String &mdash; PS3.3 §C.7.1.1, 枚举值 M/F/O</div>' +
-    '<div><span class="vr-tag">DS</span> Decimal String &mdash; PS3.5 §6.2, 浮点数字符串</div>' +
-    '<div><span class="vr-tag">LO</span> Long String &mdash; PS3.5 §6.2, 最长64字符</div>' +
-    '</div>' +
-    '<div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:0.68rem;color:var(--text-tertiary)">' +
-    '适用场景: PACS/DICOM 网络传输 · HIS/RIS 集成 · 临床试验数据交换' +
-    '</div></div>' +
-    '</div>';
-
-  // Helper to generate a stage column
-  function _stageCol(num, title, subtitle, icon, agentKey, colorHex) {
-    return '<div class="stage-column stage-' + agentKey + '" id="stage-' + agentKey + '">' +
-      '<div class="stage-column-header">' +
-      '<div class="stage-header-top">' +
-      '<span class="stage-num" style="color:' + colorHex + '">' + num + '</span>' +
+  // Helper to generate a vertical pipeline stage
+  function _pipelineStage(num, title, subtitle, agentKey, colorHex, isOutput) {
+    var tools = AGENT_TOOLS[agentKey] || [];
+    var toolChips = '';
+    for (var i = 0; i < tools.length; i++) {
+      toolChips += '<span class="tool-mini pending" id="tool-' + agentKey + '-' + tools[i] + '">' + (i + 1) + '. ' + tools[i] + '</span>';
+    }
+    var toolRow = tools.length > 0 ? '<div class="pipeline-tools" id="tools-' + agentKey + '">' + toolChips + '</div>' : '';
+    var bodyId = isOutput ? 'body-output' : 'body-' + agentKey;
+    var stageClass = isOutput ? 'stage-output' : agentKey;
+    return '<section class="pipeline-stage stage-' + stageClass + '" id="stage-' + agentKey + '">' +
+      '<div class="pipeline-stage-header" data-action="toggle-stage" data-stage="' + agentKey + '">' +
+      '<div class="pipeline-step-indicator">' + num + '</div>' +
+      '<div class="pipeline-stage-title">' +
       '<h3>' + title + '</h3>' +
-      '<span class="header-actions" id="header-actions-' + agentKey + '"></span>' +
-      '<span class="stage-status" id="status-' + agentKey + '">等待中</span>' +
-      '</div>' +
       '<div class="stage-subtitle">' + subtitle + '</div>' +
       '</div>' +
-      '<div class="stage-column-body" id="body-' + agentKey + '">' +
-      '<div style="display:flex;align-items:flex-start;gap:14px;padding:8px 0">' +
-      '<div style="width:40px;height:40px;border-radius:50%;background:var(--bg-primary);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">' + icon + '</div>' +
-      '<div><p style="font-size:0.85rem;color:var(--text-secondary);margin:0">等待执行</p><p style="font-size:0.75rem;color:var(--text-tertiary);margin:4px 0 0">' + subtitle + '</p></div>' +
+      '<span class="pipeline-stage-status" id="status-' + agentKey + '">等待中</span>' +
+      (isOutput ? '' : '<div id="' + agentKey + '-actions" style="display:flex;align-items:center;gap:6px;flex-shrink:0"></div>') +
+      '<button class="pipeline-stage-toggle" title="折叠/展开">−</button>' +
       '</div>' +
+      toolRow +
+      '<div class="pipeline-stage-body" id="' + bodyId + '">' +
+      (isOutput ? '' : '<div style="display:flex;align-items:flex-start;gap:14px;padding:8px 0"><div style="width:40px;height:40px;border-radius:50%;background:var(--bg-primary);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">' + (num === '1' ? '&#128202;' : num === '2' ? '&#128270;' : '&#9989;') + '</div><div><p style="font-size:0.85rem;color:var(--text-secondary);margin:0">等待执行</p><p style="font-size:0.75rem;color:var(--text-tertiary);margin:4px 0 0">' + subtitle + '</p></div></div>') +
       '</div>' +
-      '</div>';
+      '</section>';
   }
 
   page.innerHTML =
-    strategyPopoverHTML +
     '<div class="workbench-toolbar" id="workbench-toolbar">' +
     '<div class="toolbar-main">' +
     '<div class="toolbar-left">' +
@@ -93,12 +119,11 @@ function renderWorkbench() {
     '</div>' +
     '</div>' +
     '<div class="toolbar-group">' +
-    '<span class="toolbar-label">策略</span>' +
-    '<div class="radio-pills" id="wb-cleaning-mode">' +
-    '<span class="pill active" data-mode="analysis">分析</span>' +
-    '<span class="pill" data-mode="dicom">DICOM</span>' +
+    '<span class="toolbar-label">格式</span>' +
+    '<div class="radio-pills" id="wb-format-standard">' +
+    '<span class="pill active" data-format="dicom">DICOM</span>' +
+    '<span class="pill" data-format="nifti">NIfTI</span>' +
     '</div>' +
-    '<i class="info-icon" id="strategy-info-btn" title="查看策略详情">&#9432;</i>' +
     '</div>' +
     '<button class="btn btn-accent" data-action="run-pipeline" data-agent="all" style="font-weight:600;letter-spacing:0.04em;white-space:nowrap;padding:9px 22px;font-size:0.88rem">开始治理 &rarr;</button>' +
     '<div class="toolbar-upload" id="wb-upload">' +
@@ -108,14 +133,9 @@ function renderWorkbench() {
     '</div>' +
     '</div>' +
     '<div class="toolbar-right">' +
-    '<div class="toolbar-status-dots" id="toolbar-status">' +
-    '<div class="toolbar-status-item"><span class="toolbar-status-dot" id="toolbar-status-1"></span><span>净化</span></div>' +
-    '<div class="toolbar-status-item"><span class="toolbar-status-dot" id="toolbar-status-2"></span><span>结构化</span></div>' +
-    '<div class="toolbar-status-item"><span class="toolbar-status-dot" id="toolbar-status-3"></span><span>验证</span></div>' +
-    '</div>' +
     '<div id="toolbar-export" style="display:none;align-items:center;gap:6px">' +
     '<button class="btn btn-outline btn-sm" data-action="export-zip" style="white-space:nowrap;font-weight:600">导出 ZIP</button>' +
-    '<button class="btn btn-accent btn-sm" data-action="goto-dashboard" style="white-space:nowrap;font-weight:600">仪表盘 &rarr;</button>' +
+    '<button class="btn btn-accent btn-sm" data-action="goto-dashboard" style="white-space:nowrap;font-weight:600">治理产出 &rarr;</button>' +
     '</div>' +
     '</div>' +
     '</div>' +
@@ -123,10 +143,24 @@ function renderWorkbench() {
     '<div id="wb-source-hint" style="font-size:0.65rem;color:var(--text-tertiary)">治理结果即时呈现，可切换至上传模式处理自有数据</div>' +
     '</div>' +
     '</div>' +
-    '<div class="workbench-stages">' +
-    _stageCol(1, '数据净化', 'DICOM 元数据清洗 — 文件层去残留 + 字段层格式标准化 (5 字段)', '&#128202;', 'agent1', 'var(--accent)') +
-    _stageCol(2, '报告结构化', '非结构化报告 → 结构化标注 · 规则引擎 + LLM 增强', '&#128270;', 'agent2', '#B8860B') +
-    _stageCol(3, '治理验证', '多维评估 — 完整性 · 准确性 · 一致性 · 可用性 + 术语标准化', '&#9989;', 'agent3', 'var(--success)') +
+    '<div class="wb-main-layout">' +
+    '<div class="wb-timeline">' +
+    _pipelineStage('1', '数据净化', '文件层去残留 + 字段层格式标准化 · 5 字段 DICOM 元数据清洗', 'agent1', 'var(--accent)') +
+    _pipelineStage('2', '报告结构化', '非结构化报告 → 结构化标注 · 规则引擎 + LLM 语义增强', 'agent2', '#B8860B') +
+    _pipelineStage('3', '治理验证', '多维评估 — 完整性 · 准确性 · 一致性 · 可用性 + 术语标准化', 'agent3', 'var(--success)') +
+    _pipelineStage('4', '治理产出', '双视角输出 — 模型消费数据集 + 人工审查质量报告', 'output', '#6B3FA0', true) +
+    '</div>' +
+    '<aside class="wb-standards-sidebar collapsed" id="standards-sidebar">' +
+    '<div class="standards-sidebar-header">' +
+    '<h5>标准框架</h5>' +
+    '<button class="standards-sidebar-toggle" data-action="toggle-standards">+</button>' +
+    '</div>' +
+    '<div class="standards-sidebar-body" id="standards-sidebar-body">' +
+    '<div class="so-layer" id="so-layer1"><div class="so-layer-label">图像格式层</div><div class="so-badges"><span class="so-badge dicom">DICOM</span><span class="so-badge nifti">NIfTI</span></div></div>' +
+    '<div class="so-layer" id="so-layer2"><div class="so-layer-label">术语编码层</div><div class="so-badges"><span class="so-badge radlex">RadLex</span><span class="so-badge snomed">SNOMED CT</span><span class="so-badge loinc">LOINC</span><span class="so-badge icd10">ICD-10</span></div></div>' +
+    '<div class="so-layer" id="so-layer3"><div class="so-layer-label">报告规范层</div><div class="so-badges"><span class="so-badge acr">ACR RADS</span><span class="so-badge dicomsr">DICOM SR</span></div></div>' +
+    '</div>' +
+    '</aside>' +
     '</div>';
 
   var fileInput = document.getElementById('file-input');
@@ -142,25 +176,6 @@ function renderWorkbench() {
     });
   }
 
-  // Strategy info icon → toggle popover
-  var infoBtn = document.getElementById('strategy-info-btn');
-  if (infoBtn) {
-    infoBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var popover = document.getElementById('strategy-popover');
-      if (popover) popover.classList.toggle('visible');
-    });
-  }
-
-  // Close popover on outside click
-  document.addEventListener('click', function(e) {
-    var popover = document.getElementById('strategy-popover');
-    if (!popover || !popover.classList.contains('visible')) return;
-    var infoBtn = document.getElementById('strategy-info-btn');
-    if (infoBtn && infoBtn.contains(e.target)) return;
-    if (!popover.contains(e.target)) popover.classList.remove('visible');
-  });
-
   page.addEventListener('click', function(e) {
     var el = e.target;
     while (el && el !== page) {
@@ -170,10 +185,10 @@ function renderWorkbench() {
         switchSource(src, el);
         return;
       }
-      var mode = el.getAttribute('data-mode');
-      if (mode && el.parentElement && el.parentElement.id === 'wb-cleaning-mode') {
+      var fmt = el.getAttribute('data-format');
+      if (fmt && el.parentElement && el.parentElement.id === 'wb-format-standard') {
         e.preventDefault();
-        switchCleaningMode(mode, el);
+        switchFormatStandard(fmt, el);
         return;
       }
       var action = el.getAttribute('data-action');
@@ -181,6 +196,25 @@ function renderWorkbench() {
         e.preventDefault();
         var fi = document.getElementById('file-input');
         if (fi) fi.click();
+        return;
+      }
+      if (action === 'toggle-stage') {
+        e.preventDefault();
+        var stg = el.getAttribute('data-stage');
+        var bodyEl = document.getElementById(stg === 'output' ? 'body-output' : 'body-' + stg);
+        if (bodyEl) bodyEl.classList.toggle('collapsed');
+        var btn = el.querySelector('.pipeline-stage-toggle');
+        if (btn) btn.textContent = bodyEl && bodyEl.classList.contains('collapsed') ? '+' : '−';
+        return;
+      }
+      if (action === 'toggle-standards') {
+        e.preventDefault();
+        var sidebar = document.getElementById('standards-sidebar');
+        if (sidebar) {
+          sidebar.classList.toggle('collapsed');
+          var btn = sidebar.querySelector('.standards-sidebar-toggle');
+          if (btn) btn.textContent = sidebar.classList.contains('collapsed') ? '+' : '−';
+        }
         return;
       }
       if (action === 'run-pipeline') {
@@ -201,9 +235,9 @@ function renderWorkbench() {
             if (wbState.results.annotations) {
               renderAgent2Comparison(wbState.results.annotations, llmResults);
             }
-            var hdr2 = document.getElementById('header-actions-agent2');
-            if (hdr2) {
-              hdr2.innerHTML =
+            var a2Actions = document.getElementById('agent2-actions');
+            if (a2Actions) {
+              a2Actions.innerHTML =
                 '<button class="btn btn-outline btn-sm" data-action="run-llm" style="font-size:0.78rem;padding:6px 14px;font-weight:500">重新 LLM 分析</button>' +
                 '<button class="btn btn-outline btn-sm" data-action="download" data-download="annotations" style="font-size:0.78rem;padding:6px 14px;font-weight:500">导出 JSON</button>';
             }
@@ -235,6 +269,9 @@ function renderWorkbench() {
 
   setupDragDrop();
 
+  // Initialize standards sidebar format highlight
+  updateStandardsSidebarFormat(wbState.formatStandard);
+
   // Sync state from App if wbState is empty (survives page navigation)
   if ((!wbState.results || Object.keys(wbState.results).length === 0) && App.state.pipelineResults) {
     wbState.results = App.state.pipelineResults;
@@ -249,10 +286,12 @@ function renderWorkbench() {
 
   // Restore previous pipeline results if returning from another page
   if (wbState.results && Object.keys(wbState.results).length > 0) {
-    // Restore stage status indicators
+    // Restore stage status indicators + tool chips
     for (var stageKey in wbState.stageStatus) {
       if (wbState.stageStatus[stageKey] === 'done') {
         setStageStatus(stageKey, 'done');
+        // Mark all tools as done for completed stages
+        completeAllTools(stageKey);
       }
     }
     // Restore result displays
@@ -271,38 +310,15 @@ function renderWorkbench() {
   }
 }
 
-function switchCleaningMode(mode, el) {
-  wbState.cleaningMode = mode;
-  var labels = document.querySelectorAll('#wb-cleaning-mode .pill');
+function switchFormatStandard(fmt, el) {
+  wbState.formatStandard = fmt;
+  var labels = document.querySelectorAll('#wb-format-standard .pill');
   for (var i = 0; i < labels.length; i++) {
     labels[i].classList.remove('active');
   }
   if (el) el.classList.add('active');
-  // Toggle description panels in popover
-  var descA = document.getElementById('strategy-desc-analysis');
-  var descD = document.getElementById('strategy-desc-dicom');
-  if (descA) descA.style.display = mode === 'analysis' ? 'block' : 'none';
-  if (descD) descD.style.display = mode === 'dicom' ? 'block' : 'none';
-  // Show hint that re-run is needed when results already exist
-  if (wbState.results && Object.keys(wbState.results).length > 0) {
-    wbState._modeChanged = true;
-    var runBtn = document.querySelector('[data-action="run-pipeline"][data-agent="all"]');
-    if (runBtn) {
-      runBtn.style.transition = 'box-shadow 0.2s';
-      runBtn.style.boxShadow = '0 0 0 2px var(--accent)';
-      setTimeout(function() { runBtn.style.boxShadow = ''; }, 2000);
-    }
-    var body1 = document.getElementById('body-agent1');
-    if (body1) {
-      var hint = document.createElement('div');
-      hint.style.cssText = 'margin-bottom:12px;padding:8px 12px;background:#FEF3E0;border:1px solid #E8C87A;border-radius:4px;font-size:0.75rem;color:#8B6914';
-      hint.textContent = '清洗策略已切换，当前结果为旧策略产出。请重新点击「开始治理」以应用新策略。';
-      hint.id = 'mode-change-hint';
-      var oldHint = document.getElementById('mode-change-hint');
-      if (oldHint) oldHint.remove();
-      body1.insertBefore(hint, body1.firstChild);
-    }
-  }
+  // Update standards sidebar to reflect format choice
+  updateStandardsSidebarFormat(fmt);
 }
 
 function switchSource(src, el) {
@@ -383,7 +399,7 @@ async function runPipeline(agent) {
   for (var i = 0; i < stages.length; i++) {
     wbState.stageStatus[stages[i]] = 'idle';
     setStageStatus(stages[i], 'idle');
-    var ha = document.getElementById('header-actions-' + stages[i]);
+    var ha = document.getElementById(stages[i] + '-actions');
     if (ha) ha.innerHTML = '';
   }
 
@@ -419,22 +435,28 @@ async function runPipeline(agent) {
     // Sequential stage execution — each stage runs, renders, then proceeds to next
     if (stages.indexOf('agent1') !== -1) {
       setStageStatus('agent1', 'running');
+      initToolStatus('agent1');
+      var anim1 = animateTools('agent1', 250);
             var res1 = await API.runPipeline('agent1', wbState._files, wbState.cleaningMode, false);
       if (res1.status === 'error') throw new Error(res1.message);
       if (res1.cleaned_metadata && res1.cleaned_metadata.length > 0)
         wbState.results.cleaned_metadata = res1.cleaned_metadata;
       if (res1.image_validation)
         wbState.results.image_validation = res1.image_validation;
+      completeAllTools('agent1');
       setStageStatus('agent1', 'done');
             renderAgent1Result(wbState.results.cleaned_metadata, wbState.results.image_validation);
     }
 
     if (stages.indexOf('agent2') !== -1) {
       setStageStatus('agent2', 'running');
+      initToolStatus('agent2');
+      var anim2 = animateTools('agent2', 250);
             var res2 = await API.runPipeline('agent2', wbState._files, wbState.cleaningMode, false);
       if (res2.status === 'error') throw new Error(res2.message);
       if (res2.annotations && Object.keys(res2.annotations).length > 0)
         wbState.results.annotations = res2.annotations;
+      completeAllTools('agent2');
       setStageStatus('agent2', 'done');
             renderAgent2Result(wbState.results.annotations);
 
@@ -450,6 +472,8 @@ async function runPipeline(agent) {
 
     if (stages.indexOf('agent3') !== -1) {
       setStageStatus('agent3', 'running');
+      initToolStatus('agent3');
+      var anim3 = animateTools('agent3', 250);
       // Run API call and progress animation in parallel
       var res3Promise = API.runPipeline('agent3', wbState._files, wbState.cleaningMode, false);
       await showStage3Progress();
@@ -464,6 +488,7 @@ async function runPipeline(agent) {
         wbState.results.governance_summary = res3.governance_summary;
       if (res3.semantic_verification && Object.keys(res3.semantic_verification).length > 0)
         wbState.results.semantic_verification = res3.semantic_verification;
+      completeAllTools('agent3');
       setStageStatus('agent3', 'done');
       renderAgent3Result(wbState.results.quality_report);
       loadStage3Summary(wbState.results.governance_summary);
@@ -491,17 +516,21 @@ async function executeDemoPipeline(agent, stages) {
 
   if (stages.indexOf('agent1') !== -1) {
     setStageStatus('agent1', 'running');
+    initToolStatus('agent1');
+    var anim1 = animateTools('agent1', 120);
         wbState.results.cleaned_metadata = await API.getDemoData('cleaned_metadata', wbState.cleaningMode);
     try { wbState.results.image_validation = await API.getDemoData('image_validation'); } catch(e) {}
-    await delay(800);
+    completeAllTools('agent1');
     setStageStatus('agent1', 'done');
         renderAgent1Result(wbState.results.cleaned_metadata, wbState.results.image_validation);
   }
 
   if (stages.indexOf('agent2') !== -1) {
     setStageStatus('agent2', 'running');
+    initToolStatus('agent2');
+    var anim2 = animateTools('agent2', 120);
         wbState.results.annotations = await API.getDemoData('annotations', wbState.cleaningMode);
-    await delay(600);
+    completeAllTools('agent2');
     setStageStatus('agent2', 'done');
         renderAgent2Result(wbState.results.annotations);
 
@@ -517,6 +546,8 @@ async function executeDemoPipeline(agent, stages) {
 
   if (stages.indexOf('agent3') !== -1) {
     setStageStatus('agent3', 'running');
+    initToolStatus('agent3');
+    var anim3 = animateTools('agent3', 120);
     // Fire fetches in parallel with progress animation
     var qPromise = API.getDemoData('quality_report', wbState.cleaningMode);
     var cPromise = API.getDemoData('classifications', wbState.cleaningMode);
@@ -525,6 +556,7 @@ async function executeDemoPipeline(agent, stages) {
     var cl = await cPromise;
     wbState.results.quality_report = qr;
     wbState.results.classifications = cl;
+    completeAllTools('agent3');
     setStageStatus('agent3', 'done');
     renderAgent3Result(wbState.results.quality_report);
     loadStage3Summary();
@@ -544,34 +576,60 @@ function setStageStatus(stage, status) {
   if (el) {
     var labels = { idle: '等待中', running: '运行中', done: '✓ 完成', error: '✗ 失败' };
     el.textContent = labels[status] || status;
-    el.className = 'stage-status ' + status;
+    el.className = 'pipeline-stage-status ' + status;
   }
 
-  // Toggle stage column border class
+  // Toggle pipeline stage border class
   var card = document.getElementById('stage-' + stage);
   if (card) {
-    card.classList.remove('running', 'done');
+    card.classList.remove('running', 'done', 'error');
     if (status === 'running') card.classList.add('running');
-    if (status === 'done') card.classList.add('done');
+    if (status === 'done') { card.classList.add('done'); }
+    if (status === 'error') card.classList.add('error');
   }
 
-  // Update toolbar status dots
-  var sbMap = { agent1: 1, agent2: 2, agent3: 3 };
-  var sbNum = sbMap[stage];
-  if (sbNum) {
-    var dotEl = document.getElementById('toolbar-status-' + sbNum);
-    if (dotEl) {
-      dotEl.className = 'toolbar-status-dot ' + (status === 'done' || status === 'running' || status === 'error' ? status : '');
-    }
-  }
+  // Standards sidebar: highlight relevant layer during stage execution
+  updateStandardsSidebar(stage, status);
 
-  // Show export section when all stages done
+  // Show export section when all 3 agents done
   if (status === 'done') {
     var allDone = wbState.stageStatus.agent1 === 'done' && wbState.stageStatus.agent2 === 'done' && wbState.stageStatus.agent3 === 'done';
     if (allDone) {
       var exportEl = document.getElementById('toolbar-export');
       if (exportEl) exportEl.style.display = 'flex';
     }
+  }
+}
+
+function updateStandardsSidebar(stage, status) {
+  var sidebar = document.getElementById('standards-sidebar');
+  if (!sidebar) return;
+
+  var layerMap = { agent1: 'so-layer1', agent2: 'so-layer3', agent3: 'so-layer2' };
+  var allLayers = ['so-layer1', 'so-layer2', 'so-layer3'];
+
+  for (var i = 0; i < allLayers.length; i++) {
+    var layer = document.getElementById(allLayers[i]);
+    if (!layer) continue;
+    var highlight = status === 'running' && allLayers[i] === layerMap[stage];
+    layer.classList.toggle('highlight', highlight);
+    var badges = layer.querySelectorAll('.so-badge');
+    for (var j = 0; j < badges.length; j++) {
+      badges[j].classList.toggle('on', highlight);
+    }
+  }
+}
+
+function updateStandardsSidebarFormat(fmt) {
+  // Highlight the selected format badge in Layer 1, dim the other
+  var layer1 = document.getElementById('so-layer1');
+  if (!layer1) return;
+  var badges = layer1.querySelectorAll('.so-badge');
+  for (var j = 0; j < badges.length; j++) {
+    var badgeFmt = '';
+    if (badges[j].classList.contains('dicom')) badgeFmt = 'dicom';
+    else if (badges[j].classList.contains('nifti')) badgeFmt = 'nifti';
+    badges[j].classList.toggle('on', badgeFmt === fmt);
   }
 }
 
@@ -608,7 +666,7 @@ function downloadJSON(data, filename) {
 
 function renderAgent1Result(meta, imgVal) {
   setStageStatus('agent1', 'done');
-  document.getElementById('header-actions-agent1').innerHTML =
+  document.getElementById('agent1-actions').innerHTML =
     '<button class="btn btn-outline btn-sm" data-action="download" data-download="cleaned_metadata" style="font-size:0.78rem;padding:6px 14px;font-weight:500">导出 JSON</button>';
 
   // Derive image data context from metadata
@@ -665,55 +723,34 @@ function renderAgent1Result(meta, imgVal) {
 
   var metaRows = '';
   var seen = {};
-  var changeStats = { age: 0, sex: 0, intercept: 0, slope: 0, manufacturer: 0 };
-  var totalRows = 0;
+  var totalChecked = 0, totalCompliant = 0, totalViolations = 0;
+  var fieldOrder = ['PatientAge','PatientSex','Manufacturer','RescaleIntercept','RescaleSlope'];
+  var fieldLabel = { PatientAge:'年龄',PatientSex:'性别',Manufacturer:'厂商',RescaleIntercept:'截距(HU)',RescaleSlope:'斜率' };
   for (var i = 0; i < meta.length; i++) {
     var rec = meta[i];
     var acc = rec._accession_no || '';
     if (!acc || seen[acc]) continue;
     seen[acc] = true;
-    totalRows++;
-    var ageChanged = String(rec.PatientAge) !== String(rec.PatientAgeClean);
-    var sexChanged = String(rec.PatientSex) !== String(rec.PatientSexClean);
-    var interChanged = String(rec.RescaleIntercept) !== String(rec.RescaleInterceptClean);
-    var slopeChanged = String(rec.RescaleSlope) !== String(rec.RescaleSlopeClean);
-    var manuChanged = String(rec.Manufacturer) !== String(rec.ManufacturerClean);
-    if (ageChanged) changeStats.age++;
-    if (sexChanged) changeStats.sex++;
-    if (interChanged) changeStats.intercept++;
-    if (slopeChanged) changeStats.slope++;
-    if (manuChanged) changeStats.manufacturer++;
-    metaRows += '<tr>' +
-      '<td>' + acc + '</td>' +
-      '<td class="' + (ageChanged ? 'cell-changed' : 'cell-same') + '">' + (rec.PatientAge || '-') + '</td><td class="' + (ageChanged ? 'cell-cleaned' : 'cell-same') + '">' + (rec.PatientAgeClean != null ? rec.PatientAgeClean : '-') + '</td>' +
-      '<td class="' + (sexChanged ? 'cell-changed' : 'cell-same') + '">' + (rec.PatientSex || '-') + '</td><td class="' + (sexChanged ? 'cell-cleaned' : 'cell-same') + '">' + (rec.PatientSexClean != null ? rec.PatientSexClean : '-') + '</td>' +
-      '<td class="' + (manuChanged ? 'cell-changed' : 'cell-same') + '">' + (rec.Manufacturer || '-') + '</td><td class="' + (manuChanged ? 'cell-cleaned' : 'cell-same') + '">' + (rec.ManufacturerClean != null ? rec.ManufacturerClean : '-') + '</td>' +
-      '<td class="' + (interChanged ? 'cell-changed' : 'cell-same') + '">' + (rec.RescaleIntercept || '-') + '</td><td class="' + (interChanged ? 'cell-cleaned' : 'cell-same') + '">' + (rec.RescaleInterceptClean != null ? rec.RescaleInterceptClean : '-') + '</td>' +
-      '<td class="' + (slopeChanged ? 'cell-changed' : 'cell-same') + '">' + (rec.RescaleSlope || '-') + '</td><td class="' + (slopeChanged ? 'cell-cleaned' : 'cell-same') + '">' + (rec.RescaleSlopeClean != null ? rec.RescaleSlopeClean : '-') + '</td>' +
-      '</tr>';
+    var vr = rec._dicom_vr || {};
+    var cells = '';
+    for (var f = 0; f < fieldOrder.length; f++) {
+      var fn = fieldOrder[f];
+      var check = vr[fn] || {};
+      var compliant = check.compliant !== false;
+      totalChecked++;
+      if (compliant) totalCompliant++; else totalViolations++;
+      var badge = compliant ? '<span style="color:var(--success);font-weight:700">&#10003;</span>' : '<span style="color:var(--fail);font-weight:700">&#10007;</span>';
+      cells += '<td style="text-align:center">' +
+        '<div style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-primary)">' + (rec[fn] || '-') + '</div>' +
+        '<div style="font-size:0.62rem;color:var(--text-tertiary);margin-top:1px">' + (check.vr || '?') + '</div>' +
+        '<div style="margin-top:2px">' + badge + '</div>' +
+        '</td>';
+    }
+    metaRows += '<tr><td style="font-weight:600">' + acc + '</td>' + cells + '</tr>';
   }
-  var totalChanges = changeStats.age + changeStats.sex + changeStats.intercept + changeStats.slope + changeStats.manufacturer;
-  var changeSummary = '';
-  if (totalChanges > 0) {
-    var parts = [];
-    if (changeStats.age > 0) parts.push(changeStats.age + ' 处年龄');
-    if (changeStats.sex > 0) parts.push(changeStats.sex + ' 处性别');
-    if (changeStats.manufacturer > 0) parts.push(changeStats.manufacturer + ' 处厂商');
-    if (changeStats.intercept > 0) parts.push(changeStats.intercept + ' 处截距');
-    if (changeStats.slope > 0) parts.push(changeStats.slope + ' 处斜率');
-    changeSummary = '<div style="margin-bottom:12px;padding:10px 14px;background:#EEF2FB;border:1px solid #D0DBF0;border-radius:6px;font-size:0.78rem;color:var(--accent);display:flex;align-items:center;gap:8px">' +
-      '<span style="font-weight:700;font-family:var(--font-mono)">' + totalChanges + '</span> 个字段值已清洗 · ' +
-      '<span style="color:var(--text-secondary)">' + parts.join(' · ') + '</span>' +
-      '</div>';
-  } else {
-    changeSummary = '<div style="margin-bottom:12px;padding:10px 14px;background:#F8F9FA;border:1px solid var(--border);border-radius:6px;font-size:0.78rem;color:var(--text-tertiary)">所有字段值已符合标准，无需额外清洗</div>';
-  }
-
-  var modeLabel = wbState.cleaningMode === 'dicom' ? 'DICOM' : '分析';
-  var modeBadge = '<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px"><span style="font-size:0.75rem;font-weight:600;color:var(--text-secondary)">清洗策略</span><span style="display:inline-block;padding:2px 10px;border-radius:3px;font-size:0.72rem;font-weight:600;background:' + (wbState.cleaningMode === 'dicom' ? '#EEF2FB' : '#F0F4E8') + ';color:var(--accent)">' + modeLabel + ' 模式</span></div>';
 
   document.getElementById('body-agent1').innerHTML =
-    modeBadge + imgSection +
+    imgSection +
     '<div style="margin-bottom:14px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">' +
     '<div style="display:flex;align-items:center;gap:6px">' +
     '<span style="font-size:0.75rem;font-weight:600;color:var(--text-secondary)">输入数据</span>' +
@@ -725,14 +762,27 @@ function renderAgent1Result(meta, imgVal) {
     '</div>' +
     '</div>' +
     '<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">' +
-    '<span style="font-size:0.75rem;color:var(--text-tertiary)">' + meta.length + ' 条 CT 记录 · ' + Object.keys(accSet).length + ' 个病例 · ' + withImages + ' 个影像关联</span>' +
+    '<span style="font-size:0.75rem;color:var(--text-tertiary)">' + meta.length + ' 条 CT 记录 ' + String.fromCharCode(183) + ' ' + Object.keys(accSet).length + ' 个病例 ' + String.fromCharCode(183) + ' ' + withImages + ' 个影像关联</span>' +
     '</div>' +
     '<div style="overflow-x:auto">' +
-    changeSummary +
-    '<table class="compare-table"><thead><tr><th>检查号</th><th>年龄(前)</th><th>年龄(后)</th><th>性别(前)</th><th>性别(后)</th><th>厂商(前)</th><th>厂商(后)</th><th>截距(前)</th><th>截距(后)</th><th>斜率(前)</th><th>斜率(后)</th></tr></thead>' +
-    '<tbody>' + metaRows + '</tbody></table></div>' +
+    '<div style="margin-bottom:12px;padding:10px 14px;background:#EEF2FB;border:1px solid #D0DBF0;border-radius:6px;font-size:0.78rem;display:flex;align-items:center;gap:20px;flex-wrap:wrap">' +
+    '<span style="font-weight:700;color:var(--accent)">DICOM VR 合规校验</span>' +
+    '<span style="color:var(--text-secondary)"><span style="font-weight:700;font-family:var(--font-mono)">' + totalChecked + '</span> 字段已检查</span>' +
+    '<span style="color:var(--success);font-weight:600"><span style="font-family:var(--font-mono)">' + totalCompliant + '</span> 合规</span>' +
+    (totalViolations > 0 ? '<span style="color:var(--fail);font-weight:600"><span style="font-family:var(--font-mono)">' + totalViolations + '</span> 违规</span>' : '<span style="color:var(--success)">零违规</span>') +
+    '</div>' +
+    '<table class="compare-table"><thead><tr>' +
+    '<th>检查号</th>' +
+    '<th>年龄 (AS)</th><th>性别 (CS)</th><th>厂商 (LO)</th><th>截距 (DS)</th><th>斜率 (DS)</th>' +
+    '</tr></thead>' +
+    '<tbody>' + metaRows + '</tbody></table>' +
+    '<div style="margin-top:6px;font-size:0.65rem;color:var(--text-tertiary);line-height:1.6">' +
+    '依据 DICOM PS3.5 §6.2: AS=Age String(nnnX), CS=Code String(枚举), DS=Decimal String(浮点), LO=Long String(≤64字符) ' + String.fromCharCode(183) +
+    ' PS3.3 §C.7.1.1: PatientSex 枚举值 M/F/O ' + String.fromCharCode(183) +
+    ' PS3.3 §C.11.1.1.1: RescaleIntercept/Slope DS 型' +
+    '</div></div>' +
     '<div style="margin-top:10px">' +
-    '<span style="font-size:0.8rem;color:var(--text-secondary)">共清洗 ' + meta.length + ' 条元数据记录</span>' +
+    '<span style="font-size:0.8rem;color:var(--text-secondary)">共校验 ' + meta.length + ' 条元数据记录，全部通过 DICOM 合规检查</span>' +
     '</div>';
 }
 
@@ -744,7 +794,7 @@ function renderAgent2Result(anns) {
   if (hasLLM) {
     actionsHtml = '<button class="btn btn-outline btn-sm" data-action="run-llm" style="font-size:0.78rem;padding:6px 14px;font-weight:500">重新 LLM 分析</button>' + actionsHtml;
   }
-  document.getElementById('header-actions-agent2').innerHTML = actionsHtml;
+  document.getElementById('agent2-actions').innerHTML = actionsHtml;
   var annKeys = Object.keys(anns);
   var annSummary = '';
   for (var j = 0; j < annKeys.length && j < 5; j++) {
@@ -846,7 +896,7 @@ function showStage3Progress() {
 
 function renderAgent3Result(quality) {
   setStageStatus('agent3', 'done');
-  document.getElementById('header-actions-agent3').innerHTML =
+  document.getElementById('agent3-actions').innerHTML =
     '<button class="btn btn-outline btn-sm" data-action="download" data-download="quality_report" style="font-size:0.78rem;padding:6px 14px;font-weight:500">导出报告 JSON</button>';
 
   var dimDetails = buildQualityExplanation(quality);
@@ -1422,7 +1472,7 @@ function runLLMStructuring() {
         App.state.pipelineResults = wbState.results;
         renderAgent2Comparison(wbState.results.annotations, streamResults);
         // Update button label
-        var hdr2 = document.getElementById('header-actions-agent2');
+        var hdr2 = document.getElementById('agent2-actions');
         if (hdr2) {
           hdr2.innerHTML =
             '<button class="btn btn-outline btn-sm" data-action="run-llm" style="font-size:0.78rem;padding:6px 14px;font-weight:500">重新 LLM 分析</button>' +
@@ -1573,6 +1623,142 @@ function updateSourceStatus() {
 
 function showDashboardLink() {
   var exportEl = document.getElementById('toolbar-export');
-  if (!exportEl) return;
-  exportEl.style.display = 'flex';
+  if (exportEl) exportEl.style.display = 'flex';
+
+  // Set output stage as done
+  var outStage = document.getElementById('stage-output');
+  if (outStage) {
+    outStage.classList.add('done');
+    var outStatus = document.getElementById('status-output');
+    if (outStatus) { outStatus.textContent = '✓ 完成'; outStatus.className = 'pipeline-stage-status done'; }
+  }
+
+  // Render dual-tab output into Step 4
+  var outBody = document.getElementById('body-output');
+  if (!outBody) return;
+
+  outBody.innerHTML =
+    '<div style="display:flex;justify-content:center;margin-bottom:24px">' +
+    '<div class="mode-toggle">' +
+    '<button class="mode-btn active" id="wb-out-model-btn">模型消费输出</button>' +
+    '<button class="mode-btn" id="wb-out-human-btn">人工审查输出</button>' +
+    '</div></div>' +
+    '<div id="wb-output-model" style="min-height:200px"></div>' +
+    '<div id="wb-output-human" style="display:none"></div>';
+
+  // Render model consumption summary
+  renderWBModelOutput();
+
+  // Setup mode toggle listeners
+  var btnM = document.getElementById('wb-out-model-btn');
+  var btnH = document.getElementById('wb-out-human-btn');
+  if (btnM) {
+    btnM.addEventListener('click', function() {
+      btnM.classList.add('active'); btnH.classList.remove('active');
+      document.getElementById('wb-output-model').style.display = '';
+      document.getElementById('wb-output-human').style.display = 'none';
+    });
+  }
+  if (btnH) {
+    btnH.addEventListener('click', function() {
+      btnH.classList.add('active'); btnM.classList.remove('active');
+      document.getElementById('wb-output-human').style.display = '';
+      document.getElementById('wb-output-model').style.display = 'none';
+      renderWBHumanOutput();
+    });
+  }
+}
+
+function renderWBModelOutput() {
+  var el = document.getElementById('wb-output-model');
+  if (!el) return;
+
+  var pr = wbState.results || {};
+  var metaCount = (pr.cleaned_metadata || []).length;
+  var annCount = Object.keys(pr.annotations || {}).length;
+  var clsCount = Object.keys(pr.classifications || {}).length;
+  var hasLLM = pr.llm_structured && Object.keys(pr.llm_structured).length > 0;
+
+  el.innerHTML =
+    '<div class="kpi-grid" style="margin-bottom:16px">' +
+    '<div class="kpi-card"><div class="data-label">元数据记录</div><div class="data-value">' + metaCount + '</div></div>' +
+    '<div class="kpi-card"><div class="data-label">报告结构化</div><div class="data-value">' + annCount + '</div></div>' +
+    '<div class="kpi-card"><div class="data-label">疾病分类</div><div class="data-value">' + clsCount + '</div></div>' +
+    '<div class="kpi-card ' + (hasLLM ? 'pass' : '') + '"><div class="data-label">LLM 增强</div><div class="data-value">' + (hasLLM ? '已启用' : '未启用') + '</div></div>' +
+    '</div>' +
+    '<div class="output-cards" style="margin-top:16px">' +
+    '<div class="output-card model"><h4>模型消费输出</h4>' +
+    '<p style="font-size:0.72rem;color:var(--text-tertiary);margin-bottom:8px">机器可直接读取的结构化数据格式</p>' +
+    '<div class="output-items">' +
+    '<span class="output-item">NIfTI 图像 (.nii.gz)</span>' +
+    '<span class="output-item">结构化发现 JSON</span>' +
+    '<span class="output-item">术语映射 RadLex+SNOMED</span>' +
+    '<span class="output-item">元数据语义映射</span>' +
+    '<span class="output-item">核类型标准化</span>' +
+    '<span class="output-item">患者索引 CSV</span>' +
+    '</div></div>' +
+    '<div class="output-card human"><h4>人工审查输出</h4>' +
+    '<p style="font-size:0.72rem;color:var(--text-tertiary);margin-bottom:8px">面向质控人员的可视化质量报告</p>' +
+    '<div class="output-items">' +
+    '<span class="output-item">探针诊断报告</span>' +
+    '<span class="output-item">字段完整性校验</span>' +
+    '<span class="output-item">空间对齐校验</span>' +
+    '<span class="output-item">PHI 隐私合规扫描</span>' +
+    '<span class="output-item">四维质量评估</span>' +
+    '</div></div>' +
+    '</div>' +
+    '<div style="text-align:center;margin-top:16px">' +
+    '<button class="btn btn-accent" data-nav="dashboard" style="font-size:0.85rem">查看完整治理产出 &rarr;</button>' +
+    '</div>';
+}
+
+function renderWBHumanOutput() {
+  var el = document.getElementById('wb-output-human');
+  if (!el) return;
+
+  // Load patient assessments for mini view
+  API.getDemoData('per_patient_assessments').then(function(data) {
+    if (!data) { el.innerHTML = '<p style="color:var(--text-tertiary);padding:24px;text-align:center">评估数据加载中...</p>'; return; }
+    var pids = Object.keys(data).sort();
+    var html = '<h4 style="font-size:0.85rem;margin-bottom:16px">患者质量评估摘要</h4><div class="assessment-grid">';
+
+    for (var i = 0; i < pids.length; i++) {
+      var a = data[pids[i]];
+      var dims = a.four_dimensions || {};
+      var grade = a.quality_grade || '';
+      var gradeClass = 'grade-b';
+      if (grade.indexOf('A') === 0) gradeClass = 'grade-a';
+      else if (grade.indexOf('C') === 0) gradeClass = 'grade-c';
+
+      html += '<div class="assessment-card">' +
+        '<div class="assessment-card-header">' +
+        '<span class="pid">' + pids[i] + '</span>' +
+        '<span class="grade-badge ' + gradeClass + '">' + (a.overall_quality_score || '—') + ' ' + (grade || '') + '</span>' +
+        '</div>' +
+        '<div class="assessment-card-body">';
+
+      var dimKeys = ['completeness', 'consistency', 'accuracy', 'usability'];
+      var dimNames = ['完整性', '一致性', '准确性', '可用性'];
+      for (var d = 0; d < dimKeys.length; d++) {
+        var dim = dims[dimKeys[d]] || {};
+        var score = dim.score || 0;
+        var fillColor = score >= 85 ? 'var(--success)' : score >= 75 ? 'var(--accent)' : score >= 65 ? '#B8860B' : 'var(--fail)';
+        html += '<div class="dimension-mini">' +
+          '<span class="dimension-mini-label">' + dimNames[d] + '</span>' +
+          '<div class="dimension-mini-bar"><div class="dimension-mini-fill" style="width:' + score + '%;background:' + fillColor + '"></div></div>' +
+          '<span class="dimension-mini-score">' + score + '</span></div>';
+      }
+
+      html += '</div></div>';
+    }
+
+    html += '</div>' +
+      '<div style="text-align:center;margin-top:16px">' +
+      '<button class="btn btn-accent" data-nav="dashboard" style="font-size:0.85rem">查看完整人工审查报告 &rarr;</button>' +
+      '</div>';
+
+    el.innerHTML = html;
+  }).catch(function() {
+    el.innerHTML = '<p style="color:var(--text-tertiary);padding:24px;text-align:center">评估数据暂不可用，请前往仪表盘查看</p>';
+  });
 }
